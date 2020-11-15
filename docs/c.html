@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-14 Sat 22:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nancy&rsquo;s C Style Guide</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nancy&rsquo;s C Style Guide</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8bda99b">Language version</a></li>
+<li><a href="#org03f866e">Compiler</a></li>
+<li><a href="#org3d50f90">Flags</a></li>
+<li><a href="#org9e63176">Build system</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org0091b60"><span class="todo TODO">TODO</span> how to structure projects!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4002a59">Version control</a>
+<ul>
+<li><a href="#orgdb8c8bb"><span class="todo TODO">TODO</span> update ! the above is no longer true</a></li>
+<li><a href="#org16b5e96"><span class="todo TODO">TODO</span> workflow setup n stuff</a></li>
+</ul>
+</li>
+<li><a href="#orgb7762a7">License</a></li>
+<li><a href="#orga182f24">Comments</a></li>
+<li><a href="#org9914eb9">Formatting</a>
+<ul>
+<li><a href="#org5fc2444">TODO</a></li>
+</ul>
+</li>
+<li><a href="#org322a79d">Naming conventions</a>
+<ul>
+<li><a href="#orgcfb3e80"><span class="todo TODO">TODO</span> write more!</a></li>
+</ul>
+</li>
+<li><a href="#org9e4997e">Code conventions</a></li>
+<li><a href="#orge68e9e4">Object-orientation</a></li>
+<li><a href="#org8a38545"><span class="todo TODO">TODO</span> Multiple constructors and initializers</a>
+<ul>
+<li><a href="#orgf7e2a08"><span class="todo TODO">TODO</span> Polymorphism</a></li>
+</ul>
+</li>
+<li><a href="#orga4cd81f"><span class="todo TODO">TODO</span> Use of <code>goto</code></a></li>
+</ul>
+</div>
+</div>
+<p>
+Hehe, these are my notes on code formatting and conventions in C! With this I won&rsquo;t have to spend so much time agonizing over side-matters randomly all the time! XD
+</p>
+
+<p>
+I like my code to be clean, readable, consistent, and pretty! @_@
+</p>
+
+<p>
+<i>(this is a work in progress hehe)</i>
+</p>
+
+<div id="outline-container-org8bda99b" class="outline-2">
+<h2 id="org8bda99b">Language version</h2>
+<div class="outline-text-2" id="text-org8bda99b">
+<p>
+I like ANSI C! (C89/C90) (This probably means any of the <code>-ansi</code> or <code>-std=c89</code> or <code>-std=c90</code> flags)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03f866e" class="outline-2">
+<h2 id="org03f866e">Compiler</h2>
+<div class="outline-text-2" id="text-org03f866e">
+<p>
+I&rsquo;m not too picky about which compiler to use, but I generally use GCC because why not. XD
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d50f90" class="outline-2">
+<h2 id="org3d50f90">Flags</h2>
+<div class="outline-text-2" id="text-org3d50f90">
+<p>
+I always compile with <code>-Wall</code>, <code>-Werror</code>, and <code>-Wpedantic</code> because everything&rsquo;s gotta be perfect. :3
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9e63176" class="outline-2">
+<h2 id="org9e63176">Build system</h2>
+<div class="outline-text-2" id="text-org9e63176">
+<p>
+I currently like <a href="https://mesonbuild.com/">Meson</a>!
+</p>
+</div>
+
+<div id="outline-container-org0091b60" class="outline-4">
+<h4 id="org0091b60"><span class="todo TODO">TODO</span> how to structure projects!</h4>
+</div>
+</div>
+
+<div id="outline-container-org4002a59" class="outline-2">
+<h2 id="org4002a59">Version control</h2>
+<div class="outline-text-2" id="text-org4002a59">
+<p>
+<del>I like to use <a href="http://darcs.net/">Darcs</a> as my primary version control with projects hosted on <a href="https://hub.darcs.net/nancy">darcs hub</a>.</del>
+</p>
+
+<p>
+<del>And I like to maintain [Git](<a href="https://git-scm.com/">https://git-scm.com/</a>) mirrors of those projects hosted on [GitHub](<a href="https://github.com/negativefnnancy">https://github.com/negativefnnancy</a>)!</del>
+</p>
+</div>
+
+<div id="outline-container-orgdb8c8bb" class="outline-3">
+<h3 id="orgdb8c8bb"><span class="todo TODO">TODO</span> update ! the above is no longer true</h3>
+</div>
+<div id="outline-container-org16b5e96" class="outline-3">
+<h3 id="org16b5e96"><span class="todo TODO">TODO</span> workflow setup n stuff</h3>
+</div>
+</div>
+
+<div id="outline-container-orgb7762a7" class="outline-2">
+<h2 id="orgb7762a7">License</h2>
+<div class="outline-text-2" id="text-orgb7762a7">
+<p>
+Unless there&rsquo;s a reason to use something else, I like to use the <a href="https://opensource.org/licenses/MIT">MIT license</a>. :o
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga182f24" class="outline-2">
+<h2 id="orga182f24">Comments</h2>
+<div class="outline-text-2" id="text-orga182f24">
+<ul class="org-ul">
+<li>Since it&rsquo;s ANSI C, all comments must use <code>/* this style */</code> (as opposed to <code>// this style</code>).</li>
+<li>In general, comments should be all lower case and without the use of full stops at the end.</li>
+<li>Prefix comments with <code>TODO:</code> to mark incomplete code.</li>
+<li>Prefix comments with <code>NOTE:</code> to mark things the reader should make note of.</li>
+</ul>
+
+<p>
+There are three kinds of comments:
+</p>
+<ul class="org-ul">
+<li>heading comments</li>
+<li>group comments</li>
+<li>inline comments</li>
+</ul>
+
+<p>
+Heading comments should be used to delineate broader sections of code and can be used globally or locally. They should preceded and followed by exactly one empty line (with the exception that files should never begin or end with empty lines!):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">color functions (this is a global heading comment)</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">shine_red</span> <span style="color: #40B4C4;">()</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">set up the doo-hickeys (this is a local heading comment)</span><span style="color: #91889B;"> */</span>
+
+    run_the_leverator <span style="color: #EB64B9;">()</span>;
+    build_the_caterpillar <span style="color: #EB64B9;">()</span>;
+    look_like_u_know_what_ur_doing <span style="color: #EB64B9;">()</span>;
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">make important decisions</span><span style="color: #91889B;"> */</span>
+
+    <span style="color: #40B4C4;">if</span> <span style="color: #EB64B9;">(</span>roses.color == <span style="color: #B381C5;">COLOR_BLUE</span><span style="color: #EB64B9;">)</span>
+        look_again <span style="color: #EB64B9;">()</span>;
+
+    <span style="color: #40B4C4;">else</span> <span style="color: #40B4C4;">if</span> <span style="color: #EB64B9;">(</span>roses.color == <span style="color: #B381C5;">COLOR_RED</span><span style="color: #EB64B9;">)</span>
+        whew_im_not_going_crazy <span style="color: #EB64B9;">()</span>;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">shine_yellow</span> <span style="color: #40B4C4;">()</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">...</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">food functions</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">eat</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">food_t</span> *<span style="color: #FFFFFF;">food</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">...</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">drink</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">beverage_t</span> *<span style="color: #FFFFFF;">beverage</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">...</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">}</span>
+</pre>
+</div>
+
+<p>
+Group comments should be used directly preceding individual lines of code or small groups of closely related lines of code and should be preceded by exactly one empty line and followed by the lines of code they refer to:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">bake some yummy potatos</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">baked_potato_t</span> *<span style="color: #EB64B9;">bake_potato</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">raw_potato_t</span> *<span style="color: #FFFFFF;">potato</span><span style="color: #40B4C4;">)</span>;
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">flavors</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">garlic_flavor</span> = make_flavor <span style="color: #40B4C4;">(</span><span style="color: #B4DCE7;">"garlic"</span><span style="color: #40B4C4;">)</span>;
+<span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">onion_flavor</span>  = make_flavor <span style="color: #40B4C4;">(</span><span style="color: #B4DCE7;">"onion"</span><span style="color: #40B4C4;">)</span>;
+</pre>
+</div>
+
+<p>
+Inline comments should be kept short and generally only used to address really specific stuff or to describe each of a sequence of related lines of code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">house_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">room_t</span> *<span style="color: #FFFFFF;">living_room</span>; <span style="color: #91889B;">/* </span><span style="color: #91889B;">where the tv is</span><span style="color: #91889B;"> */</span>
+    <span style="color: #FFE261;">room_t</span> *<span style="color: #FFFFFF;">den</span>;         <span style="color: #91889B;">/* </span><span style="color: #91889B;">where everybody hangs</span><span style="color: #91889B;"> */</span>
+    <span style="color: #FFE261;">room_t</span> *<span style="color: #FFFFFF;">office</span>;      <span style="color: #91889B;">/* </span><span style="color: #91889B;">where procrastination gets done</span><span style="color: #91889B;"> */</span>
+    <span style="color: #FFE261;">room_t</span> *<span style="color: #FFFFFF;">kitchen</span>;     <span style="color: #91889B;">/* </span><span style="color: #91889B;">where it's at</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4;">}</span> <span style="color: #FFE261;">house_t</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9914eb9" class="outline-2">
+<h2 id="org9914eb9">Formatting</h2>
+<div class="outline-text-2" id="text-org9914eb9">
+<ul class="org-ul">
+<li>Indention should be four spaces and tabs shouldn&rsquo;t be used at all.</li>
+<li>Parentheses should always be preceded by a space, even in function definitions and calls!</li>
+<li>Opening braces should always be on the same line as the definition.</li>
+<li>Immediately following an open brace should always be an empty line.</li>
+<li>A closing brace should only be preceded by an empty line if non-trivial text follows on the same line.</li>
+<li>Groups of related lines of code should have common elements aligned visually.</li>
+<li>Curly braces should be omitted for code blocks containing a single line.</li>
+<li>Switch case labels should be indented.</li>
+<li>Lines should be limited as much as possible to eighty columns wide.</li>
+<li><code>if</code>, <code>while</code>, <code>for</code>, etc. should always be preceded by an empty line.</li>
+</ul>
+
+<p>
+Some examples:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">test_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">hihi</span>; <span style="color: #91889B;">/* </span><span style="color: #91889B;">no empty line follows</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">}</span>;
+
+<span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">another_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">byebye</span>; <span style="color: #91889B;">/* </span><span style="color: #91889B;">empty line follows</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4;">}</span> <span style="color: #FFE261;">another_t</span>;
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">crazy</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">action_t</span> <span style="color: #FFFFFF;">action</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #40B4C4;">switch</span> <span style="color: #EB64B9;">(</span>action<span style="color: #EB64B9;">)</span> <span style="color: #EB64B9;">{</span>
+
+        <span style="color: #40B4C4;">case</span> <span style="color: #B381C5;">ACTION_COOL</span>:
+            do_something_cool_with_a_number <span style="color: #74DFC4;">(</span><span style="color: #FFB85B; font-weight: bold;">5</span><span style="color: #74DFC4;">)</span>;
+            <span style="color: #40B4C4;">break</span>;
+
+        <span style="color: #40B4C4;">case</span> <span style="color: #B381C5;">ACTION_LAME</span>:
+            do_something_lame_with_a_bool <span style="color: #74DFC4;">(</span><span style="color: #B381C5;">true</span><span style="color: #74DFC4;">)</span>;
+            <span style="color: #40B4C4;">break</span>;
+    <span style="color: #EB64B9;">}</span>
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">win_status_t</span> <span style="color: #EB64B9;">get_win_status</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">player_t</span> *<span style="color: #FFFFFF;">first</span>, <span style="color: #FFE261;">player_t</span> *<span style="color: #FFFFFF;">second</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">score_first</span>, <span style="color: #FFFFFF;">score_second</span>;
+
+    score_first  = get_score <span style="color: #EB64B9;">(</span>first,  <span style="color: #B381C5;">SCORE_MAIN</span><span style="color: #EB64B9;">)</span>;
+    score_second = get_score <span style="color: #EB64B9;">(</span>second, <span style="color: #B381C5;">SCORE_MAIN</span><span style="color: #EB64B9;">)</span>;
+
+    <span style="color: #40B4C4;">if</span> <span style="color: #EB64B9;">(</span>score_first == score_second<span style="color: #EB64B9;">)</span>
+        <span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">TIE</span>;
+
+    <span style="color: #40B4C4;">if</span> <span style="color: #EB64B9;">(</span>score_first &gt; score_second<span style="color: #EB64B9;">)</span>
+        <span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">WIN</span>;
+
+    <span style="color: #40B4C4;">if</span> <span style="color: #EB64B9;">(</span>score_first &lt; score_second<span style="color: #EB64B9;">)</span>
+        <span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">LOSE</span>;
+<span style="color: #40B4C4;">}</span>
+</pre>
+</div>
+
+<p>
+Included files should be visually divided into the following divisions:
+</p>
+<ul class="org-ul">
+<li>standard library and related files</li>
+<li>non-standard library files in the include path</li>
+<li>relative files</li>
+<li>the associated header file to the current file</li>
+</ul>
+
+<p>
+For example:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">interface.c</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">standard library and co goes here</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">stdlib.h</span><span style="color: #40B4C4;">&gt;</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">stdio.h</span><span style="color: #40B4C4;">&gt;</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">string.h</span><span style="color: #40B4C4;">&gt;</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">unistd.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">foreign libraries n stuff here</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">cairo.h</span><span style="color: #40B4C4;">&gt;</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">SDL/SDL.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">our files</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #B4DCE7;">"draw.h"</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #B4DCE7;">"util.h"</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">the header for which this file includes the implementation</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #B4DCE7;">"interface.h"</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">...</span><span style="color: #91889B;"> */</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5fc2444" class="outline-3">
+<h3 id="org5fc2444">TODO</h3>
+<div class="outline-text-3" id="text-org5fc2444">
+<p>
+<i>don&rsquo;t miss out!!</i>
+<i>next time on <b><b>nancy&rsquo;s C style guide</b></b>: what to do when the line is too long to fit in 80 columns!</i>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org322a79d" class="outline-2">
+<h2 id="org322a79d">Naming conventions</h2>
+<div class="outline-text-2" id="text-org322a79d">
+<ul class="org-ul">
+<li>In general, function names, type names, and variable names should all use <code>lowercase_snake_case</code>.</li>
+<li>Enumeration constants and preprocessor constants should be <code>UPPERCASE_SNAKE_CASE</code></li>
+<li>Related enumeration constants should all have a common prefix related to the type. For example, if you have an enumeration called <code>nut_type_t</code>, then you might have constants of <code>NUT_ALMOND</code>, <code>NUT_CASHEW</code>, or <code>NUT_PEANUT</code>.</li>
+<li>Type names should follow the <code>_t</code> suffix convention. For example, <code>stuff_t</code>, <code>color_t</code>, or <code>vec2_t</code>.</li>
+<li>Derived or related type names should be formed by some descriptive prefix in concatenation with the name of the derived or related type. For example, if <code>color_t</code> is a base type name, then <code>rgb_color_t</code> might be a derived or related type name.</li>
+<li>Pointer types should place the <code>*</code> such that there is a space before the <code>*</code> but not after it.</li>
+<li>Index variable names should be prefixed with <code>i_</code> (for &ldquo;index&rdquo;), such as this: <code>i_array</code>.
+<ul class="org-ul">
+<li>If only one such variable is used in the scope, then the variable should simply be named <code>i</code>.</li>
+</ul></li>
+<li>Variables expressing a quantity of items should be prefixed with <code>n_</code> (for &ldquo;number&rdquo;), such as this: <code>n_items</code>.
+<ul class="org-ul">
+<li>If only one such variable is used in the scope, then the variable should simply be named <code>n</code>.</li>
+</ul></li>
+</ul>
+
+<p>
+Some examples:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">silly_number</span> = <span style="color: #B381C5;">SILLIEST_NUMBER</span>;
+<span style="color: #EB64B9;">cook_meal</span> <span style="color: #40B4C4;">(</span><span style="color: #B381C5;">MEAL_DINNER</span><span style="color: #40B4C4;">)</span>;
+<span style="color: #FFE261;">lamp_t</span> *<span style="color: #FFFFFF;">cool_lamp</span>;
+<span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">n_lamps</span>;
+<span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">i_lamp</span>;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcfb3e80" class="outline-3">
+<h3 id="orgcfb3e80"><span class="todo TODO">TODO</span> write more!</h3>
+</div>
+</div>
+
+<div id="outline-container-org9e4997e" class="outline-2">
+<h2 id="org9e4997e">Code conventions</h2>
+<div class="outline-text-2" id="text-org9e4997e">
+<ul class="org-ul">
+<li>All functions should be implemented in <code>.c</code> files and only public functions should be declared in <code>.h</code> files.</li>
+<li>Additionally all header files should use header guards following the exact pattern depicted.</li>
+<li>Function description comments should only be included above the declaration in the header file, and excluded from the accompanying <code>.c</code> file.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">pizza.h</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#if</span><span style="color: #40B4C4; font-weight: bold;">n</span><span style="color: #40B4C4; font-weight: bold;">def</span> <span style="color: #B381C5;">PIZZA_H</span>
+<span style="color: #40B4C4; font-weight: bold;">#define</span> <span style="color: #FFFFFF;">PIZZA_H</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">order however many pizzas you could possible want</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">order_pizzas</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">n_pizzas</span><span style="color: #40B4C4;">)</span>;
+
+<span style="color: #40B4C4; font-weight: bold;">#endif</span> <span style="color: #91889B;">/* </span><span style="color: #91889B;">PIZZA_H</span><span style="color: #91889B;"> */</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">pizza.c</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">stdio.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">liborderpizza.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #B4DCE7;">"pizza.h"</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">order_pizzas</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">n_pizzas</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    puts <span style="color: #EB64B9;">(</span><span style="color: #B4DCE7;">"placing order, please wait..."</span><span style="color: #EB64B9;">)</span>;
+    place_pizza_order <span style="color: #EB64B9;">(</span>get_local_pizza_joint <span style="color: #74DFC4;">()</span>, n_pizzas, <span style="color: #B381C5;">MUSHROOM</span> | <span style="color: #B381C5;">PINEAPPLE</span> | <span style="color: #B381C5;">SAUSAGE</span><span style="color: #EB64B9;">)</span>;
+    puts <span style="color: #EB64B9;">(</span><span style="color: #B4DCE7;">"order placed!! &#128541;"</span><span style="color: #EB64B9;">)</span>;
+<span style="color: #40B4C4;">}</span>
+</pre>
+</div>
+
+<p>
+All top-level structs and enums should simultaneously have a name and be <code>typedef</code>&rsquo;d to the same name:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">funky_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">...</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4;">}</span> <span style="color: #FFE261;">funky_t</span>;
+</pre>
+</div>
+
+<p>
+All enumerations should have a final value indicating the number of size of the eumeration of the form <code>NUM_ENUM_TYPE</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">enum</span> <span style="color: #FFE261;">icecream_flavor_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_VANILLA</span>,
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_CHOCOLATE</span>,
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_STRAWBERRY</span>,
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_MINT_CHOCOLATE_CHIP</span>,
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_SHERBERT</span>,
+    <span style="color: #FFFFFF;">ICECREAM_FLAVOR_CARPET</span>,
+
+    <span style="color: #FFFFFF;">NUM_ICECREAM_FLAVOR</span> <span style="color: #91889B;">/* </span><span style="color: #91889B;">also note the empty line above</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">}</span>;
+</pre>
+</div>
+
+<p>
+Redundant <code>else</code>&rsquo;s should be avoided, e.g. in the case that each branch returns:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">it's very dangerous</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">if</span> <span style="color: #40B4C4;">(</span>safety &gt; <span style="color: #B381C5;">DANGER_THRESHOLD</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    alert_neighbors <span style="color: #EB64B9;">()</span>;
+    <span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">HIGH_ALERT</span>;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">it's really safe</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">if</span> <span style="color: #40B4C4;">(</span>safety &lt; <span style="color: #B381C5;">SAFE_THRESHOLD</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    lower_your_guard <span style="color: #EB64B9;">()</span>;
+    <span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">RELAX</span>;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">it's a little sketchy out</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">return</span> <span style="color: #B381C5;">KEEP_AN_EYE_OUT</span>;
+</pre>
+</div>
+
+<p>
+<code>size_t</code> should be used in place of <code>int</code> for array indices and array size values:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">cat_and_dog_combos</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">n_cats</span>, <span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">n_dogs</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">size_t</span> <span style="color: #FFFFFF;">i_cat</span>, <span style="color: #FFFFFF;">i_dog</span>;
+
+    <span style="color: #40B4C4;">for</span> <span style="color: #EB64B9;">(</span>i_dog = <span style="color: #FFB85B; font-weight: bold;">0</span>; i_dog &lt; n_dogs; i_dog++<span style="color: #EB64B9;">)</span>
+        <span style="color: #40B4C4;">for</span> <span style="color: #EB64B9;">(</span>i_cat = <span style="color: #FFB85B; font-weight: bold;">0</span>; i_cat &lt; n_cats; i_cat++<span style="color: #EB64B9;">)</span>
+            printf <span style="color: #EB64B9;">(</span><span style="color: #B4DCE7;">"cat #%d and dog #%d showdown\n"</span>, i_cat, i_dog<span style="color: #EB64B9;">)</span>;
+<span style="color: #40B4C4;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge68e9e4" class="outline-2">
+<h2 id="orge68e9e4">Object-orientation</h2>
+<div class="outline-text-2" id="text-orge68e9e4">
+<ul class="org-ul">
+<li>When using structs in an objected oriented way, method names associated with a type should all be suffixed with the name of the type (without the <code>_t</code>) like this: <code>_type</code>, for example, if the type name is <code>chicken_t</code>, the suffix would be <code>_chicken</code>.</li>
+<li>Objects should be designed explicitly to either be passed by pointer or passed by value. In general, only simpler types should be used in the latter way.</li>
+<li>Pass-by-pointer types should always have a constructor and destructor with names of this form: <code>create_type</code> and <code>destroy_type</code>.
+<ul class="org-ul">
+<li>It should always be the constructor&rsquo;s and destructor&rsquo;s responsibility entirely to manage the allocation and freeing of any memory related to the object.</li>
+<li>The destructor should only have a single parameter which is the pointer to the object to be destructed.</li>
+<li>The constructor may or may not take arguments related to the fields to be initialized</li>
+<li>In general, any initialization done by the constructor should be kept to a minimum:
+<ul class="org-ul">
+<li>clear memory,</li>
+<li>set sane default values,</li>
+<li>set fields according to initialization parameters,</li>
+<li>but <span class="underline">don&rsquo;t</span> do anything that involves calculating initial values!</li>
+</ul></li>
+</ul></li>
+<li>Pass-by-value types should instead have an initializer function with a name of this form: <code>make_type</code>.
+<ul class="org-ul">
+<li>In general, similarly to constructors, the initializer function should only set the values of the fields to those provided and shouldn&rsquo;t do much in the way of calculation.</li>
+</ul></li>
+</ul>
+
+<p>
+Some examples:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">cookie.h</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#if</span><span style="color: #40B4C4; font-weight: bold;">n</span><span style="color: #40B4C4; font-weight: bold;">def</span> <span style="color: #B381C5;">COOKIE_H</span>
+<span style="color: #40B4C4; font-weight: bold;">#define</span> <span style="color: #FFFFFF;">COOKIE_H</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">stdbool.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">pass-by-value example</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">describes aspects of a cookie's flavor</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">flavor_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">softness</span>;
+    <span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">sweetness</span>;
+
+<span style="color: #40B4C4;">}</span> <span style="color: #FFE261;">flavor_t</span>;
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">flavor initializer</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">flavor_t</span> <span style="color: #EB64B9;">make_flavor</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">softness</span>, <span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">sweetness</span><span style="color: #40B4C4;">)</span>;
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">pass-by-pointer example</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">the yummiest cookie you ever did saw</span><span style="color: #91889B;"> */</span>
+<span style="color: #40B4C4;">typedef</span> <span style="color: #40B4C4;">struct</span> <span style="color: #FFE261;">cookie_t</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">n_chocolate_chips</span>; <span style="color: #91889B;">/* </span><span style="color: #91889B;">how many chocolate chips the cookie has</span><span style="color: #91889B;"> */</span>
+    <span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">flavor</span>;       <span style="color: #91889B;">/* </span><span style="color: #91889B;">what the cookie tastes like</span><span style="color: #91889B;"> */</span>
+    <span style="color: #FFE261;">bool</span> <span style="color: #FFFFFF;">eaten</span>;            <span style="color: #91889B;">/* </span><span style="color: #91889B;">whether the cookie has been eaten yet</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4;">}</span> <span style="color: #FFE261;">cookie_t</span>;
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">cookie constructor</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">cookie_t</span> *<span style="color: #EB64B9;">create_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">n_chocolate_chips</span>, <span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">flavor</span><span style="color: #40B4C4;">)</span>;
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">cookie destructor</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">destroy_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">cookie_t</span> *<span style="color: #FFFFFF;">cookie</span><span style="color: #40B4C4;">)</span>; <span style="color: #91889B;">/* </span><span style="color: #91889B;">bye bye cookie ;c</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #91889B;">/* </span><span style="color: #91889B;">eat the cookie up (set the eaten flag to true)</span><span style="color: #91889B;"> */</span>
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">eat_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">cookie_t</span> *<span style="color: #FFFFFF;">cookie</span><span style="color: #40B4C4;">)</span>;
+
+<span style="color: #40B4C4; font-weight: bold;">#endif</span> <span style="color: #91889B;">/* </span><span style="color: #91889B;">COOKIE_H</span><span style="color: #91889B;"> */</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #91889B;">/* </span><span style="color: #91889B;">cookie.c</span><span style="color: #91889B;"> */</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #40B4C4;">&lt;</span><span style="color: #B4DCE7;">stdlib.h</span><span style="color: #40B4C4;">&gt;</span>
+
+<span style="color: #40B4C4; font-weight: bold;">#include</span> <span style="color: #B4DCE7;">"cookie.h"</span>
+
+<span style="color: #FFE261;">flavor_t</span> <span style="color: #EB64B9;">make_flavor</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">softness</span>, <span style="color: #FFE261;">double</span> <span style="color: #FFFFFF;">sweetness</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">flavor</span>;
+    flavor.softness  = softness;
+    flavor.sweetness = sweetness;
+    <span style="color: #40B4C4;">return</span> flavor;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">cookie_t</span> *<span style="color: #EB64B9;">create_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">int</span> <span style="color: #FFFFFF;">n_chocolate_chips</span>, <span style="color: #FFE261;">flavor_t</span> <span style="color: #FFFFFF;">flavor</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #FFE261;">cookie_t</span> *<span style="color: #FFFFFF;">cookie</span> = malloc <span style="color: #EB64B9;">(</span><span style="color: #40B4C4;">sizeof</span> <span style="color: #74DFC4;">(</span>cookie_t<span style="color: #74DFC4;">)</span><span style="color: #EB64B9;">)</span>;
+    cookie-&gt;n_chocolate_chips = n_chocolate_chips;
+    cookie-&gt;flavor = flavor;
+    eaten = <span style="color: #B381C5;">false</span>;
+    <span style="color: #40B4C4;">return</span> cookie;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">destroy_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">cookie_t</span> *<span style="color: #FFFFFF;">cookie</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #74DFC4; font-weight: bold;">NOTE:</span><span style="color: #91889B;"> if cookie ever allocates any additional associated memory, we'll clear it here!</span><span style="color: #91889B;"> */</span>
+
+    free <span style="color: #EB64B9;">(</span>cookie<span style="color: #EB64B9;">)</span>;
+<span style="color: #40B4C4;">}</span>
+
+<span style="color: #FFE261;">void</span> <span style="color: #EB64B9;">eat_cookie</span> <span style="color: #40B4C4;">(</span><span style="color: #FFE261;">cookie_t</span> *<span style="color: #FFFFFF;">cookie</span><span style="color: #40B4C4;">)</span> <span style="color: #40B4C4;">{</span>
+
+    <span style="color: #91889B;">/* </span><span style="color: #91889B;">nom nom &gt;:3</span><span style="color: #91889B;"> */</span>
+    cookie-&gt;eaten = <span style="color: #B381C5;">true</span>;
+<span style="color: #40B4C4;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a38545" class="outline-2">
+<h2 id="org8a38545"><span class="todo TODO">TODO</span> Multiple constructors and initializers</h2>
+<div class="outline-text-2" id="text-org8a38545">
+</div>
+<div id="outline-container-orgf7e2a08" class="outline-3">
+<h3 id="orgf7e2a08"><span class="todo TODO">TODO</span> Polymorphism</h3>
+</div>
+</div>
+
+<div id="outline-container-orga4cd81f" class="outline-2">
+<h2 id="orga4cd81f"><span class="todo TODO">TODO</span> Use of <code>goto</code></h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-11-14 Sat 22:00</p>
+</div>
+</body>
+</html>
