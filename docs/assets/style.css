@@ -1,0 +1,15 @@
+body {
+    color: #FFFFFF;
+    background-color: #27212E;
+    /*font-family: 'Zilla Slab', serif;*/
+    /*font-family: 'IBM Plex Serif', serif;*/
+    font-family: 'Domine', serif;
+}
+
+a:link {
+    color: #B4DCE7;
+}
+
+a:visited {
+    color: #B381C5;
+}

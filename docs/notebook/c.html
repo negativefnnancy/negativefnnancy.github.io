@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-14 Sat 22:00 -->
+<!-- 2020-11-15 Sun 09:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s C Style Guide</title>
@@ -193,6 +193,12 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -223,44 +229,44 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8bda99b">Language version</a></li>
-<li><a href="#org03f866e">Compiler</a></li>
-<li><a href="#org3d50f90">Flags</a></li>
-<li><a href="#org9e63176">Build system</a>
+<li><a href="#orge2d8c0b">Language version</a></li>
+<li><a href="#orgec4ad03">Compiler</a></li>
+<li><a href="#org6c7bf7a">Flags</a></li>
+<li><a href="#orgfd1e55b">Build system</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org0091b60"><span class="todo TODO">TODO</span> how to structure projects!</a></li>
+<li><a href="#org3592250"><span class="todo TODO">TODO</span> how to structure projects!</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4002a59">Version control</a>
+<li><a href="#org5ed4a91">Version control</a>
 <ul>
-<li><a href="#orgdb8c8bb"><span class="todo TODO">TODO</span> update ! the above is no longer true</a></li>
-<li><a href="#org16b5e96"><span class="todo TODO">TODO</span> workflow setup n stuff</a></li>
+<li><a href="#org46da4ed"><span class="todo TODO">TODO</span> update ! the above is no longer true</a></li>
+<li><a href="#orgc3a9c2c"><span class="todo TODO">TODO</span> workflow setup n stuff</a></li>
 </ul>
 </li>
-<li><a href="#orgb7762a7">License</a></li>
-<li><a href="#orga182f24">Comments</a></li>
-<li><a href="#org9914eb9">Formatting</a>
+<li><a href="#orgce88ffb">License</a></li>
+<li><a href="#org0e615b5">Comments</a></li>
+<li><a href="#orgb6b98bc">Formatting</a>
 <ul>
-<li><a href="#org5fc2444">TODO</a></li>
+<li><a href="#orgf1b4fc7">TODO</a></li>
 </ul>
 </li>
-<li><a href="#org322a79d">Naming conventions</a>
+<li><a href="#orge4190e9">Naming conventions</a>
 <ul>
-<li><a href="#orgcfb3e80"><span class="todo TODO">TODO</span> write more!</a></li>
+<li><a href="#org5c1c7a3"><span class="todo TODO">TODO</span> write more!</a></li>
 </ul>
 </li>
-<li><a href="#org9e4997e">Code conventions</a></li>
-<li><a href="#orge68e9e4">Object-orientation</a></li>
-<li><a href="#org8a38545"><span class="todo TODO">TODO</span> Multiple constructors and initializers</a>
+<li><a href="#org7221f45">Code conventions</a></li>
+<li><a href="#org995fb22">Object-orientation</a></li>
+<li><a href="#org47f7848"><span class="todo TODO">TODO</span> Multiple constructors and initializers</a>
 <ul>
-<li><a href="#orgf7e2a08"><span class="todo TODO">TODO</span> Polymorphism</a></li>
+<li><a href="#orgb77f8c5"><span class="todo TODO">TODO</span> Polymorphism</a></li>
 </ul>
 </li>
-<li><a href="#orga4cd81f"><span class="todo TODO">TODO</span> Use of <code>goto</code></a></li>
+<li><a href="#orge55da62"><span class="todo TODO">TODO</span> Use of <code>goto</code></a></li>
 </ul>
 </div>
 </div>
@@ -276,49 +282,49 @@ I like my code to be clean, readable, consistent, and pretty! @_@
 <i>(this is a work in progress hehe)</i>
 </p>
 
-<div id="outline-container-org8bda99b" class="outline-2">
-<h2 id="org8bda99b">Language version</h2>
-<div class="outline-text-2" id="text-org8bda99b">
+<div id="outline-container-orge2d8c0b" class="outline-2">
+<h2 id="orge2d8c0b">Language version</h2>
+<div class="outline-text-2" id="text-orge2d8c0b">
 <p>
 I like ANSI C! (C89/C90) (This probably means any of the <code>-ansi</code> or <code>-std=c89</code> or <code>-std=c90</code> flags)
 </p>
 </div>
 </div>
 
-<div id="outline-container-org03f866e" class="outline-2">
-<h2 id="org03f866e">Compiler</h2>
-<div class="outline-text-2" id="text-org03f866e">
+<div id="outline-container-orgec4ad03" class="outline-2">
+<h2 id="orgec4ad03">Compiler</h2>
+<div class="outline-text-2" id="text-orgec4ad03">
 <p>
 I&rsquo;m not too picky about which compiler to use, but I generally use GCC because why not. XD
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3d50f90" class="outline-2">
-<h2 id="org3d50f90">Flags</h2>
-<div class="outline-text-2" id="text-org3d50f90">
+<div id="outline-container-org6c7bf7a" class="outline-2">
+<h2 id="org6c7bf7a">Flags</h2>
+<div class="outline-text-2" id="text-org6c7bf7a">
 <p>
 I always compile with <code>-Wall</code>, <code>-Werror</code>, and <code>-Wpedantic</code> because everything&rsquo;s gotta be perfect. :3
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9e63176" class="outline-2">
-<h2 id="org9e63176">Build system</h2>
-<div class="outline-text-2" id="text-org9e63176">
+<div id="outline-container-orgfd1e55b" class="outline-2">
+<h2 id="orgfd1e55b">Build system</h2>
+<div class="outline-text-2" id="text-orgfd1e55b">
 <p>
 I currently like <a href="https://mesonbuild.com/">Meson</a>!
 </p>
 </div>
 
-<div id="outline-container-org0091b60" class="outline-4">
-<h4 id="org0091b60"><span class="todo TODO">TODO</span> how to structure projects!</h4>
+<div id="outline-container-org3592250" class="outline-4">
+<h4 id="org3592250"><span class="todo TODO">TODO</span> how to structure projects!</h4>
 </div>
 </div>
 
-<div id="outline-container-org4002a59" class="outline-2">
-<h2 id="org4002a59">Version control</h2>
-<div class="outline-text-2" id="text-org4002a59">
+<div id="outline-container-org5ed4a91" class="outline-2">
+<h2 id="org5ed4a91">Version control</h2>
+<div class="outline-text-2" id="text-org5ed4a91">
 <p>
 <del>I like to use <a href="http://darcs.net/">Darcs</a> as my primary version control with projects hosted on <a href="https://hub.darcs.net/nancy">darcs hub</a>.</del>
 </p>
@@ -328,26 +334,26 @@ I currently like <a href="https://mesonbuild.com/">Meson</a>!
 </p>
 </div>
 
-<div id="outline-container-orgdb8c8bb" class="outline-3">
-<h3 id="orgdb8c8bb"><span class="todo TODO">TODO</span> update ! the above is no longer true</h3>
+<div id="outline-container-org46da4ed" class="outline-3">
+<h3 id="org46da4ed"><span class="todo TODO">TODO</span> update ! the above is no longer true</h3>
 </div>
-<div id="outline-container-org16b5e96" class="outline-3">
-<h3 id="org16b5e96"><span class="todo TODO">TODO</span> workflow setup n stuff</h3>
+<div id="outline-container-orgc3a9c2c" class="outline-3">
+<h3 id="orgc3a9c2c"><span class="todo TODO">TODO</span> workflow setup n stuff</h3>
 </div>
 </div>
 
-<div id="outline-container-orgb7762a7" class="outline-2">
-<h2 id="orgb7762a7">License</h2>
-<div class="outline-text-2" id="text-orgb7762a7">
+<div id="outline-container-orgce88ffb" class="outline-2">
+<h2 id="orgce88ffb">License</h2>
+<div class="outline-text-2" id="text-orgce88ffb">
 <p>
 Unless there&rsquo;s a reason to use something else, I like to use the <a href="https://opensource.org/licenses/MIT">MIT license</a>. :o
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga182f24" class="outline-2">
-<h2 id="orga182f24">Comments</h2>
-<div class="outline-text-2" id="text-orga182f24">
+<div id="outline-container-org0e615b5" class="outline-2">
+<h2 id="org0e615b5">Comments</h2>
+<div class="outline-text-2" id="text-org0e615b5">
 <ul class="org-ul">
 <li>Since it&rsquo;s ANSI C, all comments must use <code>/* this style */</code> (as opposed to <code>// this style</code>).</li>
 <li>In general, comments should be all lower case and without the use of full stops at the end.</li>
@@ -439,9 +445,9 @@ Inline comments should be kept short and generally only used to address really s
 </div>
 </div>
 
-<div id="outline-container-org9914eb9" class="outline-2">
-<h2 id="org9914eb9">Formatting</h2>
-<div class="outline-text-2" id="text-org9914eb9">
+<div id="outline-container-orgb6b98bc" class="outline-2">
+<h2 id="orgb6b98bc">Formatting</h2>
+<div class="outline-text-2" id="text-orgb6b98bc">
 <ul class="org-ul">
 <li>Indention should be four spaces and tabs shouldn&rsquo;t be used at all.</li>
 <li>Parentheses should always be preceded by a space, even in function definitions and calls!</li>
@@ -542,9 +548,9 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-org5fc2444" class="outline-3">
-<h3 id="org5fc2444">TODO</h3>
-<div class="outline-text-3" id="text-org5fc2444">
+<div id="outline-container-orgf1b4fc7" class="outline-3">
+<h3 id="orgf1b4fc7">TODO</h3>
+<div class="outline-text-3" id="text-orgf1b4fc7">
 <p>
 <i>don&rsquo;t miss out!!</i>
 <i>next time on <b><b>nancy&rsquo;s C style guide</b></b>: what to do when the line is too long to fit in 80 columns!</i>
@@ -553,9 +559,9 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-org322a79d" class="outline-2">
-<h2 id="org322a79d">Naming conventions</h2>
-<div class="outline-text-2" id="text-org322a79d">
+<div id="outline-container-orge4190e9" class="outline-2">
+<h2 id="orge4190e9">Naming conventions</h2>
+<div class="outline-text-2" id="text-orge4190e9">
 <ul class="org-ul">
 <li>In general, function names, type names, and variable names should all use <code>lowercase_snake_case</code>.</li>
 <li>Enumeration constants and preprocessor constants should be <code>UPPERCASE_SNAKE_CASE</code></li>
@@ -587,14 +593,14 @@ Some examples:
 </div>
 </div>
 
-<div id="outline-container-orgcfb3e80" class="outline-3">
-<h3 id="orgcfb3e80"><span class="todo TODO">TODO</span> write more!</h3>
+<div id="outline-container-org5c1c7a3" class="outline-3">
+<h3 id="org5c1c7a3"><span class="todo TODO">TODO</span> write more!</h3>
 </div>
 </div>
 
-<div id="outline-container-org9e4997e" class="outline-2">
-<h2 id="org9e4997e">Code conventions</h2>
-<div class="outline-text-2" id="text-org9e4997e">
+<div id="outline-container-org7221f45" class="outline-2">
+<h2 id="org7221f45">Code conventions</h2>
+<div class="outline-text-2" id="text-org7221f45">
 <ul class="org-ul">
 <li>All functions should be implemented in <code>.c</code> files and only public functions should be declared in <code>.h</code> files.</li>
 <li>Additionally all header files should use header guards following the exact pattern depicted.</li>
@@ -706,9 +712,9 @@ Redundant <code>else</code>&rsquo;s should be avoided, e.g. in the case that eac
 </div>
 </div>
 
-<div id="outline-container-orge68e9e4" class="outline-2">
-<h2 id="orge68e9e4">Object-orientation</h2>
-<div class="outline-text-2" id="text-orge68e9e4">
+<div id="outline-container-org995fb22" class="outline-2">
+<h2 id="org995fb22">Object-orientation</h2>
+<div class="outline-text-2" id="text-org995fb22">
 <ul class="org-ul">
 <li>When using structs in an objected oriented way, method names associated with a type should all be suffixed with the name of the type (without the <code>_t</code>) like this: <code>_type</code>, for example, if the type name is <code>chicken_t</code>, the suffix would be <code>_chicken</code>.</li>
 <li>Objects should be designed explicitly to either be passed by pointer or passed by value. In general, only simpler types should be used in the latter way.</li>
@@ -821,22 +827,22 @@ Some examples:
 </div>
 </div>
 
-<div id="outline-container-org8a38545" class="outline-2">
-<h2 id="org8a38545"><span class="todo TODO">TODO</span> Multiple constructors and initializers</h2>
-<div class="outline-text-2" id="text-org8a38545">
+<div id="outline-container-org47f7848" class="outline-2">
+<h2 id="org47f7848"><span class="todo TODO">TODO</span> Multiple constructors and initializers</h2>
+<div class="outline-text-2" id="text-org47f7848">
 </div>
-<div id="outline-container-orgf7e2a08" class="outline-3">
-<h3 id="orgf7e2a08"><span class="todo TODO">TODO</span> Polymorphism</h3>
+<div id="outline-container-orgb77f8c5" class="outline-3">
+<h3 id="orgb77f8c5"><span class="todo TODO">TODO</span> Polymorphism</h3>
 </div>
 </div>
 
-<div id="outline-container-orga4cd81f" class="outline-2">
-<h2 id="orga4cd81f"><span class="todo TODO">TODO</span> Use of <code>goto</code></h2>
+<div id="outline-container-orge55da62" class="outline-2">
+<h2 id="orge55da62"><span class="todo TODO">TODO</span> Use of <code>goto</code></h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-14 Sat 22:00</p>
+<p class="date">Created: 2020-11-15 Sun 09:09</p>
 </div>
 </body>
 </html>
