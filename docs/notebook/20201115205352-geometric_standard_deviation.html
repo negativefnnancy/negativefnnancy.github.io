@@ -6,7 +6,7 @@
 <!-- 2020-11-16 Mon 18:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Self control (eating)</title>
+<title>Geometric Standard Deviation</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Nancy" />
 <style type="text/css">
@@ -224,20 +224,59 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Self control (eating)</h1>
+<h1 class="title">Geometric Standard Deviation</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc12cd53"><span class="todo TODO">TODO</span> figure out how to get some LaTeX up in here XD</a></li>
+</ul>
+</div>
+</div>
 <p>
-I&rsquo;m trying to identify the things that influence my ability to control myself wrt eating, what I eat.
+Suppose <code>X = {1, 2, 3}</code>
 </p>
 
 <p>
-I think factors include:
+The mean is <code>sum(X) / len(X) = 6 / 3 = 2</code>
 </p>
-<dl class="org-dl">
-<dt>sleep status</dt><dd>being foggy and tired makes it much more difficult to clearly see the consequences of my actions</dd>
-<dt>how good I&rsquo;m feeling</dt><dd>if I&rsquo;m feeling good, I&rsquo;m more likely to make <i>bad choices™</i> because I&rsquo;ve forgotten what it&rsquo;s like to feel bad)</dd>
-<dt>how long it&rsquo;s been since I last ate poorly</dt><dd>the longer its been, the more likely I am to indulge</dd>
-<dt>stress about food money</dt><dd>when I feel pressured about whether or not we will be able to afford food, I feel like I have less control; when I feel like I have less control, I feel discouraged from maintaining discipline</dd>
-</dl>
+
+<p>
+The mean-centered X is <code>{x - 2 : x ∈ X} = {-1, 0, 1}</code>
+</p>
+
+<p>
+The variance of X is <code>μ(X) = sum(squares({-1, 0, 1})) / 3 = sum([-1^2, 0^2, 1^2]) / 3 = sum([1, 0, 1]) / 3 = 2 / 3</code>
+</p>
+
+<p>
+The standard deviation of X is <code>σ(X) = sqrt(μ(X))</code>
+</p>
+
+<p>
+This is similar to the pythagorean theorem!
+</p>
+
+<p>
+If the mean-centered X is a vector, the standard deviation of X is proportional to the length of that vector. The only difference is that each component of the vector is &ldquo;normalized&rdquo; (what would you call it in this case?) for the number of components in the vector!
+</p>
+
+<p>
+Compare the pythagorean theorem: <code>length^2 = X_1^2 + X_2^2 + ... X_n^2</code>
+And the variance formula: <code>σ^2 = (X_1^2 + X_2^2 + ... X_n^2) / n</code>
+</p>
+
+<p>
+Really similar :o
+</p>
+
+<p>
+So it&rsquo;s like, the standard deviation is the &ldquo;normalized distance&rdquo; of sorts? I&rsquo;ll think about it more XD
+</p>
+
+<div id="outline-container-orgc12cd53" class="outline-2">
+<h2 id="orgc12cd53"><span class="todo TODO">TODO</span> figure out how to get some LaTeX up in here XD</h2>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
