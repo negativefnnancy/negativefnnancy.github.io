@@ -1,0 +1,2673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-18 Wed 14:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dungeon Calculus Notes</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Dungeon Calculus Notes</h1>
+<p>
+okie dokie im gonna put all my rough notes abt dungeon calculus here !!!!!
+</p>
+
+<p>
+okay time to figure out how to model game puzzles with symbolic logic !!
+</p>
+
+<p>
+where a puzzle consists of
+a buncha independant boolean variables + a set of logical constraints
+</p>
+
+<p>
+to solve the puzzle, is to find the solution to the set of statements
+values for all the variables that make the all the statements true!
+</p>
+
+<p>
+something important abt game puzzles tho
+is that ur basically navigating aa state machine
+its not quite like sudoku or something where its just a matter of filling things out the right way , bc in a game puzzle, its often critical that u do things in the correct order
+</p>
+
+<p>
+the &ldquo;solution&rdquo; then, includes the order that thing r done !!
+</p>
+
+<p>
+which means that a possible &ldquo;game session&rdquo; (which is either a correct solution to the puzzle or not) isnt just some combination of in-game state variables, but also a particular sequence of actions
+</p>
+
+<p>
+im thinkin i wanna try n model it with state machine diagrams first bc fsm diagrams capture this naturally i think!!
+</p>
+
+<p>
+but then i do wanna try n think atb it in terms of static logic as well !!
+</p>
+
+<p>
+i think it makes sense to consider a &ldquo;solution&rdquo; to be any state in which the player has successfully completed the puzzle
+all other states are &ldquo;non solutions&rdquo;
+(and the progression towards a solution involves temporarily passing through non-solution states)
+</p>
+
+<p>
+simplest possible puzzle (maybe? XD)
+starting state labeled S
+solution state, double circle
+from S, you can move directly to the solution state, which means you competed the puzzle
+</p>
+
+<p>
+this wld be like&#x2026;&#x2026; a room&#x2026;&#x2026; where u walk into one door&#x2026;. and the goal is to walk to the other side and go out the other door&#x2026;. lol
+</p>
+
+
+<div id="orgf8597b9" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778385120075055126/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+technically, according to the diagram, it&rsquo;d be a door you cant come back from , because theres not an arrow back to the start XD
+</p>
+
+<p>
+so maybe a more accurate example woulde be&#x2026;&#x2026;
+you start at the top of a cliff
+and the solution to the puzzle, is to land in the water below by jumping off the cliff! XD
+</p>
+
+<p>
+now i want to&#x2026;.. translate this to static logic !
+meaning&#x2026;.. stripping away the state&#x2026;. meaning&#x2026;. explictly denoting all sequences!!
+this basically maps onto strings, such that each arrow is a character in the string
+</p>
+
+<p>
+so&#x2026;.lets call the transition from the starting state to the solution state &rsquo;a&rsquo;
+</p>
+
+
+<div id="orga0a3915" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778386201429803008/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+all possible worlds are the following (only two):
+&ldquo;&rdquo; (empty string, meaning you started and havent moved yet)
+and &ldquo;a&rdquo; (meaning you have moved to the solution state)
+there arent any other possible strings :o
+</p>
+
+<p>
+of these possible strings, &ldquo;&rdquo; is a non-solution, and &ldquo;a&rdquo; is a solution
+</p>
+
+<p>
+strings r a very good represantatino of the &ldquo;state space&rdquo; bc adjacent to every string, is any possible string that has exactly one more or less character
+</p>
+
+<p>
+so like, in terms of space, &ldquo;abc&rdquo; is a &ldquo;neighbor&rdquo; to &ldquo;ab&rdquo;, bc from &ldquo;ab&rdquo; (assuming c can follow ab), &ldquo;abc&rdquo; can be gotten to
+actually tho i dont know what this means in terms of space , but u cant go backwards in this space XD its a one way space&#x2026;.. kinda like time huh lol
+</p>
+
+<p>
+honestly, im not sure modeling the state space as static logic makes much sense XD  like, i suppose u cld do it, but u dont really gain any clarity doing that ? it wld be very convoluted lol
+so i think it probably does make more sense to model the state-space and the logic of the mechanics separately!
+so ill try that for now
+so lets see&#x2026;..
+lets make the puzzle slightly more interesting
+</p>
+
+<p>
+simple lock and key
+the goal now is to get the key, unlock the door and go through it
+</p>
+
+<p>
+S = starting state
+K = having gotten the key
+double circle = having gone through the door
+</p>
+
+<p>
+&rsquo;a&rsquo; = getting the key
+&rsquo;b&rsquo; = using key to go through locked door
+</p>
+
+
+<div id="org352d054" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+i think this is accurate
+</p>
+
+<p>
+because in the starting state, the only thing interesting you can do, is get the key, which moves you to the K state, where you have gotten the key
+i think usually in games you cant &ldquo;dispose&rdquo; of the key once you&rsquo;ve gotten it, lol, so i think it makes sense to say you cant go back to the starting state
+from K, the oonly thing interesting you can do is unlock the door and move to the solution state
+</p>
+
+<p>
+and once in the solution state, the puzzle is completed, and lets just assume you cant do anything to &ldquo;uncomplete&rdquo; the puzzle
+</p>
+
+<p>
+i think i shld clarify , when i say &ldquo;dispose&rdquo; up there, i mena u cant like, put the key back where u got it, the oly way to get rid of it is u have to use it !
+</p>
+
+<p>
+but yeah
+in this second example, the possible strings r..
+&ldquo;&rdquo; , starting state, havent done anything yet
+&ldquo;a&rdquo; , having gotten the key but havent opened door with it yet
+&ldquo;ab&rdquo; , having gotten key , and opened door with it
+there arent any other possibibilities, and the only solution is &ldquo;ab&rdquo;
+</p>
+
+<p>
+so far everything is completely linear
+</p>
+
+<p>
+i think what i wanna do, is keep analysing increasingly interesting situations, and just see where it goes
+and then ill start factoring out the state variables!
+</p>
+
+<p>
+okay this time&#x2026;. lets consider&#x2026;.. there are two doors!
+and both of them are valid ways out of the puzzle, so there are two solutions
+</p>
+
+<p>
+S = starting state
+(A) = having gone through first door
+(B) = having gone trhough second door
+</p>
+
+<p>
+&rsquo;a&rsquo; = go through first door
+&rsquo;b&rsquo; = go through second door
+</p>
+
+<p>
+(parens means its a solution state!)
+</p>
+
+<p>
+here all possible strings are
+&ldquo;&rdquo; - having just started, done nothing yet
+&ldquo;a&rdquo; - gone through first door, and solved the puzzle
+&ldquo;b&rdquo; - gone through second door, and solved the puzzle
+</p>
+
+<p>
+this isnt particularly interesting, but shows a basic non-linearity, and multiple solutions
+</p>
+
+
+<div id="orgefad9df" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778391689366732830/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+before moving on, i wanna consider a few more not particularly interesting cases, just for completeness sake hehe
+here is a puzzle without a solution at all
+</p>
+
+<p>
+S = starting state
+A = a pit or something you cant get out of or do anything in
+</p>
+
+<p>
+&rsquo;a&rsquo; = get into the pit
+</p>
+
+<p>
+possible strings:
+&ldquo;&rdquo;, done nothing
+&ldquo;a&rdquo;, gotten into the pit
+</p>
+
+<p>
+so theres no solution to this puzzle, but i just wanted to map it out XD
+</p>
+
+
+<div id="org6f2874a" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778392767096160276/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now here&rsquo;s the same one as before, except this time only one of the doors is correct, door B is the correct door that solves the puzzle, but if you go through door A, you get locked in a small room or something and cant escape XD
+</p>
+
+
+<div id="orgbaaab98" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778393092742971412/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now i think, in reality, the game probably has a reset button, so at any time you can reset the puzzle and start over
+i dont think its super helpful to write this explicitly, but just to show what it would look like if u did
+</p>
+
+<p>
+&rsquo;r&rsquo; = reset puzzle, meaning u go back to the starting state (and notice, that nomatter where u are in the puzzle, u can press this)
+</p>
+
+
+<div id="org7c6323b" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778393561485148160/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+technically u cld even reset the puzzle at the beginning, which dosnt change anything XD
+</p>
+
+
+<div id="org4772650" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778393698391556106/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+but
+i dont think its particularly interesting to explicitly model the reset button hehe
+so ill just ignore that from now on
+[5:01 PM]
+now lets say&#x2026;.. the room that the door A takes u to, doesnt lock u in, so u can actually get out
+so there is a way from the A state back to the S state
+</p>
+
+<p>
+S = starting state
+A = in the room that the first door takes u too
+B = having gone through the solution door
+</p>
+
+<p>
+a = going from the main room through door A
+s = going from the other room back to the main room
+b = going from the main room through the solution door
+</p>
+
+
+<div id="orga069bf8" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778394538195943465/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+but i also want to point out
+that &#x2026;.. the room A doesnt really have any significance to the puzzle at all
+its just a room you can go into and out of at will, and it doesnt affect anything
+so really, this diagram should be simplified to just the very first example
+</p>
+
+
+<div id="org0619778" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778386201429803008/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+okay!!!!
+lets think abt&#x2026;.. multiple keys&#x2026;..
+</p>
+
+<p>
+suppose&#x2026;&#x2026; the puzzle is a room, with a single locked door , and going through that door is the solution
+but there are two keys in the room, and either one of them will oopen the door
+but you can only carry one key&#x2026;. and you cant unlock the door without going through it, and once you go through it you can never come back!
+</p>
+
+<p>
+S = starting state
+K1 = having gotten the first key
+K2 = having gotten the second key
+(A) = having unlocked and gone through the door
+</p>
+
+<p>
+&rsquo;a&rsquo; = picking up the first key
+&rsquo;b&rsquo; = picking up the second key
+&rsquo;c&rsquo; = unlocking and going through the door with the first key
+&rsquo;d&rsquo; = unlocking and going through the door with the second key
+</p>
+
+
+<div id="org94e1a13" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778395953878663168/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this is also &ldquo;equivalent&rdquo; in some sense to the case where theres only one key
+</p>
+
+
+<div id="orgd8cd69d" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+possible strings in the 2 key puzzle:
+&ldquo;&rdquo;, just started
+&ldquo;a&rdquo;, just got the first key
+&ldquo;b&rdquo;, just got the second key
+(&ldquo;ac&rdquo;) opened the door with the first key
+(&ldquo;bd&rdquo;) opneed the door with the second key
+(parens means solution, not parens means non-soution)
+</p>
+
+<p>
+im trying to think of a formal way to describe the equivalence of the 2 key and the 1 key here!
+i think its becuase&#x2026;.. the solution of the 1 key one, look the same as the solutions of the 2 key oe!!
+&ldquo;ab&rdquo; in the 1 key puzzle
+and &ldquo;ac&rdquo; and &ldquo;bd&rdquo; in the 2 key puzzle
+they are both&#x2026;. two characters long and the actions the characters represent are exactly the same
+so in that sense, they are equivalent :o
+</p>
+
+<p>
+there were some restrictions on the 2 key puzzle to make it equvialent&#x2026;. what happens if we remove some of them
+</p>
+
+<p>
+lets say
+you can in fact carry as many key as you want
+</p>
+
+<p>
+meaning&#x2026;.. in practical terms, you can ether pick up one key, and go straight out the door
+or you can pick up both keys, and go straight out the door, (and have a key left over)
+</p>
+
+<p>
+there are two possibilities about the remaining key:
+either you can keep that key for later use in the game, or it becomes useless after you&rsquo;ve completed the puzzle
+</p>
+
+<p>
+theres also two ways to draw this puzzle, the explicit way where you distinguish between which key you have, and the less explicit way where you only distinguish between how many keys you have
+since both of the keys do the exact same thing , i think the latter is a simpler representation, but ill draw them both for completeness!
+</p>
+
+<p>
+S = start
+K1 = having gotten key 1
+K2 = having gotten key 2
+K1&amp;K2 = having gotten both keys
+A = having unlocked the door and exited the room
+</p>
+
+<p>
+&rsquo;a&rsquo; = having no keys and obtaining the first key
+&rsquo;b&rsquo; = having no keys ad obtaining the second key
+&rsquo;c&rsquo; = having the first key and obtaining the second key
+&rsquo;d&rsquo; = having the secod key and obtaining the first key
+&rsquo;e&rsquo; = having both keys and using one of them to exit through the door
+&rsquo;f&rsquo; = having the first key and exit through the door
+&rsquo;g&rsquo; = having the second key and exit through the door
+</p>
+
+<p>
+&ldquo;&rdquo; = just starting
+&ldquo;a&rdquo; = getting the first key
+&ldquo;b&rdquo; = getting the second key
+&ldquo;ac&rdquo; = getting the first key and then the second key
+&ldquo;bd&rdquo; = getting the second key and then the first key
+(&ldquo;ace&rdquo;) = getting the first key, then the second key, and then unlocking the door with one of them
+(&ldquo;bde&rdquo;) = getting the second key, and then the first key, and then unlocking the door with one of them
+(&ldquo;af&rdquo;) = getting the first key and unlocking the door with it
+(&ldquo;bg&rdquo;) = getting the second key and unlocking the door with it
+</p>
+
+<p>
+in this case we dont distinguish between which key is used to open the door, and we also assume that any keys you have leftover are irrelevant
+but we do distuinguish between the order in which the keys are obtained
+</p>
+
+
+<div id="org286ee01" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778399377349017630/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+here i made explicit whether u use the first key or the second key to exit the door, when u have both keys
+&rsquo;e&rsquo; = unlock the door with the first key
+&rsquo;h&rsquo; = unlock the door with the second key
+but also, since we still dont care abt leftover keys, they get u to the exact same place, namely, having exited the door and dont care abt the keys anymore
+</p>
+
+
+<div id="orga607e0e" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778400184870109194/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now lets&#x2026;.. assume we do care abt the leftover keys!
+that means there r 4 ways to exit the puzzle, and 3 final states of having left the puzzle, all of which are solutions to the puzzle
+</p>
+<ol class="org-ol">
+<li>u used the first key, and have 0 keys left over</li>
+<li>u used the second key, and have 0 keys left over</li>
+<li>u used the first key, and have the second key left over</li>
+<li>u used the second key, and have the first key left over</li>
+</ol>
+
+<p>
+<span class="underline">states</span>
+S = start
+K1 = having first key
+K2 = having second key
+K1&amp;K2 = having both keys
+A = exited door with 0 keys remaining
+B = exited door with second key remaining
+C = exited door with first key remaining
+</p>
+
+<p>
+<span class="underline">actions</span>
+&rsquo;a&rsquo; = to have 0 keys and to obtain the first key
+&rsquo;b&rsquo; = to have 0 keys ad to obtain the second key
+&rsquo;c&rsquo; = to have the first key and to obtain the second key
+&rsquo;d&rsquo; = to have the secon dkey and to obtain the first key
+&rsquo;e&rsquo; = to have the first key and to exit the door with it
+&rsquo;f&rsquo; = to have the second key and to exit the door with it
+&rsquo;g&rsquo; = to have both keys and to exit the door with the first key
+&rsquo;h&rsquo; = to have both keys and to exit the door with the second key
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; - having done nothing
+&ldquo;a&rdquo; - having gotten the first key
+(&ldquo;ae&rdquo;) - having gotten the first key and used it to exit the door
+&ldquo;ac&rdquo; - having gotten the first key and then the second key
+(&ldquo;acg&rdquo;) - having gotten the first key, and then the second key, and then used the first key to exit the door (and having the second key remaining)
+(&ldquo;ach&rdquo;) - having gotten the first key, and then the second key, and then used the second key to exit the door (and having the first key remaining)
+&ldquo;b&rdquo; - having gotten the second key
+(&ldquo;bf&rdquo;) - having gotten the second key and used it to exit the door
+&ldquo;bd&rdquo; - having gotten the second key and then the first key
+(&ldquo;bdg&rdquo;) - having gotten the second key, and then the first key, and then used the first key to exit the door (and having the second key remaining)
+(&ldquo;bdh&rdquo;) - having gotten the second key, and then the first key, and then used the secod key to exit the door (and having the first key remaining)
+</p>
+
+
+<div id="orgfb5032c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778402558015832065/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+notice that if u have both keys (K1&amp;K2), its impossible to exit the door with 0 keys left over (A), bc u can only use one of those keys to exit the door!
+and notice that if u have only one of either key(K1 or K2), its impossible to exit the door with the first key while having the second key leftover (B) and its impossible to exit the door with the second key while having the first key leftover (C), and, if you only have one key, it doesnt matter which key you have, from either key, you can exit the door such that you have 0 keys left over (A)
+</p>
+
+<p>
+so here, we distinguish between the keys, and we distungish between which keys are used, and we distuinguish between which keys are left over
+</p>
+
+<p>
+but&#x2026;&#x2026; i think usually keys arent distuingished in their use,
+so what wld that look like ?
+</p>
+
+<p>
+that means we only care abt how many keys we have!
+</p>
+
+<p>
+but lets say, we only care about how many keys we have, (which implies we dont care about which key we use)
+but say we still care about how many keys are left over!
+</p>
+
+<p>
+that wld look like this !!
+</p>
+
+<p>
+<span class="underline">states</span>
+S = start
+K1 = having acquired a total of one key
+K2 = having acquired a total of two keys
+A = exiting the door ad having 0 keys remaining
+B = exiting the door and having 1 key remaining
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = acquiring the first key (regardless of which)
+b = acquiring the second key (regardless of the order you obtained them in)
+c = exting the door using either key and having 0 keys remaining
+d = exiting the door using eiter key and having 1 key remaining
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = just started
+&ldquo;a&rdquo; = got one key
+(&ldquo;ac&rdquo;) = got one key and exited with it
+&ldquo;ab&rdquo; = got both keys
+(&ldquo;abd&rdquo;) = got both keys and exited with one of them
+</p>
+
+<p>
+notice that its impossible to obtain both keys and exit with 0 remaining (because theres no arrow from K2 to A)
+and notice that its impossible to obtain a single key and exit with 1 romaining (because theres no arrow from K1 to B)
+</p>
+
+
+<div id="org00ee79c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778405048157863936/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now&#x2026;.. if we continue not to care abt distinguishing between the keys, but also no longer care abt how many keys we have leftover&#x2026;.. we can simplify it even more !
+</p>
+
+<p>
+here, (A) just means, having exited the door, regardless of how many keys r left over (bc we dont care anymore)
+but we still keep track of how many keys we have on our way to the door
+</p>
+
+
+<div id="org00e693a" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778405783024304158/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+but&#x2026;&#x2026;&#x2026;. notice&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+that&#x2026;&#x2026;&#x2026;
+&ldquo;c&rdquo; = &ldquo;bd&rdquo;
+in other words, having one key and exiting the door, is the same thing (as far as we r concerned) as having one key, getting the second key, and then exiting the door
+in both cases, we started with a key, and ended with going out the door
+</p>
+
+<p>
+i think&#x2026;. this notion of equivalence works by having the same starting and ending states
+</p>
+
+<p>
+but&#x2026;..
+suppose a puzzle has one start state and one solution state, but many ways to get there
+according to this definiton of equivalence, alll ways of getting there are the same
+which&#x2026;&#x2026;. if all u care abt is getting to the end, then thats fine !!
+but i think its important to distuingish between these things at some level, bc its just interesting to know the different ways u can actually solve the puzzle in the game
+</p>
+
+<p>
+so &#x2026;.. the take away i think, is that&#x2026;. sometimes it makes sense to simplify the details, ad sometimes it maks sense to keep them in just bc its interesting to see the different waysu can do the same thing!!
+</p>
+
+<p>
+so like, if we didnt care abt how many keys the player collecetd on the way to the door, we cld simplify this puzzle to the 1 key puzzle from earlier
+</p>
+
+
+<div id="org9f947e1" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+i think , im not sure if theres a clear way to distuingish between whats interesting or not XD so its just a matter of keping it in mind i guess :o
+</p>
+
+
+<div id="orgdeca076" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+so what this 1 key puzzle could also represent, aside from the puzzle where there is one key and one locked door, is the puzzle where ther are many keys and one locked door
+</p>
+
+<p>
+where K = &ldquo;having gotten at least one key&rdquo;
+and &rsquo;b&rsquo; = &ldquo;using a key (any key) to exit the door&rdquo;
+</p>
+
+<p>
+so !!!!!!!!
+lets think abt&#x2026;.. multiple locked doors!!!!!
+</p>
+
+<p>
+firstly&#x2026;. remember&#x2026;. this one&#x2026;&#x2026;
+</p>
+
+
+<div id="org0cac09e" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778393092742971412/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+where there were two unlocked doors, but one of them is a trap, and the other is the way out
+</p>
+
+<p>
+this one is the same thing, except both doors are locked
+</p>
+
+
+<div id="org0c72eb9" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778408398798454815/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+<span class="underline">states</span>
+S = start
+K = having gotten a key
+A = having gone through a locked door into a trap
+(B) = having gone through the locked solution door
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = getting a key
+b = using a key to go into thre locked trap room
+c = using a key to go into the solution door
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = done nothing
+&ldquo;a&rdquo; = having gotten a key
+&ldquo;ab&rdquo; = having gotten a key and used it to go into the trap room
+(&ldquo;ac&rdquo;) = having gotten a key and used it to go through the solution door
+</p>
+
+<p>
+back to equivalece
+this one is also basically equivalent to the version with unlocked doors
+ac in the locked doors version = b in the unlocked doors version (win)
+ab in the locked doors version = a in the unlocked doors version (trap)
+equivalent in the sense that theres basically a one to one mapping between the final strings in the locked version, ad the final strings in the unlocked version
+</p>
+
+<p>
+but, if you care about depicting the keys, u&rsquo;d still wanna use the locked doors version to model it :o
+</p>
+
+<p>
+so now&#x2026;.. lets think abt&#x2026;.. doors in series rather than parallel!!
+</p>
+
+<p>
+first with unlocked doors
+</p>
+
+<p>
+<span class="underline">states</span>
+S = starting room
+A = intermediate room (that you cant go back from)
+(B) = exited and solved the puzzle
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = to go from starting room to intermediate room
+b = to go from intermediate room thru the exit to solve the puzzle
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = done nothing
+&ldquo;a&rdquo; = having gone from the starting room to the intermediate room
+(&ldquo;ab&rdquo;) = having gone through the startig room, to the intermediate room, and out the exit
+</p>
+
+
+<div id="org8c1f3e3" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778410581173993522/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+notice that&#x2026;&#x2026;&#x2026;.
+considering that once you enter room A from the starting room, you cant go back into the starting room, this is exactly the same as the puzzle with a key and locked exit door !!
+</p>
+
+
+<div id="orgc4fb061" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+in both cases, considering equivalences, they are both equivalent to the original &ldquo;simplest possible&rdquo; puzzle with a single unlocked exit door
+</p>
+
+
+<div id="org30e8c0e" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778392767096160276/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+in the two doors in series puzzle, &ldquo;ab&rdquo; = in the one key and locked exit door puzzle, &ldquo;ab&rdquo; = in the simplest possible puzzle, &ldquo;a&rdquo;
+</p>
+
+<p>
+(i think this is the same notion as meant in topology by equivalence? in that like a mug is equivalent to a donut? im still learning hehe)
+</p>
+
+<p>
+but in anycase, its equivalent in the structure of the steps, but can still be seen as different in how its implemented!! since u can use different mechanics to create that structure
+</p>
+
+<p>
+now lets consider&#x2026;&#x2026;
+two locked doors, each associated with a room, and each with a key
+</p>
+
+<p>
+so this is&#x2026;.. a puzzle with two rooms
+u start in the first room, the door to the second room is locked (the key to which is in the first room), and the exit from the puzzle is a locked door in the second room (the key to which is in the second room)
+</p>
+
+<p>
+<span class="underline">states</span>
+S = start
+K1 = got key to first door
+A = unlocked first door
+K2 = got key to second door
+(B) = unlocked and exited the solution door
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = get first key
+b = unlock first door
+c = get second key
+d = unlock second door and win
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = done nothing
+&ldquo;a&rdquo; = gotten first key
+&ldquo;ab&rdquo; = gotten first key and unlocked first door
+&ldquo;abc&rdquo; = gotten first key and unlocked first door and gotten second key
+(&ldquo;abcd&rdquo;) = done all of that and unlocked and exited final door
+</p>
+
+
+<div id="org4d86cad" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778413276714631198/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+i was gonna say&#x2026;.. &ldquo;A&rdquo; meant you went into the second room (from which u cant return)
+but i think its cleaner to just say that &ldquo;A&rdquo; means u have unlocked the door to the second room (which doesnt require that restriction)
+</p>
+
+<p>
+this is also equivalent to all of these:
+</p>
+
+
+<div id="org050fb93" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778410581173993522/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+
+<div id="org4693d6c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778388596838498374/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+
+<div id="org31b5e1c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778392767096160276/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+the thing that makes it equivalent is that its perfectly linear
+in all cases there is exactly one string that takes you from the starting state to a (the) solution state
+</p>
+
+<p>
+if theres always exactly one sequence of steps that takes you from start to finish, then they are all equivalent in this sense !
+</p>
+
+<p>
+but i think , u can still have perfectly linear puzzles that r interesting?
+and that means the interest in this case comes from not just the structure, but the implementation in terms of game mechanics
+</p>
+
+<p>
+lets see&#x2026;&#x2026;
+</p>
+
+<p>
+i think it often is the details that u could otherwise simplify out that keep things interesting
+bc i think a lot of the interest comes from the challenge of mapping it out?
+like even if there is a ultimately a straight shot sequence of steps to the solution , coming to that realization is a big part of the fun i think
+</p>
+
+<p>
+like&#x2026;. being able to reverse engineer the mechanics so that u can form a mental map of the underlying structure of the puzzle
+</p>
+
+<p>
+so i think , of interest is to find the mapping between these state machine diagrams and game mechanics !
+the first step to that tha ti see i think is
+mapping the states to state variables!
+so lets see&#x2026;&#x2026;
+</p>
+
+<p>
+in the simplest possible puzzle, going straight from start to finish, i think the only way to represent this in terms of variables would be&#x2026;
+a single variablel representing whether you have gone through the door or not
+</p>
+
+<p>
+here&rsquo;s the simplest possible puzzle again, this time with a state variable corresponding to the diagram
+</p>
+
+
+<div id="org4233dd7" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778417863714275328/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+<span class="underline">states</span>
+S = start
+(A) = through the solution door
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = go through the solution door
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = done nothing
+(&ldquo;a&rdquo;) = gone through the solution door
+</p>
+
+<p>
+<span class="underline">variables</span>
+W = represents whether the player has gone through the solution door or not
+</p>
+
+<p>
+so, the truth table for this set of variables (only one variable, W) is&#x2026;
+when W is false (F), it corresponds with the S state
+when W is true (T) it corresponds with the A state
+</p>
+
+<p>
+WHOOOPS i wrote that backwards!!!!!!! lemme fix that XD
+</p>
+
+<p>
+this is what i meant !!
+</p>
+
+
+<div id="org4f6cabe" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778418572547325952/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+W=T ⇔ A
+W=F ⇔ S
+</p>
+
+<p>
+if W is true (T), that means you are in state A, meaning you won
+if W is false (F), that means you are in state S, meaning you have just started
+</p>
+
+<p>
+before moving on, i want to translate arbitrary sets of boolean varialbes into state machines!!
+</p>
+
+<p>
+if there is only one boolean variable, A
+there are only two possible cases, its etiher True, or its False
+that means the corresponding state machine has exactly two states, written here as S₁ and S₂
+it doesnt say anything abt the arrows, (so i didnt draw any) bc the arrows are the transitions between states, but all the truth table captures is the set of states, not the traversal between them
+</p>
+
+<p>
+this is the situation of the simplest possible puzzle, bc there are two states, and one varialbe, the &ldquo;has gone through the door&rdquo; variable
+</p>
+
+
+<div id="orgb5ee357" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778420476711141376/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+hmmm i wanna write that a different way
+what i did there was circle the case where A is true as the &ldquo;win&rdquo; state
+but i wanna do that differently
+</p>
+
+<p>
+in this diagram, all states are associated with something that is true if and only if the variables are in that specific configuration
+in other words, each state corresponds one to one to some logical statement that is true
+</p>
+
+<p>
+here there are two states, the state A, meaning A is true
+and the state ¬A (not A) meaning, its true that A is false
+</p>
+
+
+<div id="org3dbaff7" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778422083965026334/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+when you have two boolean variables, the possible combinations are 2<sup>2</sup> = 4
+so the number of states that correspond to each configuration are 4
+again labeled after a logical statement that is true in exactly the corresponding configuration
+</p>
+
+<p>
+A∧B (A and B)
+A∧¬B (A and not B)
+¬A∧B (not A and B)
+¬A∧¬B (not A and not B)
+</p>
+
+<p>
+(again i didnt draw arrows bc teres nothing yet to indicate them :o)
+</p>
+
+
+<div id="orgf659f6a" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778423256146771968/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+and the pattern continues, if you have three boolean variables, A, B, and C
+then there are 8 possible states for each configuration
+A and B and C
+A and B and not C
+A and not B and C
+A and not B and not C
+not A and B and C
+not A and B and not C
+not A and not B and C
+and!
+not A and not B and not C
+</p>
+
+<p>
+so&#x2026;..!!!!
+if you hvae a game world
+and you have some set of state variables
+you can assign&#x2026;. certain conditions on those varialbes to winning!!
+which means&#x2026;.. certain states among the possible states are solution states (and the rest are non solutions)
+</p>
+
+<p>
+maybe&#x2026;&#x2026;.. you wanted A and not B to be a solution state
+</p>
+
+<p>
+that would mean, A and not B is the double circle one !
+</p>
+
+
+<div id="orgc00a572" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778424372192083968/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+but say&#x2026;&#x2026;
+these variables are just floating around completely independant
+say you have some constraints on the variables!!
+</p>
+
+<p>
+like&#x2026;.. maybe you have the simple constraint of &ldquo;A or B&rdquo; which is always true whether you are in a solution state or a non solution state
+</p>
+
+<p>
+the truth table for that is
+</p>
+
+
+<div id="org0915059" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778424999899168778/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+the only possible configurations of A and B for which &ldquo;A or B&rdquo; is true, is when either A or B (or both) are true
+</p>
+
+<p>
+so if&#x2026;&#x2026; the space of state variable configurations&#x2026;&#x2026; is defined with the constraint that A or B is always true, then&#x2026;&#x2026;..
+</p>
+
+<p>
+then u have 3 possible states!
+</p>
+
+
+<div id="org0644b97" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778425786172571658/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+the reason i point this out, in the context of translating between the state machine diagrams and game state variables
+is that, without constraints on the game state variables, the number of states in the corresponding state machine must be a power of 2
+but you might have state machine diagrams with some other number!
+and thus, in order to represent such puzzles using state variables, u need constraints to refine the space
+</p>
+
+<p>
+so!!!!!
+i wanna think abt&#x2026;&#x2026; how to model some of the previous examples in terms of state variables
+</p>
+
+<p>
+we already looked at the simplest possible puzzle:
+one state variable, two states
+</p>
+
+<p>
+lets look at direct correspondances for two varialbes!!
+</p>
+
+<p>
+(meaning 4 states)
+</p>
+
+<p>
+here&rsquo;s an exampe!
+(there are many possible configurations of a puzzle structure given four states, but for now, considerig prefectly linear one bc its like the ones we already looked at)
+</p>
+
+<p>
+the state machine diagram represents a linear path of 3 steps from the start to the finish
+so perhaps&#x2026;.. there are two doors, one of which is locked and rquires a key!
+or there are two keys, and a single door requires both of them!
+in any case, thre are 3 steps from start to finish (three arrows between four states)
+</p>
+
+<p>
+so, what might the state variables correspond to in practical terms here?
+</p>
+
+
+<div id="org33f4ba2" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778427962956578836/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+im thinking
+it cld be that actually the three steps are this:
+</p>
+<ol class="org-ol">
+<li>get key</li>
+<li>unlock door</li>
+<li>go through door</li>
+</ol>
+
+<p>
+so theres one key and one door, but we r distinguishing this time between going through the door and unlocking it
+</p>
+
+<p>
+actualy thats not quite working the way i thought it would XD
+</p>
+
+<p>
+okay this isnt a good example bc its too complex and particular lol
+but say this is a puzzle where there are two switches
+the solution to the puzzle is to have both switches pressed down
+A and B represent the state of the switches
+switch B will become unswitched if you leave it, so for it to be switched on you have to be actively holding it switched on (like the floor switches in zelda hehe)
+switch A will stay switched when you switch it on, but its locked behind a door next to switch B that can only be unlocked if switch B is pressed
+so in order to solve the puzzle you have to press switch B, so you can unlock the door, so you can go press switch A, and then come back and press switch B again
+</p>
+
+<p>
+that works XD
+</p>
+
+<p>
+but too particular
+</p>
+
+<p>
+in reality a lot of state varialbes in the game only matter in given scenarios :o
+and thats where the constraints come in i think?
+</p>
+
+<p>
+oh right, in that example, i meant to say
+variable B represents the state of switch B
+variable A represents the state of switch A
+and&#x2026;. that ist really good bc the state of the door isnt really being tracked here lol
+</p>
+
+<p>
+okay so thats a bad example!!!! XD
+</p>
+
+<p>
+okay!!!!!!
+in reality, the arrows in the state machine are independant from all the possible states, bc like, u cld have a setup where u can interact with all the variables independantly, or mayb u can only do certain actions that have complicated influence on the variables
+but this is just sort of what we get for considering the transient state variables separately from the sequence of finding the solution hehe
+</p>
+
+<p>
+i think&#x2026;. a lot of the solution is not just in&#x2026;. finding the solution in the space of states, but also the solution is in the operational aspect of mechanially searching for that solution
+</p>
+
+<p>
+but ill think abt that more in a bit
+</p>
+
+<p>
+for now, consider a simple scenario where u have 3 switches on the wal, and the solution to the puzzle is to fid the correct combination of switch states
+</p>
+
+<p>
+in this scenario, there r 8 possible transient  states given the 3 variables (2<sup>3</sup>)
+but u can only change one state variable at a time
+</p>
+
+<p>
+so that wld look something like&#x2026;&#x2026;
+</p>
+
+
+<div id="orgf4caaca" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778434623411453984/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+if u can only change one state variable at a time, the maximum number of steps to any state from any other state is three ! in the case that u had to flip all three switches to get to desired state
+</p>
+
+<p>
+also notice that every arrow in one direction has an arrow in the other direction bc u can always flip a switch back to what it was right after switching it once !
+</p>
+
+<p>
+or well
+the maximum number of minumum steps u can take XD
+</p>
+
+<p>
+bc u cld always take a longer route than necessary
+</p>
+
+<p>
+lets say, S1 is the starting state (all three switches are off)
+and S8 is the solution state (all three switches are on)
+there are an infinute number of routes from start to finish
+what else can be said abt the solution sequences?
+</p>
+
+<p>
+first, to make things clear, ill lay everything out the same way i was doing before
+</p>
+
+<p>
+<span class="underline">states</span>
+(S8) = A and B and C
+S7 = A and B and not C
+S6 = A and not B and C
+S5 = A and not B and not C
+S4 = not A and B and C
+S3 = not A and B and not C
+S2 = not A and not B and C
+S1 = not A and not B and not C
+</p>
+
+<p>
+<span class="underline">actions</span>
+a = turn switch A on, leaving the others off
+b = turn switch A off, leaving the others off
+c = turn switch B on, leaving the others off
+d = turn switch B off, leaving the others off
+e = turn switch C on, leaving the others off
+f = turn switch C off, leaving the others off
+g = turn switch C on, leaving A on and B off
+h = turn switch C off, leaving A on and B off
+i = turn switch B on, leaving A on and B off
+j = turn switch B off, leaving A on and B off
+k = turn switch A on, leaving B on, and C off
+l = turn switch A off, leaving B on, and C off
+m = turn switch C on, leaving A off, and B on
+n = turn switch C off, leaving A off, and B on
+o = turn switch B on, leaving A off and C on
+p = turn switch B off, leaving A off, and C on
+q = turn switch B on, leaving the others on
+r = turn switch B off, leaving the others on
+s = turn switch C off, leaving the others on
+t = turn switch C on, leaving the others on
+u = turn switch A on, leaving the oters on
+v = turn switch A off, leaving he others on
+w = turn switch A on, leaving B off, and C on
+x = turn switch A off, leaving B off, and C on
+</p>
+
+
+<div id="org4d40304" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778438375651934208/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+and the sequencese&#x2026;. r infinite&#x2026; but heres some of em&#x2026;.
+</p>
+
+<p>
+<span class="underline">sequences</span>
+&ldquo;&rdquo; = done nothing, at S1
+&ldquo;a&rdquo; = turned switch A on
+&ldquo;ab&rdquo; = turned switch A on and then off again
+&ldquo;ag&rdquo; = turned switch A on then switch C on
+(&ldquo;ais&rdquo;) = turned switch A on, then switch B on, then switch C on
+(&ldquo;eousjgq&rdquo;) = turned switch C on, then B on, then A on, then C off, then B off, then C on, then B on!
+</p>
+
+<p>
+i think its good to distinguish between &ldquo;non solution sequences&rdquo; and&#x2026; &ldquo;non sequences&rdquo;
+a non sequence is something u fundamentally cant do
+a non solution sequence is something u can do, but isnt the right answer
+</p>
+
+<p>
+so&#x2026;&#x2026;
+&ldquo;ar&rdquo; isnt something u can do&#x2026;&#x2026; bc while u can start with a, which takes u from S1 to S5, doing r implies u are at S8 going to S6, but u arent at S8, so u cant use r to get to S6 from S5!
+</p>
+
+<p>
+so &ldquo;ar&rdquo; is simple a non sequence
+</p>
+
+<p>
+whereas&#x2026;&#x2026; &ldquo;eonkj&rdquo;&#x2026;.. is totally a sequence u can do, but u wind up in S5, which isnt a solution state, so its a non solution sequence
+</p>
+
+<p>
+so like&#x2026;.. to model this using static logic (menaing u encapsulate all the sequential information into entities that reside in a set of solutions where there isnt a notion of sequence)
+that wld just mean, the solution space, is the set of all strings that are solution strings
+and the non solution space is the set of all strings that are arent solutions, but are still valid strings
+</p>
+
+<p>
+(strinsg/sequences, same thing)
+</p>
+
+<p>
+hmmmmmm i think im seeing how this correlates with how numbers r represented in set theory!! (and probably how topologies in general r represented with set theory..)
+bc a set is like the static representation, there isnt an inherent notion of order
+an &ldquo;ordered set&rdquo; is equivalent to some &ldquo;unordered set&rdquo; such that each element in the unordered set contains all the steps in the sequence thus far
+so like&#x2026;..
+the ordered string &ldquo;abc&rdquo; represented as an unordered set wld be {&ldquo;a&rdquo; &ldquo;ab&rdquo; &ldquo;abc&rdquo;}
+</p>
+
+<p>
+no matter how u arrange the items in that set, the informatino depicting the sequence is still there
+</p>
+
+<p>
+so if&#x2026;&#x2026;
+&rsquo;a&rsquo; = go from A to B
+&rsquo;b&rsquo; = go from B to C
+&rsquo;c&rsquo; = go from A to C
+&ldquo;ab&rdquo; represents the scenario where  u went from A to B then from B to C
+in some sense this is equivalent to going from A directly to C, ie &ldquo;c&rdquo;
+because u start and end in the same states
+but the paths u took to get there are different
+and this information is contained in the order
+so when u think of solutions
+there are two ways of describing the solution
+eithre by the solution states (C) (only one of em)
+or by the steps taken to get there &ldquo;ab&rdquo; or &ldquo;c&rdquo; (two of em)
+</p>
+
+<p>
+and in!
+the case of game puzzle dungeon sorts of things
+the sequence is almost always important
+and so i think&#x2026;.. while u can think of the solution space statically, it still helps to break it into the internal state space and the traversal of that state space
+</p>
+
+<p>
+in some sense i think&#x2026;. the state space view is like the &ldquo;noun&rdquo; view
+and the sequential view, is like the &ldquo;verb&rdquo; view
+because the states are the &ldquo;things&rdquo;
+and the steps are the &ldquo;verbs&rdquo; that change things
+</p>
+
+<p>
+so lets see&#x2026;&#x2026;
+we have&#x2026;. state variables!!!
+from which arise, a state space!!!!!!
+and the combination of the state space with the possible paths u can take givse rise to a sequence space!!!
+</p>
+
+<p>
+or i wonder if the combination of the state space with possible paths u can take is &#x2026;.. like what a topology is ??????
+hmmmmmm
+</p>
+
+<p>
+or like&#x2026;.. hmm i forget how they describe it exacly
+somethnig like
+(X, Ⲧ) is a topolgical space, where Ⲧ is a topology on the set X
+</p>
+
+<p>
+wowwwwww wowowow its clicking for me XD
+</p>
+
+<p>
+bc what it means for Ⲧ to be a topology on X, is that it is a collection of subsets of X!!!!
+this is just like the way order is represented using unordered sets!!!!!!!
+</p>
+
+<p>
+and inherent in the notion of a toopology, as in like, a space where every point has a neighborhood, is that &#x2026; u can only get to specific other places given any particular place!!!
+so those subsets in Ⲧ, are like, representing all possible paths u can take across X!!!
+</p>
+
+<p>
+i think XD
+</p>
+
+<p>
+so here
+X, is the state space, which is the cartesian product of all the state variables
+and Ⲧ&#x2026;. is the topology on X that describes all the arrows?????
+</p>
+
+<p>
+i think&#x2026;.!!!!! i could be wrong but this seems to make sense lol
+</p>
+
+<p>
+technically though (X, Ⲧ) is redundant bc everything in Ⲧ is enough to construct X
+</p>
+
+<p>
+so really&#x2026;..
+Ⲧ is like&#x2026;. everything aa state machine depicts?
+</p>
+
+<p>
+very interesting :o
+</p>
+
+<p>
+so what we r interested in, when thinking abt game puzzles
+is the topology on the state space of the game
+that is
+all the possible ways you can interact with the state variables
+solving the puzzle is really just
+traversing a topological maze
+</p>
+
+<p>
+so i think now its important to be explicit about the notion of constraints
+there r two kinds of &ldquo;constraints&rdquo;
+there are constraints on the state space directly
+that is, certain combinations of variables are excluded
+and then there is the constraints on the way it can be traverse, which is captured by the particular toplogy
+</p>
+
+<p>
+if u werent limited in how u cld interact with the state of the game, u could just set the variables to any combination at any time, that wldnt rly be interesting as a topology (bc from any point u cld immeditaley access all other points? i think that has a particular name&#x2026;.. is that the discrete topology?), then u would just be delaing with a flat and static state space
+(altho im not sure if &ldquo;state&rdquo; is the right word there bc &ldquo;state&rdquo; generally sounds like there is a particular way that things interact and change? which means it would be topologically interesting)
+its just the space of all possible configurations of the variables lol
+</p>
+
+<p>
+and when you are solving a logic puzzle such that sequence of operations doesnt matter, then you are just finding a correct configuration of variables
+</p>
+
+<p>
+but when you are playing a game where sequence matters, you are traversing a topology!!!!!! on that space!!
+</p>
+
+<p>
+which i think
+is just like solving a maze
+</p>
+
+<p>
+in the &ldquo;state space&rdquo; view
+the &ldquo;solution&rdquo; of a maze, is the end of the maze
+</p>
+
+<p>
+in the &ldquo;topology&rdquo; view
+the &ldquo;solution&rdquo; of the maze, is any particular path from start to finish
+</p>
+
+<p>
+i think
+its often interesting whene there are multiple paths
+but also, i think more importmant to fun and interest is&#x2026;. jjust the reverse engineering of that topology
+its when u figure out how to get from A to B thats primarily the fun thing, and as a bonus, if theres multiple ways, maybe its fun to feel unique in ur particular solution
+part of reverse engineering the topology is also reverse engineering the state space
+</p>
+
+<p>
+okay okay i wanna start putting this back into pracitcal terms
+</p>
+
+<p>
+honesttly i think i should like
+do an analysis or two of real puzzles just to get a feel
+</p>
+
+<p>
+bc i want to see how in practice
+the topologies look, and what kinds of constraints there are on the state variables that define the state space
+</p>
+
+<p>
+im thinkin abt
+the difference in a &ldquo;maze&rdquo; and a &ldquo;dungeon/puzzle&rdquo;
+im thinking, at first glance, a &ldquo;dungeon/puzzle&rdquo; is like a maze except&#x2026; it shape shifts !!
+basically, in a maze, u have a topology that is completely represented in a physical form and u are just walking thru that topology
+but in a dungeon, at any given time, the physical topology &#x2026; might be different than other times!!
+so its dynamic,
+and its like&#x2026; the physical topology at any given time is like just a slice of a higher dimensional space !!
+the physically manifested topology is just a slice of a larger topology
+</p>
+
+<p>
+i like this idea so im gonna keep it in mind
+</p>
+
+<p>
+i think this is related actually to why its possible that the whole topology of a puzzle can be simplified to the simplest possible puzzle, even though the physical topology might not directly reflect that
+</p>
+
+<p>
+switches tied to doors are an example of state space constraints i think
+like
+u cld model the state of the doors and the state of the switches separately, but then say that the state of the door ⇔ the state of the switch (to mean the switch opens the door)
+or state of the door ⇔ ¬ the state of the switch (to mean the switch closes the door)
+</p>
+
+<p>
+okay i just played thru the temple of time in twilight princess (bc its one of sophie&rsquo;s favorites)
+and its rly cool !!!!!
+some small things i like r that once u get the big statue at the end and have to come alll the way back , the fact that u are super empowered by the statue and can just smash ur way back thru is a very satisfying way of having to retrace ur steps all the way back to the beginning
+and its sort of , climactic in a way , its like the recapitulation, u are seeing everything u saw before , but this time from a higher perspective
+i also like how , once u get the statue in place and go into the next door down the scary hall to the boss, ur mind is sort of fresh bc its all new territory sort of unrelated to the whole excursion u just went through, and the lighting change and demeaning atmosphere of all the deadly axes and stuff that looks like its basically a horror movie is like , a rly fun way to set the scene lol
+i also rly like how the small statues r kinda scattered around the rooms as u explore sort of hinting at smething, like they must be there for a reason right? but u dont have a clue what it cld be yet, and once u get the dominion rod all those teases comet ogether andur like &ldquo;oh! i see!&rdquo; and u suddenly feel empowered and ready to tumble ur way back down through , which kinda harmonises with the being empowered by the statue and smashing ur way back thru everything|
+</p>
+
+<p>
+now to analyse the dungeon !!
+</p>
+
+<p>
+okay first im gonig to like
+go thru some walkthroughs of the dungeon to get a second perspective
+and then im going to map out the &ldquo;basic physical topology&rdquo;
+which is basically just the map of the dungeon
+the parts that arent puzzle elements / the parts that dont change
+and then im going to try to map out a model of state variables and constraints, so like , all the things that Can change, as well as what triggers what, etc
+and then ill try fitting this into a broader state machine depiction
+which actually, is basically linear
+its the&#x2026;.. &ldquo;eddies&rdquo; in the topology that make it interesting !! and thes &ldquo;eddies&rdquo;&#x2026;. loop out of the physical plane in the larger topology
+there r lots of smaller eddies along the way ! (which can be isolated as small individual sub puzzles)
+and then ther r larger eddies!!
+the whole&#x2026;.. excursion from the beginning to go get the statue and bring it back to open the door leading to the boss is&#x2026;. a big eddie!!
+its just a big detour, but ultimately right from the beginning you see that you have to open that door&#x2026;. so you go on a long detour that is 95% of the dungeon to open it
+and once you have, that &ldquo;eddy&rdquo; is &ldquo;cleared&rdquo;
+and you can offload that entire excursion from your mental map of the progression of the dungeon&#x2026;. which is u simplifying the broad topology in your head as you go !!
+its kinda like&#x2026;..
+you hungry you want food you know you gotta get from where you are to a sandwich
+so you do all the steps to get there, but once you have done those steps, you got the sandwich and you disregard those steps because you have completed the mission, you just look back on the whole endeavor as &ldquo;having gotten the sandwich&rdquo;, bc thats the essential bit, not the steps towards the sandwich
+i think theres something inherently satisfying about &ldquo;clearing the eddy&rdquo; , bc its like , popping a bubble ! u&#x2026;. simplified it&#x2026;. u &#x2026; were able to &ldquo;chunk away&rdquo; an entire section of complexity into a single isolated bit
+</p>
+
+<p>
+im going to map out a &ldquo;template&rdquo; for the &ldquo;physical topology&rdquo;
+meaning , there will be conditional links between points
+sometimes u can get from point A to point B but not always
+so , following the template, the actual manifested physical topology is a function of the state variables (which control those links)
+</p>
+
+<p>
+unlockable doors r interesting bc generally they are conditional in one direction but unconditional in the other
+like, to get from point A to B, u need a key
+but to get from point B to A, u never need a key, bc if ur in point B, it implies u already unlocked it
+</p>
+
+<p>
+i like this idea of a &ldquo;topological template&rdquo; hehe
+</p>
+
+<p>
+this one way conditional is actually extremely common
+not just for locked doors, but i think most ? puzzle elements are such that u have to solve them to progress, but once u&rsquo;ve progressed u dont have to solve anything to go back
+</p>
+
+<p>
+hehe yeahh XD
+once i finish analysis ill organize all the stuff !!
+</p>
+
+<p>
+im playin thru temple again
+this time mapping as i go
+</p>
+
+<p>
+ooooooh the reverse of the unlockable door pattern is the&#x2026;. conditional trap
+where u walk in a room and cant get out until u solve something
+u can always go in, but u cant always come out
+</p>
+
+<p>
+(until u solve somethnig)
+</p>
+
+<p>
+okay this is interesting bc
+once u posses the statue , the dungeon has a slightly different topological template for link than it does for the statue lol
+bc the statue can make moves link cant and link can make moves the statue cant
+</p>
+
+<p>
+i think the way ill denote this is like
+an arrow from A to B will be given a name , which represents the means of going from A to B
+like, w for walk there, j for jump there, c for clawshot there, etc
+and like maybe sw for statue-walk there, meaning the statue can walk there, but link cant
+</p>
+
+<p>
+and its also interesting
+bc some times , a change in the state of the dungeon doesnt just enable u to get somewhere different, but it actually teleports u there
+so its like, the way to get there is as a side effect of changing the state of the dungeon
+</p>
+
+
+<div id="org097e46a" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778522329767477258/IMG_20201118_012915.jpg" alt="IMG_20201118_012915.jpg" />
+</p>
+</div>
+
+<p>
+bad pyicture but here is a first sketch XD
+im gonna draw it better now
+</p>
+
+<p>
+i put double slash thru an arrow to denote its a conditional link
+</p>
+
+<p>
+and i put a circle on an arrow to denote its in conjunction with a side effect
+</p>
+
+<p>
+okay ii redrew it slightly better
+</p>
+
+<p>
+green S = start
+green double circle = final boss
+cyan g = dominion rod and statue
+yellow c = big key
+</p>
+
+
+<div id="org192059e" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778531729865441280/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now i wanna , analyse how this works !
+</p>
+
+<p>
+this means u can get from A to B , but u cant get from B to A
+</p>
+
+
+<div id="org449c054" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778532007416299520/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can sometimes (depending on the state of the dungeon) get from A to B but u can never get from B to A
+</p>
+
+
+<div id="orgd622bfd" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778532171304271872/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can get to A and B, but only in conjunction with changing the state of the dungeon
+</p>
+
+
+<div id="org9c791e6" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778532370335924244/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this is different from the second example
+</p>
+
+<p>
+the first example says, you can always get from A to B, regardless of state of the dungeon, and without affecting the state of the dungeon
+</p>
+
+<p>
+the second example says, you can sometimes get to A to B, depending on the state of the dungeon, but without affecting the state of the dungeon
+</p>
+
+<p>
+the third example says, you can get from A to B, regardless of the state of the dungeon, but only by affecting the state of the dungeon
+</p>
+
+<p>
+an practical example of the first one is, jumping of a cliff, it gets youu from A to B, but you cant climb back up the cliff
+</p>
+
+<p>
+a practical example of the second one is a trap door through the floor, you can only get from A to B if the trap door is open, and once you have gone through,  you can&rsquo;t climb back out
+</p>
+
+<p>
+a practical example of the third one is a rising platform that you control
+say the only way to get from A to B  is to stand on a platform and trigger the platform to rise  upwards so you can reach B
+in reaching B,  you are changing the state of the dungeon (because uu made the platform move)
+but simply causing the platform to move doesnt mean you were standing on it !!
+</p>
+
+<p>
+here&rsquo;s a common pattern
+a practical example is that of the unlockable door
+to get from A to B you have to unlock the door between them
+but once in B,  you can alwasy get back to A because to be in B implies the door was already unlocked !
+</p>
+
+
+<div id="org804a63b" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778533856596590602/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this is redundant
+literally this says, you can always get from A to B, ad you can always get from B to A
+but this isnt topologically significant, because this is the same as just having &ldquo;A&rdquo; on its own
+</p>
+
+<p>
+another way to see this is say A and B are separate rooms with an always unlocked door between them
+well this  is effectively jsut the same as there being one room!
+</p>
+
+
+<div id="org0ff029c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778534378225401866/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+another common pattern ,
+this says, sometimes you can get from A to B and sometimes you can get from B to A
+but what it doesnt say is that &ldquo;if you can get from A to B, then you can get from B to A&rdquo; or &ldquo;if you can get from B to A, then you can get from A to B&rdquo;
+the two conditional links may or may not be related by this diagram alone !
+</p>
+
+
+<div id="org39a40b3" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778535025683464202/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+(but in practice they often are)
+</p>
+
+<p>
+i think there are 8 possible &ldquo;interesting&rdquo; combinations of A and B here
+</p>
+
+<p>
+heres the interesting 8 !
+</p>
+
+
+<div id="orgea3b131" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778536232296513567/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+ill make a list of all possible ones and show why the others arent interesting
+</p>
+
+<p>
+by the way,  i think all of this should be called &ldquo;dungeon calculus&rdquo; XD
+</p>
+
+<p>
+so like
+there are four possible arrows
+</p>
+<ol class="org-ol">
+<li>no arrow</li>
+<li>always arrow</li>
+<li>sometimes arrow</li>
+<li>side effect arrow</li>
+</ol>
+
+<p>
+if u immeditaley consider all possible pairs (one from A to B, and one from B to A) of these 4, u get 16 possibilities
+but not all of these r interesting
+</p>
+
+<p>
+here are the naive 16 possibilities
+</p>
+
+
+<div id="org6bf0002" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778540569471221800/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+immediately 6 of them can be excluded bc they r just the same as others in reverse
+</p>
+
+<p>
+namely, 5=2, 9=3, 10=7, 13=4, 14=8, and 15=12
+</p>
+
+
+<div id="orgce11e7d" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778541231827320872/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+so we r left with these 10
+</p>
+
+
+<div id="orgf26d9b1" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778541589101543424/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+hmmmm well i was gonna say, 2 of these r uninteresting, leaving 8
+namely, 1, and 5
+5 is uninteresting bc its topologically equivaent to juust a single point (as discussed earlier)
+and i was gonna say 1 is uninteresting bc what use r two completely disjoint points !! but i realized, its only uninteresting in a local sense , but in a global sense, it might be possible to get from A to B indirectly
+</p>
+
+<p>
+so im gonna say !!!!
+9 are interesting actually
+</p>
+
+<p>
+ill draw it again
+</p>
+
+<p>
+okie heres the &ldquo;interesting 9&rdquo;
+</p>
+
+
+<div id="orgc3386e3" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778543260242935828/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+1 = u can never get from A to B (directly) and u can never get from B to A (directly)
+2 = u can always get from A to B, but u can never get from B to A
+3 = u can sometimes get from A to B, but u can never get from B to A
+4 = u can always get from A to B in conjunction with some side effect, and u can never get from B to A
+5 = u can always get from A to B, ad u can sometimes get from B to A
+6 = u can alwasy get fro mA to B, and u can always get from B to A in conjunction with some side effect
+7 = u can sometimes get from A to B, ad u can sometimes get from B to A
+8 = u can sometimes get from A to B, aad u can always get from B to A in conjunction with some side effect
+9 = u can always get from A to B in conjunction with some side fefect and u ca alwasy get from B to Aa in conjunction with some side effect
+</p>
+
+<p>
+i made a mistake in the drawing here i fixed it hehe
+</p>
+
+
+<div id="orgcea2a9d" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778544162227617792/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+okay now i want to show the relationship between these &ldquo;topology templates&rdquo; and state variables!
+</p>
+
+<p>
+&ldquo;sometimes can get from A to B&rdquo; means, depeding on the state of the dungeon
+</p>
+
+<p>
+so for example
+</p>
+
+<p>
+you have two rooms A and B with a locked door between them
+you can sometimes go from A to B, depending on whether the door is locked
+and lets say if you&rsquo;re in B, the door is always unlocked
+</p>
+
+<p>
+the &ldquo;sometimes&rdquo; of from A to B is associated with a state variable that represents whether the door is unlocked
+</p>
+
+<p>
+so here, S1 is room A, and S2 is room B
+&ldquo;d&rdquo; means &ldquo;use the door two go between rooms&rdquo;
+&ldquo;U&rdquo; is the state variable representing whether the door is unlocked, it can be true (T) or false (F)
+</p>
+
+<p>
+the possibility of movement d (use door) from room S1 to room S2 is dependant on the state variable U (door is unlocked)
+</p>
+
+
+<div id="org799a40c" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778546770263146506/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+i want to show now how to &ldquo;expand&rdquo; the template
+</p>
+
+<p>
+notice that (assuming you start in S1) theres only one way to exist in S2, namely if the door is unlocked
+but there are two ways to exist in S1, the door could be locked or unlocked
+</p>
+
+<p>
+so to &ldquo;expand&rdquo; the template, it would look lik ethis
+</p>
+
+
+<div id="org1f45c9d" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778548339431702568/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+here, S1a is where you are in room A ad the door is locked
+S1b is is where you aree in room A and the door is unlocked
+S2 is where you are in room B
+</p>
+
+<p>
+&rsquo;u&rsquo; means unlock the door
+&rsquo;d1&rsquo; means use the door to get from room A to room B
+&rsquo;d2&rsquo; means use the door to get from room B to room A
+</p>
+
+<p>
+and notice how you cant get back to S1a once you leave it, and thats because you cant relock the door
+</p>
+
+<p>
+but remember, when you have two states that can always be gotten to from each other A &lt;-&gt; B
+they are topologically equivalent to a single state
+so really, that expansion simplifies to this !
+where S1 is when you are in room A and the door is locked, and S2 is when you have unlocked the door and you are in either room A or B
+</p>
+
+
+<div id="org04f9008" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778549086399365180/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+and &rsquo;u&rsquo; means, unlocking the door
+</p>
+
+<p>
+i wanna take a moment to breathe XD
+and uh&#x2026;&#x2026;&#x2026;..
+recap all the concepts so they dont get confused!!!!!
+</p>
+
+<p>
+there are&#x2026;&#x2026;&#x2026;..
+</p>
+<ul class="org-ul">
+<li>sets of possible states!!! (as depicted by a set of variables and possibly some constraints and their truth tables)</li>
+<li>topologies on those sets!! (state spaces, as depicted by the state machine diagrams, which show not only the states (as labeled circles) but also the ways u can get from each state to another (as labeled arrows))</li>
+<li>topology templates!! which are equivalent to the state machine diagrams, but more compact and easier to manage, it depicts a topology in a more intuitive way in relation to the state variables</li>
+</ul>
+
+<p>
+a topology template + a set of state variables that it depends on = some topology
+</p>
+
+<p>
+the topology template is more useful for representing the dungeon itself in its physical form
+the expanded topology is more useful for representing the progression of the dungeon
+</p>
+
+<p>
+now i wana analize a piece of the temple of time in these terms!!!!!!
+</p>
+
+<p>
+first i want to talk abt constraints in the state variables a bit
+</p>
+
+<p>
+say u have a platform that can be either risen, or recessed
+and u have a switch that can be etiher pressed or unpressed
+and say the platform is risen if and olny if the switch is pressed
+switch ⇔ platform
+</p>
+
+<p>
+u cld have a variable representing whether the switch is pressed
+and a variable representing whether the platform is pressed
+which , without a constraint means theres 4 possible worlds
+</p>
+<ol class="org-ol">
+<li>switch unpressed, platform recessed</li>
+<li>switch unpressed, platform risen</li>
+<li>switch pressed, platform recessed</li>
+<li>switch pressed, platform risen</li>
+</ol>
+
+<p>
+but we do have a constraint, which says switch if and only if platform
+that mean sits impossible for the switch to be unpressed and the platform to be risen, and its impossible for the switch to be pressed, and the platform to be recessed
+</p>
+
+<p>
+meaning, given the constraint, there are actulaly only 2 possible worlds
+</p>
+<ol class="org-ol">
+<li>switch pressed and platform risen</li>
+<li>switch unpressed and platform recessed</li>
+</ol>
+
+<p>
+and, with this particular constraint, its constrained such that the two variables are logically equivalent, meaning its the same as if we only had one variable, because the variables represent exactly the same thing
+</p>
+
+<p>
+without the constraint u get this truth table
+S = switch pressed
+P = platform risen
+</p>
+
+
+<div id="orgeb6bc76" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778554170943995925/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+with the &ldquo;S if and only if P&rdquo; constraint, u get this truth table
+which rly shows that they r exactly the same thing in this case
+so u can simplify it to just one variable, say S
+</p>
+
+
+<div id="orgd1f14d5" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778554462281138196/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+so u have two possible worlds, represented by the possible states of this variable alone
+</p>
+
+
+<div id="orgc777bed" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778554707940474890/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+and so now, consider a room with a ledge that you can only access by climbing up a risen platform that serves as a stair
+the platform is risen when the switch in the lower part of the room is pressed
+</p>
+
+<p>
+you start in the lower part of the room, S (for &ldquo;start&rdquo;)
+to get to the upper ledge, you have to climb (&rsquo;c&rsquo; for climb) the platform, which takes you to the upper ledge, called A
+to get down from the ledge back to the lower part of the room, you jump down (&rsquo;j&rsquo; for jump)
+</p>
+
+<p>
+there are two possible worlds, the world where the switch is pressed and the platform is risen, and the wold where the switch is not pressed and the platform is not risen, represented by the two possilble states of the variable &ldquo;s&rdquo; which can be either true (T, meaning the switch is pressed and the platform is risen) or false (F, meanig the switch is not pressed and the platform is recessed)
+</p>
+
+<p>
+the ability to climb up the platform to get from S to A, depends on the value of variable s
+</p>
+
+<p>
+thats represented with this diagram:
+</p>
+
+
+<div id="org1c8aa0a" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778556092258713620/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+so this is the topological template representation
+it shows intuitively the physical structure of the dungeon and the relationship between the state variables and what can be accessed!
+</p>
+
+<p>
+this topological template representation has an equivalent state space topology / state machine diagram
+which more intutiviley shows the progress rather than the physical structure
+so ill convert it to show that!!
+</p>
+
+<p>
+here&rsquo;s the direct translation of the topology template to the state space diagram
+</p>
+
+<p>
+this is assuming its impossible to unswitch the switch from the upper ledge
+</p>
+
+<p>
+<span class="underline">states</span>
+S∅ = the starting state, in the bottom part of the room with hthe switch off
+Ss = in the bottom part of the room with the switch on
+As = in the top part of the room with the switch on
+</p>
+
+<p>
+actions
+s=T = press the switch
+s=F = unpress the switch
+c = climb up the platform
+j = jump off the ledge
+</p>
+
+
+<div id="org437b3e6" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778558610540068894/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+now , if u want to see the map of all the distinct states and actions between them, u wldnt want to simplify this any more
+but, if u were interested in uderlying sttructure, u cld simplify this to a single point (bc notice all the double arrows, u can get to anywhere from anywhere, essentially)
+</p>
+
+<p>
+lets see what it&rsquo;d look like if u cld in fact unswitch the switch from the upper ledge (by shooting an arrow at the jar that was holding it down or something)
+</p>
+
+<p>
+this is what it looks like if u can shoot the jar from the upper ledge causing the platform that enabled u to climb up there to go down
+</p>
+
+
+<div id="org39ee38b" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778561376909262858/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+A∅ = on upper ledge and switch is unpressed/platofrm is recessed
+As = on upper ledge ad switch is pressed/platform is risen
+</p>
+
+<p>
+notice that once u break the jar from the upper ledge, u cant cause the switch to be pressed again without first jumping back down to the lower part of the room
+</p>
+
+<p>
+i feel like this is really comin together hehe
+</p>
+
+<p>
+im gonna revise the notation aa bit
+</p>
+
+<p>
+this means u can always get from A to B by means of a
+</p>
+
+
+<div id="org3a91ef3" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778563667188776990/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can only get from A to B by means of a if x is true
+</p>
+
+
+<div id="org06188e6" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778563886428979230/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can always get from A to B by means of making x true
+</p>
+
+
+<div id="org2d9f9cb" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778564097079115816/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+(this is for template diagrams)
+</p>
+
+<p>
+one more important notatioon
+this means you can go from A to B by means of setting the value of a to b, if c
+meaning&#x2026;. u can only get from A to B if c&#x2026;. but in doing so u set a to b
+</p>
+
+
+<div id="orga165bee" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778569848992825354/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+okay heres aa small subset of the temple of time
+rewritten with the more developed template notation
+</p>
+
+
+<div id="orga80a92b" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778575666651594803/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+so heres how it goes
+the green S is the starting place
+A is a ledge you can only reach by (c)limbing up onto a platform, which is only climbable if a switch s0 is pressed
+from the start state you are able to toggle the switch s0
+from the ledge A you can (j) back down to the start place
+from A you can shoot the pot holding the switch down , with an arrow, causing s0 to become false agaain (but this isnt useful in this case)
+A and B are separated by an initially locked door
+the variable u says whether the door is (u)nlocked or not
+from the ledge on A you are able to unlock the door with a key, but only if the door is not unlocked (so once its unlocked, you cant lock it again)
+you can go from A to B through the (d)oor, ooce its (u)nlocked
+</p>
+
+<p>
+from B you can walk over to an area D
+there are gates separating D from E, B, ad F, and separating F from G
+but these gates gate withdraw into the floor allowing u to pass
+some fences r withdrawn when switch s1 is pressed, others r withdrawn only when it isnt pressed
+from D to E and D to F, its withdrawn when its pressed
+from D to B and F to G its withdrawn when it isnt pressed
+therefore
+from D, you can (w)alk to E, only if s1 is pressed, and you can walk back from E to D only if s1 is pressed
+from D, you can (w)alk to B only if s1 isnt pressed
+(but its impossible to press the switch from B, hence u can unconditionally walk from B to D)
+</p>
+
+<p>
+from D, u can walk to F only if s1 is pressed, and vice verse
+from D, u can toggle the switch
+from F, u can shoot a jar holding the switch causing it to become unpressed (only if it was pressed to begin with)
+if the switch is unpressed u cant walk from F to D, but u can aways use ur claws(h)ot to get from F to D
+and from F, u can get to G, only if the switch isn&rsquo;t pressed
+</p>
+
+<p>
+and so what u do, is u walk from B to D, press the switch with a jar so u can walk from D to F, shoot the jar with arrow so u can walk from F to G
+</p>
+
+<p>
+so there r three state variables here
+s0 = switch 0, the switch in the beginning area
+s1 = switch 1, the switch in the later area
+u = whether the door between A and B is unlocked
+i also wrote at the top, that s1 implies u
+the reason is, when u start, the variables all have value of false (hence the green rectangle around F, F, F)
+and the only way to set s1 to true, is to first go through the door, which means u is true
+there for if s1 is true, then u must be true
+and because of this implicit constraint on the space of state variables, i put x&rsquo;s by the combinations that can never occur
+</p>
+
+<p>
+now im gonna translate this template diagram into the equivalent full state diagram !!
+</p>
+
+<p>
+but first&#x2026;. one more clarification on template notation
+</p>
+
+<p>
+clarification / revision
+</p>
+
+<p>
+this means u can alwasy get from A to B by means of a
+</p>
+
+
+<div id="org96e51ce" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778580226858942464/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can get from A to B by means of a&#x2026;. if x is true
+</p>
+
+
+<div id="org082c0ee" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778580403463651358/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can always get from A to B by means of a, but doing so has the side effect of causing x to end up with the value y
+</p>
+
+
+<div id="org381a72d" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778580678513655838/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means u can get from A to B by means of a&#x2026;.. but only if x is true&#x2026;.. and!!!! when u do go from Aa to B, y ends up with the value of z
+</p>
+
+
+<div id="org33b1dbd" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778580965530271794/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+this means&#x2026; u can Always get from A to B, but doing so will cause x to end up with the value of y only if the value of z is true!!!
+</p>
+
+
+<div id="org2f92746" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778581548454641684/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+and lastly,
+this means u can only get from A to B by means of a, if the value of x is true
+and in doing so, the value of y will take on the value z Only if the value of w is true !!!!
+</p>
+
+
+<div id="orga4c5d33" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778581943599628308/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+in like of this i Shld go back to the temple of time diagram and relabel
+but later !!
+</p>
+
+<p>
+heres a full state diagram expanded from the template above !!
+</p>
+
+
+<div id="org8687683" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778587588067590154/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+as u an see theres a lot of uninteresting detail , like the whole thing is practically doubleXD
+and thats bc&#x2026;&#x2026; u can move onto the rest oof the dungeon while leaving the first switch on, or off
+its not material to the rest of the dungeon whether its on or off, and yet
+this diagram captures the difference
+</p>
+
+<p>
+w = walk
+t = toggle switch
+j = jump
+c = climb
+d = go hrough door
+a = shoot jar with arrow causing switch to become unpressed
+h = use clawshot to get over gate
+</p>
+
+<p>
+now what we cld do&#x2026;.. is go thru n topologically simplify the whole thing
+to see what the overall structure is
+but
+i thik ultimately it simplifies to &#x2026;..
+</p>
+
+<p>
+is this
+where uu start on the left with the door locked
+and once u have unlocked the door, u are forever stuck in the world where the door is unlocked
+</p>
+
+
+<div id="org70fcf0b" class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/763994937276366869/778589388459474944/unknown.png" alt="unknown.png" />
+</p>
+</div>
+
+<p>
+i feel like there are difenitely other ways of simplifying it , not so extremely , that can still show interesting things
+but ill think abt that another time XD
+</p>
+
+<p>
+im thinkin abt mazes
+mazes dont have dynamic topology
+but what makes them challenging, is that u are constanttly presented with many different ways to go
+i think what makes dungens interesting, even when their progression is fairly linear, is that its not obvious which ways uu can proceed
+whereas in a maze, u can always look ahead of u and see possible paths
+but a dungeon makes uu think abt what possible paths u cld take
+</p>
+
+<p>
+okay now to
+organiz  n refine
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-11-18 Wed 14:00</p>
+</div>
+</body>
+</html>
