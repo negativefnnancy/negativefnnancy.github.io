@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-18 Wed 18:44 -->
+<!-- 2020-11-19 Thu 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s Guide to Dungeon Topology</title>
@@ -251,7 +251,7 @@
 <li><a href="#orgd44222c"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
 <li><a href="#org953e8a2"><span class="todo TODO">TODO</span> States</a></li>
 <li><a href="#org10fcfe3"><span class="todo TODO">TODO</span> Actions</a></li>
-<li><a href="#orgb312c18"><span class="todo TODO">TODO</span> Sequences</a></li>
+<li><a href="#orgbfcd1c6"><span class="todo TODO">TODO</span> Action sequences</a></li>
 </ul>
 </li>
 <li><a href="#org9dcbef3">What da heckie are <i>configuration classes</i>?</a></li>
@@ -398,7 +398,7 @@ Just to give you a preview of next topic, here&rsquo;s a simple <i>state space d
 </p>
 
 
-<div id="org67b4261" class="figure">
+<div id="orgd01f230" class="figure">
 <p><img src="../images/dungeon_a.png" alt="dungeon_a.png" />
 </p>
 </div>
@@ -479,7 +479,7 @@ This is clearly depicted in the state space diagram for this dungeon. Every conf
 </p>
 
 
-<div id="orgdbd0e0b" class="figure">
+<div id="orga0a5b71" class="figure">
 <p><img src="../images/dungeon_c.png" alt="dungeon_c.png" />
 </p>
 </div>
@@ -519,31 +519,79 @@ Notice that I didn&rsquo;t draw any arrows on this diagram yet! That&rsquo;s bec
 <div class="outline-text-4" id="text-org953e8a2">
 </div>
 <ul class="org-ul">
-<li><a id="orgdba50bf"></a><span class="todo TODO">TODO</span> Starting states<br /></li>
+<li><a id="orgdba50bf"></a><span class="todo TODO">TODO</span> Starting states<br />
+<div class="outline-text-5" id="text-orgdba50bf">
+<p>
+A starting state is a dungeon configuration the dungeon can have when the player firsts begins the dungeon.
+</p>
+</div>
+</li>
 
-<li><a id="org59454f8"></a><span class="todo TODO">TODO</span> Non-solution states<br /></li>
+<li><a id="org59454f8"></a><span class="todo TODO">TODO</span> Non-solution states<br />
+<div class="outline-text-5" id="text-org59454f8">
+<p>
+A non-solution state is any possible dungeon configuration such that the dungeon hasn&rsquo;t been completed.
+</p>
+</div>
+</li>
 
-<li><a id="org732eae0"></a><span class="todo TODO">TODO</span> Solution states<br /></li>
+<li><a id="org732eae0"></a><span class="todo TODO">TODO</span> Solution states<br />
+<div class="outline-text-5" id="text-org732eae0">
+<p>
+A solution state is any possible dungeon configuration such that the the dungeon <i>has</i> been completed.
+</p>
+</div>
+</li>
 
-<li><a id="org45e022e"></a><span class="todo TODO">TODO</span> Non-states<br /></li>
+<li><a id="org45e022e"></a><span class="todo TODO">TODO</span> Non-states<br />
+<div class="outline-text-5" id="text-org45e022e">
+<p>
+A non-state is any impossible dungeon configuration. That is, some combination of values for state variables that can never occur in the dungeon. The existence of non-states is the reason why the number of configurations in the state space diagram is usually less than the maximum number of possible configurations.
+</p>
+</div>
+</li>
 </ul>
 </div>
 
 <div id="outline-container-org10fcfe3" class="outline-4">
 <h4 id="org10fcfe3"><span class="todo TODO">TODO</span> Actions</h4>
 <div class="outline-text-4" id="text-org10fcfe3">
+<p>
+An action is anything that the player can do in one configuration that leads to a different configuration.
+</p>
 </div>
+
 <ul class="org-ul">
-<li><a id="org89feb58"></a><span class="todo TODO">TODO</span> Action alphabet<br /></li>
+<li><a id="org89feb58"></a><span class="todo TODO">TODO</span> Action alphabet<br />
+<div class="outline-text-5" id="text-org89feb58">
+<p>
+In the state space diagrams, the actions are represented by the arrows drawn between the circles. We can label the arrows with single lowercase letters denoting a particular action.
+</p>
+
+<p>
+The <b>action alphabet</b> for a dungeon is the set of all characters denoting all possible actions that exist in the dungeon.
+</p>
+</div>
+</li>
 </ul>
 </div>
 
-<div id="outline-container-orgb312c18" class="outline-4">
-<h4 id="orgb312c18"><span class="todo TODO">TODO</span> Sequences</h4>
-<div class="outline-text-4" id="text-orgb312c18">
+<div id="outline-container-orgbfcd1c6" class="outline-4">
+<h4 id="orgbfcd1c6"><span class="todo TODO">TODO</span> Action sequences</h4>
+<div class="outline-text-4" id="text-orgbfcd1c6">
+<p>
+An <b>action sequence</b> is a sequence of actions the player can take that leads them from aa starting state to any valid dungeon configuration. We can denote an action sequence as a string of letters denoting actions.
+</p>
 </div>
+
 <ul class="org-ul">
-<li><a id="org53178f2"></a><span class="todo TODO">TODO</span> Non-sequences<br /></li>
+<li><a id="org53178f2"></a><span class="todo TODO">TODO</span> Non-sequences<br />
+<div class="outline-text-5" id="text-org53178f2">
+<p>
+Not all possible strings of letters denote valid action sequences. A non-sequence is any sequence of actions that can never occur starting from a starting state.
+</p>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -556,7 +604,7 @@ Sometimes it&rsquo;s not a singular particular dungeon configuration you are int
 </p>
 
 
-<div id="org1949da0" class="figure">
+<div id="org606128b" class="figure">
 <p><img src="../images/dungeon_b.png" alt="dungeon_b.png" />
 </p>
 </div>
@@ -572,7 +620,7 @@ In this diagram, there are four configurations:
 </dl>
 
 <p>
-Since you only care about the configurations where the big scary door is unlocked, you care about the class of configurations consisting of <code>WU</code> and <code>U</code>! As you can see, among this class of of configurations is the possibility of the water wheel being active and the possibility of it not being active. And that&rsquo;s okay, because you don&rsquo;t care about whether the water wheel is active!
+Since you only care about the configurations where the big scary door is unlocked, you care about the class of configurations consisting of <code>WU</code> and <code>U</code>! As you can see, among this class of configurations is the possibility of the water wheel being active and the possibility of it not being active. And that&rsquo;s okay, because you don&rsquo;t care about whether the water wheel is active!
 </p>
 
 <p>
@@ -590,7 +638,7 @@ Notice also that there&rsquo;s no single action the player can take to simultane
 <h2 id="org291a875">Dungeon topology</h2>
 <div class="outline-text-2" id="text-org291a875">
 <p>
-A dungeon is similar to a maze in that from point any point A to any point B there may be any number (possibly 0) of possible paths you can take. Unlike a maze though, which has fixed topology, a dungeon often has <i>dynamic topology</i>. In particular, this dynamism is due to the fact that the topology of the dungeon is a <i>function of the dungeon&rsquo;s state</i>. In other words, the collection of sets for each location in the dungeon of all possible paths you can take from that location varies depending on the value of dungeon&rsquo;s state variables.
+A dungeon is similar to a maze in that from any point A to any point B there may be any number (possibly 0) of possible paths you can take. Unlike a maze though, which has fixed topology, a dungeon often has <i>dynamic topology</i>. In particular, this dynamism is due to the fact that the topology of the dungeon is a <i>function of the dungeon&rsquo;s state</i>. In other words, the collection of sets for each location in the dungeon of all possible paths you can take from that location varies depending on the value of dungeon&rsquo;s state variables.
 </p>
 
 <p>
@@ -629,7 +677,7 @@ Suppose we want to depict the general physical layout of the dungeon, similar to
 <h3 id="org8adb611">Dungeon space</h3>
 <div class="outline-text-3" id="text-org8adb611">
 <p>
-Notice that any point in the dungeon topology may be paired with multiple possible dungeon configurations. And notice that every point in the dungeon state space (i.e., every dungeon configuration) may be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
+Notice that its possible for any point in the dungeon topology to be paired with multiple possible dungeon configurations. And notice that its possible for any point in the dungeon state space (i.e., every dungeon configuration) to be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
 </p>
 </div>
 
@@ -645,7 +693,7 @@ Notice that any point in the dungeon topology may be paired with multiple possib
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-18 Wed 18:44</p>
+<p class="date">Created: 2020-11-19 Thu 15:02</p>
 </div>
 </body>
 </html>
