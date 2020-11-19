@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-18 Wed 18:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nancy&rsquo;s Guide to Dungeon Topology</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nancy&rsquo;s Guide to Dungeon Topology</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org69f93d2">What da heckie is <i>dungeon topology</i>?</a></li>
+<li><a href="#orge1d5107">What da heckie is a <i>dungeon</i>?</a></li>
+<li><a href="#org2419ca2">Dungeon states</a>
+<ul>
+<li><a href="#org8c5cc49">What da heckie is <i>state</i>?</a></li>
+<li><a href="#org013eb0c">What da heckie are <i>state variables</i>?</a></li>
+<li><a href="#orgd72a076">What da heckie are <i>side effects</i>?</a></li>
+<li><a href="#org53a3445">What da heckie is <i>configuration</i>?</a></li>
+<li><a href="#orgb74f385">What da heckie is <i>state space</i>?</a></li>
+<li><a href="#orgd43b5d4">What da heckie is a <i>state space diagram</i>?</a></li>
+<li><a href="#orgc3b7e64">What da heckie does a <i>state space diagram</i> have ta do with <i>state variables</i>?</a>
+<ul>
+<li><a href="#orgf153420">How many possible dungeon configurations are there?</a></li>
+<li><a href="#org29fbc77">State space diagrams show every possible configuration</a></li>
+<li><a href="#orgcb14d16"><span class="todo TODO">TODO</span> State space constraints</a></li>
+</ul>
+</li>
+<li><a href="#orgfdbf9f2"><span class="todo TODO">TODO</span> State space semantics and notation</a>
+<ul>
+<li><a href="#orgd44222c"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
+<li><a href="#org953e8a2"><span class="todo TODO">TODO</span> States</a></li>
+<li><a href="#org10fcfe3"><span class="todo TODO">TODO</span> Actions</a></li>
+<li><a href="#orgb312c18"><span class="todo TODO">TODO</span> Sequences</a></li>
+</ul>
+</li>
+<li><a href="#org9dcbef3">What da heckie are <i>configuration classes</i>?</a></li>
+</ul>
+</li>
+<li><a href="#org291a875">Dungeon topology</a>
+<ul>
+<li><a href="#orgb4175d7">Conditional topology</a>
+<ul>
+<li><a href="#org465d2a4"><span class="todo TODO">TODO</span> The dungeon map</a></li>
+<li><a href="#orgbfd66d5"><span class="todo TODO">TODO</span> Topological templates</a></li>
+</ul>
+</li>
+<li><a href="#org8adb611">Dungeon space</a>
+<ul>
+<li><a href="#org006aa73"><span class="todo TODO">TODO</span> conditional topology × state space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6b9fe9f"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
+</ul>
+</div>
+</div>
+<p>
+an assimilation of <a href="20201118132041-dungeon_topology_notes.html">Dungeon Topology Notes</a> !!
+</p>
+
+<p>
+<i>big wip!</i>
+</p>
+
+<div id="outline-container-org69f93d2" class="outline-2">
+<h2 id="org69f93d2">What da heckie is <i>dungeon topology</i>?</h2>
+<div class="outline-text-2" id="text-org69f93d2">
+<p>
+It&rsquo;s a way of analysing Zelda-style <b>dungeons</b>! :0
+</p>
+
+<p>
+(It&rsquo;s using state space diagrams of some sort to map out the progression of Zelda-style dungeons!)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge1d5107" class="outline-2">
+<h2 id="orge1d5107">What da heckie is a <i>dungeon</i>?</h2>
+<div class="outline-text-2" id="text-orge1d5107">
+<p>
+I&rsquo;m not sure! XD I think it&rsquo;s where you throw prisoners to rot or something. Just kidding! It&rsquo;s <i>actually</i> like the dungeons in Zelda! Where there are enemies and puzzles and you have to navigate through all the dungeon puzzles to the boss! (Or something like that! <code>0_0</code>)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2419ca2" class="outline-2">
+<h2 id="org2419ca2">Dungeon states</h2>
+<div class="outline-text-2" id="text-org2419ca2">
+</div>
+<div id="outline-container-org8c5cc49" class="outline-3">
+<h3 id="org8c5cc49">What da heckie is <i>state</i>?</h3>
+<div class="outline-text-3" id="text-org8c5cc49">
+<p>
+The first thing to note about a dungeon is that it has <b>state</b>. That means at any given time the configuration of the dungeon might be one thing or it might be another.
+</p>
+
+<p>
+For example, a particular door might be locked or unlocked, a particular switch might be pressed or unpressed, a certain chest might have yet to be opened, or it might have already been opened, a particular enemy might have been defeated, or it might still be lurking.
+</p>
+
+<p>
+Often the physical structure of the dungeon is dynamic too. Some passageways may or may not be accessible at any given time!
+</p>
+
+<p>
+All of these particularities of the configuration of the dungeon at any point in time is called the dungeon&rsquo;s current <i>state</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org013eb0c" class="outline-3">
+<h3 id="org013eb0c">What da heckie are <i>state variables</i>?</h3>
+<div class="outline-text-3" id="text-org013eb0c">
+<p>
+The state is controlled by a collection of variables called <b>state variables</b>. These are variables whose value can change over the course of progressing through the dungeon. The values of these variables determine or represent certain aspects of the current configuration of the dungeon.
+</p>
+
+<p>
+For example, there could be a variable called <code>defeated_miniboss</code> which has the value of <code>false</code> until you have defeated the miniboss, after which it has the value of <code>true</code>! Further, maybe this variable also corresponds to whether a certain chest has appeared yet (such as chest that appears after the miniboss has been defeated).
+</p>
+
+<p>
+A value of <code>true</code> or <code>false</code> is called a <i>boolean value</i>, and a variable that has a value of either <code>true</code> or <code>false</code> is called a <i>boolean variable</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd72a076" class="outline-3">
+<h3 id="orgd72a076">What da heckie are <i>side effects</i>?</h3>
+<div class="outline-text-3" id="text-orgd72a076">
+<p>
+State variables generally change in response to meaningful <b>actions</b> of the player! An action that causes a change in a state variable is said to have a <b>side effect</b>. A <i>side effect</i> is a change in dungeon state that occurs as an external consequence to some <i>action</i>.
+</p>
+
+<p>
+For example, if the player presses a switch, and suddenly a water wheel kicks into action, the <i>action</i> is the pressing of the switch, and the <i>side effect</i> is the activation of the water wheel.
+</p>
+
+<p>
+More specifically, the action of pressing the switch has the side effect of <i>changing a state variable</i>, maybe one called <code>water_wheel_activated</code>!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org53a3445" class="outline-3">
+<h3 id="org53a3445">What da heckie is <i>configuration</i>?</h3>
+<div class="outline-text-3" id="text-org53a3445">
+<p>
+At any given time, the dungeon&rsquo;s state variables might have any number of possible combinations of values. The current combination of values makes up the current <b>configuration</b> of the dungeon.
+</p>
+
+<p>
+For example, the player may have unlocked the door, but not activated the water wheel. Or the player may have unlocked the door and activated the water wheel. These are two distinct <i>configurations</i> of the dungeon.
+</p>
+
+<p>
+In additon, the <i>set of all possible actions</i> that the player can take at any given time is dependant on the configuration at that time.
+</p>
+
+<p>
+For example, suppose the switch to activate the water wheel is behind the locked door, and suppose the player hasn&rsquo;t yet unlocked the door. In this configuration, the player doesn&rsquo;t have the luxury to activate the water wheel just yet, but they may be able to unlock the door if they have a key! Now suppose the door has been unlocked. In this configuration, the player is able to activate the water wheel, an action that wasn&rsquo;t available to them in the other configuration!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb74f385" class="outline-3">
+<h3 id="orgb74f385">What da heckie is <i>state space</i>?</h3>
+<div class="outline-text-3" id="text-orgb74f385">
+<p>
+The <b>state space</b> of the dungeon is like a map of all possible configurations. All the <i>points</i> in this space are unique configurations of the dungeon. Each point also has any number of <i>paths</i> from it to another point. These paths are the particular actions available to the player when the dungeon is in that configuration.
+</p>
+
+<p>
+Just to give you a preview of next topic, here&rsquo;s a simple <i>state space diagram</i> showing a dungeon progression from the start to getting a key to unlocking the door and exiting the dungeon:
+</p>
+
+
+<div id="org67b4261" class="figure">
+<p><img src="../images/dungeon_a.png" alt="dungeon_a.png" />
+</p>
+</div>
+
+<p>
+(Note that it might be counterintuitive to think of the player&rsquo;s possession of a key as an aspect of <i>dungeon</i> state. It might be more intuitive to think of it as <i>player</i> state, because it&rsquo;s the player who either does or doesn&rsquo;t possess the key at any given time. But for these purposes we&rsquo;ll consider player state as a part of dungeon state. And so we&rsquo;ll say that there is a dungeon configuration such that the player possesses the key and a separate dungeon configuration such that the player doesn&rsquo;t possess the key.)
+</p>
+
+<p>
+Here, you start the dungeon in the &ldquo;S&rdquo; configuration (S for start). From there your only meaningful action is to obtain the key, which puts you in the &ldquo;K&rdquo; configuration (K for key). Once you have the key, your only meaningful action is to unlock and exit the door, which puts you in the &ldquo;D&rdquo; configuration (D for door)!
+</p>
+
+<p>
+What the state space diagram tells you at a glance is how many possible configurations of the dungeon there are and what sorts of routes you can take if you want to get from configuration A to configuration B.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd43b5d4" class="outline-3">
+<h3 id="orgd43b5d4">What da heckie is a <i>state space diagram</i>?</h3>
+<div class="outline-text-3" id="text-orgd43b5d4">
+<p>
+As introduced above, a <b>state space diagram</b> is a visual depiction of the state space of a dungeon, including labeled circles representing all possible configurations as well as arrows between the circles representing the possible actions that get you from one configuration to another.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3b7e64" class="outline-3">
+<h3 id="orgc3b7e64">What da heckie does a <i>state space diagram</i> have ta do with <i>state variables</i>?</h3>
+<div class="outline-text-3" id="text-orgc3b7e64">
+<p>
+Recall that a <i>dungeon configuration</i> is determined by a particular unique combination of the dungeon&rsquo;s state variables. In other words, a particular set of values per state variable denotes a particular dungeon configuration.
+</p>
+
+<p>
+For example, suppose a dungeon has a <i>big scary door</i> and a <i>water wheel</i>. The big scary door can be either <i>locked</i> or <i>unlocked</i>, and the water wheel can be either <i>active</i> or <i>inactive</i>. This might naturally be represented in terms of the state variables <code>big_scary_door_unlocked</code> and <code>water_wheel_active</code>. When the variable <code>big_scary_door_unlocked</code> has value <code>false</code>, the big scary door is locked, and when it has value <code>true</code>, the big scary door is unlocked. When the variable <code>water_wheel_active</code> has value <code>false</code>, the water wheel is inactive, and when it has value <code>true</code>, the water wheel is active.
+</p>
+
+<p>
+Quick detour!
+</p>
+</div>
+
+<div id="outline-container-orgf153420" class="outline-4">
+<h4 id="orgf153420">How many possible dungeon configurations are there?</h4>
+<div class="outline-text-4" id="text-orgf153420">
+<p>
+Notice that a boolean variable has <i>two</i> possible values: namely, <code>true</code> and <code>false</code>. Notice that a pair (group of two) of boolean variables has <i>four</i> possible <i>combinations</i> of values: namely, (<code>true</code> and <code>true</code>), (<code>true</code> and <code>false</code>), (<code>false</code> and <code>true</code>), and (<code>false</code> and <code>false</code>). That&rsquo;s because the first one can be true and the second one can be true. Or the first one can be true and the second one can be false. Or the first one can be false and the second one can be true. Or they can both be false.
+</p>
+
+<p>
+In general, if we have a collection of <code>n</code> boolean variables, the number of possible combinations of values for those variables is <code>2ⁿ</code>. This checks out. If <code>n = 1</code> then we have <code>2¹ = 2</code> possible values. If <code>n = 2</code> then we have <code>2² = 4</code> possible values, which we just saw was the case. If <code>n = 3</code> then we have <code>2³ = 8</code> and so on and so forth!
+</p>
+
+<p>
+All of this is to say that the maximum number of possible dungeon configurations for a dungeon whose state variables have all boolean values, is always <code>2ⁿ</code>, where <code>n</code> is the number of state variables the dungeon has.
+</p>
+
+<p>
+(As a heads up, notice that this is only the <i>maximum</i> number of possible dungeon configurations considering only the number of state variables. In practice, not all possible combinations are obtainable given the possible sequences of actions available to the player, and thus the set of all possible dungeon configurations actually obtainable is smaller. But more about this later!)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org29fbc77" class="outline-4">
+<h4 id="org29fbc77">State space diagrams show every possible configuration</h4>
+<div class="outline-text-4" id="text-org29fbc77">
+<p>
+Now we can see the more clearly note the correlation between state space diagrams and state space variables.
+</p>
+
+<p>
+Suppose we have a dungeon with <i>two</i> state variables: <code>a</code> and <code>b</code>. Then we know there are <i>four</i> possible combinations of values for these two variables, and thus we know that there is a maximum of <i>four</i> possible dungeon configurations.
+</p>
+
+<p>
+This is clearly depicted in the state space diagram for this dungeon. Every configuration shown on the state space diagram (of which there are four) corresponds to exactly one of the four possible combinations of state space variables. Sometimes we want to make explicit the variable combination that the configuration shown in the state space diagram corresponds to. To do this we can use subscripts on the labels:
+</p>
+
+
+<div id="orgdbd0e0b" class="figure">
+<p><img src="../images/dungeon_c.png" alt="dungeon_c.png" />
+</p>
+</div>
+
+<p>
+Recall that we have two state variables, <code>a</code> and <code>b</code>, the values of which there are four possible combinations. Hence, four configurations are depicted in the diagram. The subscripts make explicit which combination of the values of variables <code>a</code> and <code>b</code> that configuration corresponds to. For example, configuration D<sub>ab</sub> is the configuration such that the values of <code>a</code> and <code>b</code> are both true. The configuration C<sub>b</sub> is the configuration such that only the value of <code>b</code> is true. The configuration C<sub>a</sub> is the configuration such that only the value of <code>a</code> is true. And lastly the configuration A_∅ is the configuration such that the value of none the variables is true (∅ denotes the empty set).
+</p>
+
+<p>
+Notice that I didn&rsquo;t draw any arrows on this diagram yet! That&rsquo;s because the set of state variables alone doesn&rsquo;t contain any information about the particular actions the player can perform in any given state. That is to say that the dungeon is more than just its collection of state variables, it&rsquo;s also the possible paths between configuration states. A state space diagram is able to capture both of these aspects of the dungeon simultaneously.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcb14d16" class="outline-4">
+<h4 id="orgcb14d16"><span class="todo TODO">TODO</span> State space constraints</h4>
+<div class="outline-text-4" id="text-orgcb14d16">
+</div>
+<ul class="org-ul">
+<li><a id="org39b0b35"></a><span class="todo TODO">TODO</span> Explicit constraints<br /></li>
+
+<li><a id="org1383ef0"></a><span class="todo TODO">TODO</span> Topologically implied constraints<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfdbf9f2" class="outline-3">
+<h3 id="orgfdbf9f2"><span class="todo TODO">TODO</span> State space semantics and notation</h3>
+<div class="outline-text-3" id="text-orgfdbf9f2">
+</div>
+<div id="outline-container-orgd44222c" class="outline-4">
+<h4 id="orgd44222c"><span class="todo TODO">TODO</span> State space as a formal language</h4>
+</div>
+
+<div id="outline-container-org953e8a2" class="outline-4">
+<h4 id="org953e8a2"><span class="todo TODO">TODO</span> States</h4>
+<div class="outline-text-4" id="text-org953e8a2">
+</div>
+<ul class="org-ul">
+<li><a id="orgdba50bf"></a><span class="todo TODO">TODO</span> Starting states<br /></li>
+
+<li><a id="org59454f8"></a><span class="todo TODO">TODO</span> Non-solution states<br /></li>
+
+<li><a id="org732eae0"></a><span class="todo TODO">TODO</span> Solution states<br /></li>
+
+<li><a id="org45e022e"></a><span class="todo TODO">TODO</span> Non-states<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-org10fcfe3" class="outline-4">
+<h4 id="org10fcfe3"><span class="todo TODO">TODO</span> Actions</h4>
+<div class="outline-text-4" id="text-org10fcfe3">
+</div>
+<ul class="org-ul">
+<li><a id="org89feb58"></a><span class="todo TODO">TODO</span> Action alphabet<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-orgb312c18" class="outline-4">
+<h4 id="orgb312c18"><span class="todo TODO">TODO</span> Sequences</h4>
+<div class="outline-text-4" id="text-orgb312c18">
+</div>
+<ul class="org-ul">
+<li><a id="org53178f2"></a><span class="todo TODO">TODO</span> Non-sequences<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9dcbef3" class="outline-3">
+<h3 id="org9dcbef3">What da heckie are <i>configuration classes</i>?</h3>
+<div class="outline-text-3" id="text-org9dcbef3">
+<p>
+Sometimes it&rsquo;s not a singular particular dungeon configuration you are interested in getting to, but a <i>class</i> of dungeon configurations, i.e., a <b>configuration class</b>. For example, suppose you want to unlock the big scary door. Suppose also that there is a switch that controls whether the water wheel is on or off. But the key to the big scary door is accessible regardless of the state of the water wheel. In other words, it doesn&rsquo;t matter to you whether the water wheel is activated or not, you only care about whether the big scary door is unlocked. Thus what you care about is not a singular particular dungeon configuration, but rather the <i>class of all dungeon configurations such that the big scary door is unlocked</i>, which consists of at least two different dungeon configurations: one where the water wheel is activated, and one where the water wheel in not activated.
+</p>
+
+
+<div id="org1949da0" class="figure">
+<p><img src="../images/dungeon_b.png" alt="dungeon_b.png" />
+</p>
+</div>
+
+<p>
+In this diagram, there are four configurations:
+</p>
+<dl class="org-dl">
+<dt><code>L</code></dt><dd>water wheel is <i>inactive</i> and big scary door is <i>locked</i>!</dd>
+<dt><code>U</code></dt><dd>water wheel is <i>inactive</i> and big scary door is <i>unlocked</i>!</dd>
+<dt><code>WL</code></dt><dd>water wheel is <i>active</i> and big scary door is <i>locked</i>!</dd>
+<dt><code>WU</code></dt><dd>water wheel is <i>active</i> and big scary door is <i>unlocked</i>!</dd>
+</dl>
+
+<p>
+Since you only care about the configurations where the big scary door is unlocked, you care about the class of configurations consisting of <code>WU</code> and <code>U</code>! As you can see, among this class of of configurations is the possibility of the water wheel being active and the possibility of it not being active. And that&rsquo;s okay, because you don&rsquo;t care about whether the water wheel is active!
+</p>
+
+<p>
+Also notice the arrows. We are assuming that the switch that toggles the activation of the water wheel can be toggled to the player&rsquo;s heart&rsquo;s content, but that the big scary door, once unlocked, can never be locked back up. This is why you see mutual arrows going both forwards and bacwards between <code>L</code> and <code>WL</code> and between <code>U</code> and <code>WU</code>, but you only see rightwards arrows from <code>L</code> to <code>U</code> and from <code>WL</code> to <code>WU</code>.
+</p>
+
+<p>
+Notice also that there&rsquo;s no single action the player can take to simultaneously activate the water wheel and unlock the door. The diagram shows that the only two ways to get from <code>L</code> to <code>WU</code> is either first to activate the water wheel and then to unlock the door, or first to unlock the door and then to activate the water wheel.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org291a875" class="outline-2">
+<h2 id="org291a875">Dungeon topology</h2>
+<div class="outline-text-2" id="text-org291a875">
+<p>
+A dungeon is similar to a maze in that from point any point A to any point B there may be any number (possibly 0) of possible paths you can take. Unlike a maze though, which has fixed topology, a dungeon often has <i>dynamic topology</i>. In particular, this dynamism is due to the fact that the topology of the dungeon is a <i>function of the dungeon&rsquo;s state</i>. In other words, the collection of sets for each location in the dungeon of all possible paths you can take from that location varies depending on the value of dungeon&rsquo;s state variables.
+</p>
+
+<p>
+For example, suppose you can only get from across a moat if the draw bridge is lowered. When the draw bridge is raised, there is no direct path from either side to the other. When the draw bridge is lowered, there is a path from either side to the other. That is to show that the topology is different depending on the status of the draw bridge.
+</p>
+</div>
+
+<div id="outline-container-orgb4175d7" class="outline-3">
+<h3 id="orgb4175d7">Conditional topology</h3>
+<div class="outline-text-3" id="text-orgb4175d7">
+</div>
+<div id="outline-container-org465d2a4" class="outline-4">
+<h4 id="org465d2a4"><span class="todo TODO">TODO</span> The dungeon map</h4>
+<div class="outline-text-4" id="text-org465d2a4">
+<p>
+Consider the dungeon map. This shows the general physical layout of the dungeon, ignoring the specifics that vary.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbfd66d5" class="outline-4">
+<h4 id="orgbfd66d5"><span class="todo TODO">TODO</span> Topological templates</h4>
+<div class="outline-text-4" id="text-orgbfd66d5">
+<p>
+Suppose we want to depict the general physical layout of the dungeon, similar to a map, except we dont wan&rsquo;t to ignore the ways in which the topology varies depending on the state variables.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org1352054"></a><span class="todo TODO">TODO</span> Template notation<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8adb611" class="outline-3">
+<h3 id="org8adb611">Dungeon space</h3>
+<div class="outline-text-3" id="text-org8adb611">
+<p>
+Notice that any point in the dungeon topology may be paired with multiple possible dungeon configurations. And notice that every point in the dungeon state space (i.e., every dungeon configuration) may be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
+</p>
+</div>
+
+<div id="outline-container-org006aa73" class="outline-4">
+<h4 id="org006aa73"><span class="todo TODO">TODO</span> conditional topology × state space</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6b9fe9f" class="outline-2">
+<h2 id="org6b9fe9f"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-11-18 Wed 18:44</p>
+</div>
+</body>
+</html>
