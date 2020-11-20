@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-19 Thu 19:17 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hexagonal Groups in Hexagonal Tilings</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Hexagonal Groups in Hexagonal Tilings</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfcd719f">What da heckie is a hexagonal group in a hexagonal tiling?</a></li>
+<li><a href="#org603998c">Hexagonal tiling coordinates</a>
+<ul>
+<li><a href="#orgff22bcb"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</a></li>
+</ul>
+</li>
+<li><a href="#org90c616d">Tile space</a></li>
+<li><a href="#orgf0ee642">Mapping between tile space and Euclidean space</a>
+<ul>
+<li><a href="#orga8c0b60">What da heckie is a polygon?</a></li>
+<li><a href="#org86fe004">What da heckie is a regular polygon?</a>
+<ul>
+<li><a href="#org02e045c">What da heckie do regular polygons haf ta do wif circles?</a></li>
+</ul>
+</li>
+<li><a href="#org510e136"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</a></li>
+</ul>
+</li>
+<li><a href="#org96adbbf"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfcd719f" class="outline-2">
+<h2 id="orgfcd719f">What da heckie is a hexagonal group in a hexagonal tiling?</h2>
+<div class="outline-text-2" id="text-orgfcd719f">
+<p>
+A hexagonal tiling is when you take hexagons and arrange them in a regular tiling pattern like this!! <code>0_0</code>
+</p>
+
+
+<div id="org426e46c" class="figure">
+<p><img src="../images/hexagonal_tiling.png" alt="hexagonal_tiling.png" />
+</p>
+</div>
+
+<p>
+A hexagonal group <i>in</i> a hexagonal tiling is a group of those hexagon tiles which itself forms a hexagonal shape!! <code>0_0</code> Like this:
+</p>
+
+
+<div id="org5e2c25b" class="figure">
+<p><img src="../images/hexagonal_group.png" alt="hexagonal_group.png" />
+</p>
+</div>
+
+<p>
+Notice how the orientation of the hexagonal shape formed by the group is in the opposite orientation as the tiles themselves! 🧐
+</p>
+</div>
+</div>
+
+<div id="outline-container-org603998c" class="outline-2">
+<h2 id="org603998c">Hexagonal tiling coordinates</h2>
+<div class="outline-text-2" id="text-org603998c">
+<p>
+There are lots of different ways to devise a coordinate system for assigning coordinates to the hexagonal tiles in a tiling, but this is way we are gonna use:
+</p>
+
+
+<div id="orgc77c41d" class="figure">
+<p><img src="../images/hexagonal_coordinates.png" alt="hexagonal_coordinates.png" />
+</p>
+</div>
+
+<p>
+Basically every tile&rsquo;s coordinates consists of a horizontal component and a vertical component. Notice that the columns alternate being shifted vertically half the vertical length of a tile. This will be important to know for converting between these coordinates and euclidean coordinates! If our hexagonal tiling was oriented the other way, it would be the <i>rows</i> that alternated being shifted in the <i>horizontal</i> direction instead.
+</p>
+
+<p>
+This isn&rsquo;t even my favorite or what I would consider the prettiest coordinate system for hexagonal tilings, but it&rsquo;s useful if you have a &ldquo;rectangular section&rdquo; of a hexagonal tiling, as depicted here.
+</p>
+</div>
+
+<div id="outline-container-orgff22bcb" class="outline-3">
+<h3 id="orgff22bcb"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</h3>
+</div>
+</div>
+
+<div id="outline-container-org90c616d" class="outline-2">
+<h2 id="org90c616d">Tile space</h2>
+<div class="outline-text-2" id="text-org90c616d">
+<p>
+Our tile space is the space of all points that correspond to the center of hexagon tile. Here I drew little red dots at the center of each tile to represent the points in this space:
+</p>
+
+
+<div id="org962a703" class="figure">
+<p><img src="../images/hexagonal_tiling_space.png" alt="hexagonal_tiling_space.png" />
+</p>
+</div>
+
+<p>
+I&rsquo;ll draw lines between the points representing the neighborhoods for each point such that a neighbor of a point is another point that can be obtained by changing only one of the two coordinates by a distance of exactly 1:
+</p>
+
+
+<div id="orgf78a19e" class="figure">
+<p><img src="../images/hexagonal_neighborhoods.png" alt="hexagonal_neighborhoods.png" />
+</p>
+</div>
+
+<p>
+This allows us to see the analog of <a href="https://en.wikipedia.org/w/index.php?title=Manhattan_distance">manhattan distance</a> in our tile space! We&rsquo;ll call this our <i>hexagonal manhattan distance</i>! In hexagonal manhattan distance, you can see that (1, 1) is a distance of 1 away from (1, 2), and a distance of 2 away from (2, 2). (Just like standard manhattan distance in euclidean space!) This is visible here because the number of links you have to travel from any point to any other point is equivalent to our hexagonal manhattan distance.
+</p>
+
+<p>
+You can see how the &ldquo;fabric&rdquo; of our tile space looks like a crumpled up paper version of the &ldquo;fabric&rdquo; of 2D euclidean space. XD Compare the following poorly drawn representations:
+</p>
+
+<p>
+Hexagonal &ldquo;fabric&rdquo;:
+</p>
+
+
+<div id="orge032533" class="figure">
+<p><img src="../images/hexagonal_fabric.png" alt="hexagonal_fabric.png" />
+</p>
+</div>
+
+<p>
+Euclidean &ldquo;fabric&rdquo;:
+</p>
+
+
+<div id="org4e24aa4" class="figure">
+<p><img src="../images/euclidean_fabric.png" alt="euclidean_fabric.png" />
+</p>
+</div>
+
+<p>
+It&rsquo;s good to compare these because it makes it easy to see how to map between tile space and euclidean space! Which brings us to the next topic&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf0ee642" class="outline-2">
+<h2 id="orgf0ee642">Mapping between tile space and Euclidean space</h2>
+<div class="outline-text-2" id="text-orgf0ee642">
+<p>
+In order to figure out what actually constitutes a &ldquo;hexagonal group&rdquo; we have to think in the euclidean space that the hexagonal tiling is embedded in. The reason for this is because our concept of a hexagon is defined in terms of euclidean space. So we know that the &ldquo;hexagonal group&rdquo; that we form has to be &ldquo;hexagonal&rdquo; as seen from euclidean space!
+</p>
+
+<p>
+To see what I mean, let&rsquo;s consider what a hexagon is!
+</p>
+
+<p>
+To see what a hexagon is, let&rsquo;s consider what a regular polygon is!
+</p>
+
+<p>
+To see what a regular polygon is, let&rsquo;s consider what a polygon is!
+</p>
+
+<p>
+(XD)
+</p>
+</div>
+
+<div id="outline-container-orga8c0b60" class="outline-3">
+<h3 id="orga8c0b60">What da heckie is a polygon?</h3>
+<div class="outline-text-3" id="text-orga8c0b60">
+<p>
+For our purposes, polygons are closed shapes on a plan consisting of all the space in between a closed loop of finite line segments.
+</p>
+
+<p>
+Some random polygons:
+</p>
+
+
+<div id="org624c424" class="figure">
+<p><img src="../images/polygons.png" alt="polygons.png" />
+</p>
+</div>
+
+<p>
+Four polygons are shown here. One is a triangle, which is a polygon with 3 sides and 3 vertices. On the top right there is a heptagon, which has 7 sides and 7 vertices. On the bottom is a quadrilateral, which has 4 sides and 4 vertices. And on the right is another quadrilateral. The quadrilateral on the right is different from the one on the bottom, because the one on the right is a regular quadrilater, more commonly known as a square.
+</p>
+
+<p>
+All of these are <i>irregular</i> polygons except for the square.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org86fe004" class="outline-3">
+<h3 id="org86fe004">What da heckie is a regular polygon?</h3>
+<div class="outline-text-3" id="text-org86fe004">
+<p>
+A <i>regular</i> polygon is a polygon all of whose angles are equivalent and all of whose sides are of the same length.
+</p>
+
+<p>
+Here are some (poorly drawn) regular polygons!!
+</p>
+
+
+<div id="org0865c43" class="figure">
+<p><img src="../images/regular_polygons.png" alt="regular_polygons.png" />
+</p>
+</div>
+
+<p>
+If you examine them closely, you can see that all of the sides are the same length and all the angles at each vertex are the same.
+</p>
+
+<p>
+Here&rsquo;s an example of that for the regular triangle:
+</p>
+
+
+<div id="org8d5019b" class="figure">
+<p><img src="../images/regular_triangle.png" alt="regular_triangle.png" />
+</p>
+</div>
+
+<p>
+(Again, it&rsquo;s hand drawn so it&rsquo;s not perfect, but just imagine it is XD)\
+</p>
+
+<p>
+All regular triangles have interior angles of 60° and they always add up to 180°! Not all regular triangles have sides of length 1 inch, but whatever length the sides do have, it&rsquo;s going to be that length for all three of them.
+</p>
+
+<p>
+Since this writing is about hexagons, here&rsquo;s that same depiction for a hexagon:
+</p>
+
+
+<div id="org4f951ac" class="figure">
+<p><img src="../images/regular_hexagon.png" alt="regular_hexagon.png" />
+</p>
+</div>
+
+<p>
+All regular hexagons have interior angles of 120° and they always add up to 720°! Again, not all regular hexagons have sides of length 2 inches as depicted here, but whatever that length is, it&rsquo;s going to be the same for all 6 sides.
+</p>
+
+<p>
+How do you know what the interior angles of any regular polygon is? There&rsquo;s a formula for that!
+</p>
+
+<p>
+The sum of all the interior angles of a regular polygon is this: <code>180° * (n - 2)</code> where <code>n</code> is the number of sides or vertices of the polygon.
+</p>
+
+<p>
+Actually, this doesn&rsquo;t apply just to regular polygons, but to <i>all</i> polygons!
+</p>
+
+<p>
+How wide then, is any one of the interior angles of a regular polygon? Since in a regular polygon all of those angles are the same, and we know what they add up to, and we know how many there are, then we know that any one of them is going to be the sum divided by how many there are! So we get this formula: <code>180° * (n - 2) / n</code>.
+</p>
+
+<p>
+So as you can see, in the case of a hexagon, we get this: <code>180° * (6 - 2) / 6 = 180° * 4 / 6 = 720° / 6 = 120°</code>.
+</p>
+</div>
+
+<div id="outline-container-org02e045c" class="outline-4">
+<h4 id="org02e045c">What da heckie do regular polygons haf ta do wif circles?</h4>
+<div class="outline-text-4" id="text-org02e045c">
+<p>
+Did you <i>know</i>!? that the vertices of any regular polygon is contained within a circle?! I know, utterly unimaginable, right? <code>0_0</code>
+</p>
+
+<p>
+<a href="https://www.mathsisfun.com/definitions/radius-polygon-.html">https://www.mathsisfun.com/definitions/radius-polygon-.html</a>
+</p>
+
+<p>
+Just kidding! It&rsquo;s actually very imaginable, let me show you! :0
+</p>
+
+<p>
+Take a circle:
+</p>
+
+
+<div id="orgfba9c4c" class="figure">
+<p><img src="../images/circle.png" alt="circle.png" />
+</p>
+</div>
+
+<p>
+And then!! take set of points from the circle such that every point is the same distance from each other, for example:
+</p>
+
+
+<div id="org1b45bcf" class="figure">
+<p><img src="../images/circle_triangle_vertices.png" alt="circle_triangle_vertices.png" />
+</p>
+</div>
+
+<p>
+Or maybe:
+</p>
+
+
+<div id="org37973b6" class="figure">
+<p><img src="../images/circle_quad_vertices.png" alt="circle_quad_vertices.png" />
+</p>
+</div>
+
+<p>
+Or even (our favorite):
+</p>
+
+
+<div id="orgfff0a81" class="figure">
+<p><img src="../images/circle_hexagon_vertices.png" alt="circle_hexagon_vertices.png" />
+</p>
+</div>
+
+<p>
+And close the loop! And you get these baddies:
+</p>
+
+<p>
+<img src="../images/circle_triangle.png" alt="circle_triangle.png" />
+<img src="../images/circle_square.png" alt="circle_square.png" />
+<img src="../images/circle_hexagon.png" alt="circle_hexagon.png" />
+</p>
+
+<p>
+That&rsquo;s right, it&rsquo;s a regular triangle, a square (tilted for no reason), and a regular hexagon, all inside a circle!
+</p>
+
+<p>
+Why do we care? Because this gives us a very elegant way to think about regular polygons! Namely this: <i>to form any regular n-gon, take n equally spaced points on a circle and close the loop!</i>
+</p>
+
+<p>
+An important property to notice here is this: just as all of the interior angles of any regular polygon are equal, so too are the <i>arc angles</i> of the arcs delineated on the circle by the vertices of the polygon.
+</p>
+
+<p>
+It&rsquo;s natural to think of a regular polygon as a way of slicing up a circle into equal pie slices, like this:
+</p>
+
+<p>
+<img src="../images/triangle_arc.png" alt="triangle_arc.png" />
+<img src="../images/square_arc.png" alt="square_arc.png" />
+<img src="../images/hexagon_arc.png" alt="hexagon_arc.png" />
+</p>
+
+<p>
+How do we know what the arc angle is for any given regular hexagon? Well, the arc angle of the entire circle is of course 360°. And we are simply dividing that up into equal sized parts. So, for any circle containing the vertices of a regular n-gon, the arc angle of the arcs delineated by those vertices is <code>360° / n</code>!
+</p>
+
+<p>
+Knowing this, another more precise way we can think about how to form any regular polygon is this:
+</p>
+<ol class="org-ol">
+<li>Take any circle.</li>
+<li>Find the point that lies at its center.</li>
+<li>Form a line segment between this center point and any point on the circle.
+<ul class="org-ul">
+<li>Note that the length of this line segment is the radius of the circle.</li>
+<li>Note the angle formed by this line segment with the horizontal axis.</li>
+</ul></li>
+<li>Form another line segment of the same length such that the angle form between them equals the arc length associated with the desired regular polygon.</li>
+<li>Repeat until all possible such line segments have been formed.</li>
+<li>Take the end points of each of these line segments that lie on the circle.</li>
+<li>Close the loop!</li>
+</ol>
+
+<p>
+Here&rsquo;s an example of each step in action. Let&rsquo;s make a pentagon!:
+</p>
+
+<p>
+Take any circle:
+</p>
+
+
+<div id="org8a6af83" class="figure">
+<p><img src="../images/any_circle.png" alt="any_circle.png" />
+</p>
+</div>
+
+<p>
+Find the point that lies at its center:
+</p>
+
+
+<div id="org130d0ea" class="figure">
+<p><img src="../images/circle_center.png" alt="circle_center.png" />
+</p>
+</div>
+
+<p>
+Form a line segment between this point and any point on the circle:
+</p>
+
+
+<div id="org3f37ba1" class="figure">
+<p><img src="../images/circle_line_segment.png" alt="circle_line_segment.png" />
+</p>
+</div>
+
+<p>
+The associated arc length for a pentagon is <code>360° / 5 = 72°</code>, so now we form another line segment such that the angle formed between them is 72°:
+</p>
+
+
+<div id="orgfa31951" class="figure">
+<p><img src="../images/circle_72.png" alt="circle_72.png" />
+</p>
+</div>
+
+<p>
+Repeat until we&rsquo;ve formed all possible line segments such that each subsequent line segment has an angle of 72° between them:
+</p>
+
+
+<div id="org49c9d7e" class="figure">
+<p><img src="../images/circle_pentagon_72.png" alt="circle_pentagon_72.png" />
+</p>
+</div>
+
+<p>
+Take just the end points of these line segments that lie on the circle and close the loop!:
+</p>
+
+
+<div id="org0b42128" class="figure">
+<p><img src="../images/circle_pentagon_closed.png" alt="circle_pentagon_closed.png" />
+</p>
+</div>
+
+<p>
+And there&rsquo;s a pentagon in blue!
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgeb23d61"></a>Radius and apothem of regular polygons<br />
+<div class="outline-text-5" id="text-orgeb23d61">
+<p>
+If we know the radius of the circle containing the regular polygon, then we know the distance between the center of the polygon to any one of its vertices. We know this, because all of the points on a circle share the same exact distance from its center. And all of the points of our polygon are taken from this circle, therefore they also share this common distance from <i>its</i> center!
+</p>
+
+<p>
+We care about this because it gives us a way to think about the spatial relationships of the tiles in our hexagonal tiling. (Which we&rsquo;ll get back to soon!)
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org9ee065e"></a><span class="todo TODO">TODO</span> apothem<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org510e136" class="outline-3">
+<h3 id="org510e136"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</h3>
+<div class="outline-text-3" id="text-org510e136">
+<p>
+A hexagon is a regular 6-sided polygon. That means it consists (gosh im tired of writing ill write more later LOL)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96adbbf" class="outline-2">
+<h2 id="org96adbbf"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-11-19 Thu 19:17</p>
+</div>
+</body>
+</html>
