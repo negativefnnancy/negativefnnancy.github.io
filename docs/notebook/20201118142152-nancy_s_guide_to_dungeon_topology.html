@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-19 Thu 15:02 -->
+<!-- 2020-11-20 Fri 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s Guide to Dungeon Topology</title>
@@ -273,6 +273,8 @@
 </ul>
 </li>
 <li><a href="#org6b9fe9f"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
+<li><a href="#orgafef71a"><span class="todo TODO">TODO</span> Analysis of game mechanics</a></li>
+<li><a href="#org079ba31"><span class="todo TODO">TODO</span> Dungeon generation</a></li>
 </ul>
 </div>
 </div>
@@ -398,7 +400,7 @@ Just to give you a preview of next topic, here&rsquo;s a simple <i>state space d
 </p>
 
 
-<div id="orgd01f230" class="figure">
+<div id="orge9437db" class="figure">
 <p><img src="../images/dungeon_a.png" alt="dungeon_a.png" />
 </p>
 </div>
@@ -479,7 +481,7 @@ This is clearly depicted in the state space diagram for this dungeon. Every conf
 </p>
 
 
-<div id="orga0a5b71" class="figure">
+<div id="orgb5b9d92" class="figure">
 <p><img src="../images/dungeon_c.png" alt="dungeon_c.png" />
 </p>
 </div>
@@ -604,7 +606,7 @@ Sometimes it&rsquo;s not a singular particular dungeon configuration you are int
 </p>
 
 
-<div id="org606128b" class="figure">
+<div id="orgc3578a7" class="figure">
 <p><img src="../images/dungeon_b.png" alt="dungeon_b.png" />
 </p>
 </div>
@@ -679,6 +681,14 @@ Suppose we want to depict the general physical layout of the dungeon, similar to
 <p>
 Notice that its possible for any point in the dungeon topology to be paired with multiple possible dungeon configurations. And notice that its possible for any point in the dungeon state space (i.e., every dungeon configuration) to be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
 </p>
+
+<p>
+There&rsquo;s another way to think about the topology of the dungeon. If we consider all of the pairs of topologically distinct location on the dungeon map with every possible configuration that the dungeon can be in when the payer is at that location, and if we consider the paths between these pairs such that each path represents either a physical movement of the player <i>or</i> an action (which has a side effect on the dungeon configuration), (or possible both simultaneously), then we end up with an <i>unconditional</i> and wholistic topological view of the dungeon. We will call this <b>dungeon space</b>.
+</p>
+
+<p>
+Dungeon space is useful because it allows us to represent wholistically how the player is able to progress through the dungeon both in terms of dungeon state and in terms of physical movement of the player.
+</p>
 </div>
 
 <div id="outline-container-org006aa73" class="outline-4">
@@ -690,10 +700,18 @@ Notice that its possible for any point in the dungeon topology to be paired with
 <div id="outline-container-org6b9fe9f" class="outline-2">
 <h2 id="org6b9fe9f"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
 </div>
+
+<div id="outline-container-orgafef71a" class="outline-2">
+<h2 id="orgafef71a"><span class="todo TODO">TODO</span> Analysis of game mechanics</h2>
+</div>
+
+<div id="outline-container-org079ba31" class="outline-2">
+<h2 id="org079ba31"><span class="todo TODO">TODO</span> Dungeon generation</h2>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-19 Thu 15:02</p>
+<p class="date">Created: 2020-11-20 Fri 19:32</p>
 </div>
 </body>
 </html>

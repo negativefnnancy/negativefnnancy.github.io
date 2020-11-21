@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-16 Mon 18:40 -->
+<!-- 2020-11-20 Fri 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s C Style Guide</title>
@@ -234,17 +234,18 @@
 <li><a href="#orge618d18">Flags</a></li>
 <li><a href="#org29bbdb5">Build system</a>
 <ul>
-<li>
-<ul>
 <li><a href="#orgbca7c89"><span class="todo TODO">TODO</span> how to structure projects!</a></li>
-</ul>
-</li>
+<li><a href="#orge9a6d42"><span class="todo TODO">TODO</span> use of pkg-build</a></li>
+<li><a href="#org1b7c8d7"><span class="todo TODO">TODO</span> talk about feelings about other build systems</a></li>
+<li><a href="#org4befe4a"><span class="todo TODO">TODO</span> cross builds</a></li>
+<li><a href="#orgd471d69"><span class="todo TODO">TODO</span> build system agnosticism?</a></li>
 </ul>
 </li>
 <li><a href="#org0fd77d0">Version control</a>
 <ul>
 <li><a href="#org85bde95"><span class="todo TODO">TODO</span> update ! the above is no longer true</a></li>
-<li><a href="#orga2b5efc"><span class="todo TODO">TODO</span> workflow setup n stuff</a></li>
+<li><a href="#org42f8435"><span class="todo TODO">TODO</span> workflow setup n project directory structure n stuff</a></li>
+<li><a href="#org51b3930"><span class="todo TODO">TODO</span> use .md instead of .org for readme</a></li>
 </ul>
 </li>
 <li><a href="#orgd9683a5">License</a></li>
@@ -304,7 +305,11 @@ I&rsquo;m not too picky about which compiler to use, but I generally use GCC bec
 <h2 id="orge618d18">Flags</h2>
 <div class="outline-text-2" id="text-orge618d18">
 <p>
-I always compile with <code>-Wall</code>, <code>-Werror</code>, and <code>-Wpedantic</code> because everything&rsquo;s gotta be perfect. :3
+For release builds, I always compile with <code>-Wall</code>, <code>-Werror</code>, and <code>-Wpedantic</code> because everything&rsquo;s gotta be perfect. :3
+</p>
+
+<p>
+For development, I&rsquo;ll leave off the <code>-Werror</code> for ease of incremental development.
 </p>
 </div>
 </div>
@@ -317,8 +322,20 @@ I currently like <a href="https://mesonbuild.com/">Meson</a>!
 </p>
 </div>
 
-<div id="outline-container-orgbca7c89" class="outline-4">
-<h4 id="orgbca7c89"><span class="todo TODO">TODO</span> how to structure projects!</h4>
+<div id="outline-container-orgbca7c89" class="outline-3">
+<h3 id="orgbca7c89"><span class="todo TODO">TODO</span> how to structure projects!</h3>
+</div>
+<div id="outline-container-orge9a6d42" class="outline-3">
+<h3 id="orge9a6d42"><span class="todo TODO">TODO</span> use of pkg-build</h3>
+</div>
+<div id="outline-container-org1b7c8d7" class="outline-3">
+<h3 id="org1b7c8d7"><span class="todo TODO">TODO</span> talk about feelings about other build systems</h3>
+</div>
+<div id="outline-container-org4befe4a" class="outline-3">
+<h3 id="org4befe4a"><span class="todo TODO">TODO</span> cross builds</h3>
+</div>
+<div id="outline-container-orgd471d69" class="outline-3">
+<h3 id="orgd471d69"><span class="todo TODO">TODO</span> build system agnosticism?</h3>
 </div>
 </div>
 
@@ -337,8 +354,11 @@ I currently like <a href="https://mesonbuild.com/">Meson</a>!
 <div id="outline-container-org85bde95" class="outline-3">
 <h3 id="org85bde95"><span class="todo TODO">TODO</span> update ! the above is no longer true</h3>
 </div>
-<div id="outline-container-orga2b5efc" class="outline-3">
-<h3 id="orga2b5efc"><span class="todo TODO">TODO</span> workflow setup n stuff</h3>
+<div id="outline-container-org42f8435" class="outline-3">
+<h3 id="org42f8435"><span class="todo TODO">TODO</span> workflow setup n project directory structure n stuff</h3>
+</div>
+<div id="outline-container-org51b3930" class="outline-3">
+<h3 id="org51b3930"><span class="todo TODO">TODO</span> use .md instead of .org for readme</h3>
 </div>
 </div>
 
@@ -842,7 +862,7 @@ Some examples:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-16 Mon 18:40</p>
+<p class="date">Created: 2020-11-20 Fri 19:32</p>
 </div>
 </body>
 </html>
