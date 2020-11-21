@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-20 Fri 19:32 -->
+<!-- 2020-11-21 Sat 01:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hexagonal Groups in Hexagonal Tilings</title>
@@ -229,38 +229,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfcd719f">What da heckie is a hexagonal group in a hexagonal tiling?</a></li>
-<li><a href="#org603998c">Hexagonal tiling coordinates</a>
+<li><a href="#org75ea8de">What da heckie is a hexagonal group in a hexagonal tiling?</a></li>
+<li><a href="#orgd62a4e9">Hexagonal tiling coordinates</a>
 <ul>
-<li><a href="#orgff22bcb"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</a></li>
+<li><a href="#orgfbb17c1"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</a></li>
 </ul>
 </li>
-<li><a href="#org90c616d">Tile space</a></li>
-<li><a href="#orgf0ee642">Mapping between tile space and Euclidean space</a>
+<li><a href="#org8306379">Tile space</a></li>
+<li><a href="#org4acb346">Mapping between tile space and Euclidean space</a>
 <ul>
-<li><a href="#orga8c0b60">What da heckie is a polygon?</a></li>
-<li><a href="#org86fe004">What da heckie is a regular polygon?</a>
+<li><a href="#orgb299ce1">What da heckie is a polygon?</a></li>
+<li><a href="#org5b71551">What da heckie is a regular polygon?</a>
 <ul>
-<li><a href="#org02e045c">What da heckie do regular polygons haf ta do wif circles?</a></li>
+<li><a href="#org9383307">What da heckie do regular polygons haf ta do wif circles?</a></li>
 </ul>
 </li>
-<li><a href="#org510e136"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</a></li>
+<li><a href="#org7f3db21"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</a></li>
 </ul>
 </li>
-<li><a href="#org96adbbf"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</a></li>
+<li><a href="#org7051eab"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfcd719f" class="outline-2">
-<h2 id="orgfcd719f">What da heckie is a hexagonal group in a hexagonal tiling?</h2>
-<div class="outline-text-2" id="text-orgfcd719f">
+<div id="outline-container-org75ea8de" class="outline-2">
+<h2 id="org75ea8de">What da heckie is a hexagonal group in a hexagonal tiling?</h2>
+<div class="outline-text-2" id="text-org75ea8de">
 <p>
 A hexagonal tiling is when you take hexagons and arrange them in a regular tiling pattern like this!! <code>0_0</code>
 </p>
 
 
-<div id="orga512792" class="figure">
+<div id="org35b8a4f" class="figure">
 <p><img src="../images/hexagonal_tiling.png" alt="hexagonal_tiling.png" />
 </p>
 </div>
@@ -270,7 +270,7 @@ A hexagonal group <i>in</i> a hexagonal tiling is a group of those hexagon tiles
 </p>
 
 
-<div id="orgb22f930" class="figure">
+<div id="org57a198c" class="figure">
 <p><img src="../images/hexagonal_group.png" alt="hexagonal_group.png" />
 </p>
 </div>
@@ -281,15 +281,15 @@ Notice how the orientation of the hexagonal shape formed by the group is in the 
 </div>
 </div>
 
-<div id="outline-container-org603998c" class="outline-2">
-<h2 id="org603998c">Hexagonal tiling coordinates</h2>
-<div class="outline-text-2" id="text-org603998c">
+<div id="outline-container-orgd62a4e9" class="outline-2">
+<h2 id="orgd62a4e9">Hexagonal tiling coordinates</h2>
+<div class="outline-text-2" id="text-orgd62a4e9">
 <p>
 There are lots of different ways to devise a coordinate system for assigning coordinates to the hexagonal tiles in a tiling, but this is way we are gonna use:
 </p>
 
 
-<div id="org08fb75a" class="figure">
+<div id="org1098829" class="figure">
 <p><img src="../images/hexagonal_coordinates.png" alt="hexagonal_coordinates.png" />
 </p>
 </div>
@@ -303,20 +303,20 @@ This isn&rsquo;t even my favorite or what I would consider the prettiest coordin
 </p>
 </div>
 
-<div id="outline-container-orgff22bcb" class="outline-3">
-<h3 id="orgff22bcb"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</h3>
+<div id="outline-container-orgfbb17c1" class="outline-3">
+<h3 id="orgfbb17c1"><span class="todo TODO">TODO</span> talk about other coordinate systems for hexagonal tilings</h3>
 </div>
 </div>
 
-<div id="outline-container-org90c616d" class="outline-2">
-<h2 id="org90c616d">Tile space</h2>
-<div class="outline-text-2" id="text-org90c616d">
+<div id="outline-container-org8306379" class="outline-2">
+<h2 id="org8306379">Tile space</h2>
+<div class="outline-text-2" id="text-org8306379">
 <p>
 Our tile space is the space of all points that correspond to the center of hexagon tile. Here I drew little red dots at the center of each tile to represent the points in this space:
 </p>
 
 
-<div id="orgb213bb1" class="figure">
+<div id="orgb205d1e" class="figure">
 <p><img src="../images/hexagonal_tiling_space.png" alt="hexagonal_tiling_space.png" />
 </p>
 </div>
@@ -326,7 +326,7 @@ I&rsquo;ll draw lines between the points representing the neighborhoods for each
 </p>
 
 
-<div id="orgc380d97" class="figure">
+<div id="org8e370a9" class="figure">
 <p><img src="../images/hexagonal_neighborhoods.png" alt="hexagonal_neighborhoods.png" />
 </p>
 </div>
@@ -344,7 +344,7 @@ Hexagonal &ldquo;fabric&rdquo;:
 </p>
 
 
-<div id="orgb3c58e6" class="figure">
+<div id="org52e0661" class="figure">
 <p><img src="../images/hexagonal_fabric.png" alt="hexagonal_fabric.png" />
 </p>
 </div>
@@ -354,7 +354,7 @@ Euclidean &ldquo;fabric&rdquo;:
 </p>
 
 
-<div id="org4a14a7e" class="figure">
+<div id="org89b76b2" class="figure">
 <p><img src="../images/euclidean_fabric.png" alt="euclidean_fabric.png" />
 </p>
 </div>
@@ -365,9 +365,9 @@ It&rsquo;s good to compare these because it makes it easy to see how to map betw
 </div>
 </div>
 
-<div id="outline-container-orgf0ee642" class="outline-2">
-<h2 id="orgf0ee642">Mapping between tile space and Euclidean space</h2>
-<div class="outline-text-2" id="text-orgf0ee642">
+<div id="outline-container-org4acb346" class="outline-2">
+<h2 id="org4acb346">Mapping between tile space and Euclidean space</h2>
+<div class="outline-text-2" id="text-org4acb346">
 <p>
 In order to figure out what actually constitutes a &ldquo;hexagonal group&rdquo; we have to think in the euclidean space that the hexagonal tiling is embedded in. The reason for this is because our concept of a hexagon is defined in terms of euclidean space. So we know that the &ldquo;hexagonal group&rdquo; that we form has to be &ldquo;hexagonal&rdquo; as seen from euclidean space!
 </p>
@@ -389,9 +389,9 @@ To see what a regular polygon is, let&rsquo;s consider what a polygon is!
 </p>
 </div>
 
-<div id="outline-container-orga8c0b60" class="outline-3">
-<h3 id="orga8c0b60">What da heckie is a polygon?</h3>
-<div class="outline-text-3" id="text-orga8c0b60">
+<div id="outline-container-orgb299ce1" class="outline-3">
+<h3 id="orgb299ce1">What da heckie is a polygon?</h3>
+<div class="outline-text-3" id="text-orgb299ce1">
 <p>
 For our purposes, polygons are closed shapes on a plan consisting of all the space in between a closed loop of finite line segments.
 </p>
@@ -401,7 +401,7 @@ Some random polygons:
 </p>
 
 
-<div id="org07bc34b" class="figure">
+<div id="org59cf3eb" class="figure">
 <p><img src="../images/polygons.png" alt="polygons.png" />
 </p>
 </div>
@@ -416,9 +416,9 @@ All of these are <i>irregular</i> polygons except for the square.
 </div>
 </div>
 
-<div id="outline-container-org86fe004" class="outline-3">
-<h3 id="org86fe004">What da heckie is a regular polygon?</h3>
-<div class="outline-text-3" id="text-org86fe004">
+<div id="outline-container-org5b71551" class="outline-3">
+<h3 id="org5b71551">What da heckie is a regular polygon?</h3>
+<div class="outline-text-3" id="text-org5b71551">
 <p>
 A <i>regular</i> polygon is a polygon all of whose angles are equivalent and all of whose sides are of the same length.
 </p>
@@ -428,7 +428,7 @@ Here are some (poorly drawn) regular polygons!!
 </p>
 
 
-<div id="org2d63b0d" class="figure">
+<div id="orge8b8853" class="figure">
 <p><img src="../images/regular_polygons.png" alt="regular_polygons.png" />
 </p>
 </div>
@@ -442,7 +442,7 @@ Here&rsquo;s an example of that for the regular triangle:
 </p>
 
 
-<div id="orgc375bc5" class="figure">
+<div id="org737c619" class="figure">
 <p><img src="../images/regular_triangle.png" alt="regular_triangle.png" />
 </p>
 </div>
@@ -460,7 +460,7 @@ Since this writing is about hexagons, here&rsquo;s that same depiction for a hex
 </p>
 
 
-<div id="org6a6a5f5" class="figure">
+<div id="orgee5efc4" class="figure">
 <p><img src="../images/regular_hexagon.png" alt="regular_hexagon.png" />
 </p>
 </div>
@@ -490,9 +490,9 @@ So as you can see, in the case of a hexagon, we get this: <code>180° * (6 - 2) 
 </p>
 </div>
 
-<div id="outline-container-org02e045c" class="outline-4">
-<h4 id="org02e045c">What da heckie do regular polygons haf ta do wif circles?</h4>
-<div class="outline-text-4" id="text-org02e045c">
+<div id="outline-container-org9383307" class="outline-4">
+<h4 id="org9383307">What da heckie do regular polygons haf ta do wif circles?</h4>
+<div class="outline-text-4" id="text-org9383307">
 <p>
 Did you <i>know</i>!? that the vertices of any regular polygon is contained within a circle?! I know, utterly unimaginable, right? <code>0_0</code>
 </p>
@@ -510,7 +510,7 @@ Take a circle:
 </p>
 
 
-<div id="org9196bc7" class="figure">
+<div id="orgbc436ea" class="figure">
 <p><img src="../images/circle.png" alt="circle.png" />
 </p>
 </div>
@@ -520,7 +520,7 @@ And then!! take set of points from the circle such that every point is the same 
 </p>
 
 
-<div id="org3f602c2" class="figure">
+<div id="org2792c3a" class="figure">
 <p><img src="../images/circle_triangle_vertices.png" alt="circle_triangle_vertices.png" />
 </p>
 </div>
@@ -530,7 +530,7 @@ Or maybe:
 </p>
 
 
-<div id="orgfaa7d0b" class="figure">
+<div id="orga8e1e63" class="figure">
 <p><img src="../images/circle_quad_vertices.png" alt="circle_quad_vertices.png" />
 </p>
 </div>
@@ -540,7 +540,7 @@ Or even (our favorite):
 </p>
 
 
-<div id="orgce4c279" class="figure">
+<div id="orgc209b82" class="figure">
 <p><img src="../images/circle_hexagon_vertices.png" alt="circle_hexagon_vertices.png" />
 </p>
 </div>
@@ -607,7 +607,7 @@ Take any circle:
 </p>
 
 
-<div id="org024156f" class="figure">
+<div id="org9def443" class="figure">
 <p><img src="../images/any_circle.png" alt="any_circle.png" />
 </p>
 </div>
@@ -617,7 +617,7 @@ Find the point that lies at its center:
 </p>
 
 
-<div id="org3cfc9a2" class="figure">
+<div id="org955e351" class="figure">
 <p><img src="../images/circle_center.png" alt="circle_center.png" />
 </p>
 </div>
@@ -627,7 +627,7 @@ Form a line segment between this point and any point on the circle:
 </p>
 
 
-<div id="orgc85641c" class="figure">
+<div id="org8716074" class="figure">
 <p><img src="../images/circle_line_segment.png" alt="circle_line_segment.png" />
 </p>
 </div>
@@ -637,7 +637,7 @@ The associated arc length for a pentagon is <code>360° / 5 = 72°</code>, so no
 </p>
 
 
-<div id="org24d60d7" class="figure">
+<div id="org197e86b" class="figure">
 <p><img src="../images/circle_72.png" alt="circle_72.png" />
 </p>
 </div>
@@ -647,7 +647,7 @@ Repeat until we&rsquo;ve formed all possible line segments such that each subseq
 </p>
 
 
-<div id="org76ba826" class="figure">
+<div id="org7c16370" class="figure">
 <p><img src="../images/circle_pentagon_72.png" alt="circle_pentagon_72.png" />
 </p>
 </div>
@@ -657,7 +657,7 @@ Take just the end points of these line segments that lie on the circle and close
 </p>
 
 
-<div id="orgf265bbd" class="figure">
+<div id="org6bc97b0" class="figure">
 <p><img src="../images/circle_pentagon_closed.png" alt="circle_pentagon_closed.png" />
 </p>
 </div>
@@ -668,8 +668,8 @@ And there&rsquo;s a pentagon in blue!
 </div>
 
 <ul class="org-ul">
-<li><a id="org65d98fe"></a>Radius of a regular polygon<br />
-<div class="outline-text-5" id="text-org65d98fe">
+<li><a id="org29182c7"></a>Radius of a regular polygon<br />
+<div class="outline-text-5" id="text-org29182c7">
 <p>
 If we know the radius of the circle containing the regular polygon, then we know the distance between the center of the polygon to any one of its vertices. We know this, because all of the points on a circle share the same exact distance from its center. And all of the points of our polygon are taken from this circle, therefore they also share this common distance from <i>its</i> center!
 </p>
@@ -680,8 +680,8 @@ We care about this because it gives us a way to think about the spatial relation
 </div>
 </li>
 
-<li><a id="org0c201f7"></a><span class="todo TODO">TODO</span> Apothem of a regular polygon<br />
-<div class="outline-text-5" id="text-org0c201f7">
+<li><a id="org23356dc"></a><span class="todo TODO">TODO</span> Apothem of a regular polygon<br />
+<div class="outline-text-5" id="text-org23356dc">
 <p>
 Similarly, we can find the <i>apothem</i> of a regular polygon.
 </p>
@@ -695,9 +695,9 @@ The apothem [todo&#x2026;]
 </div>
 </div>
 
-<div id="outline-container-org510e136" class="outline-3">
-<h3 id="org510e136"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</h3>
-<div class="outline-text-3" id="text-org510e136">
+<div id="outline-container-org7f3db21" class="outline-3">
+<h3 id="org7f3db21"><span class="todo TODO">TODO</span> So what da heckie is a hexagon?</h3>
+<div class="outline-text-3" id="text-org7f3db21">
 <p>
 A hexagon is a regular 6-sided polygon. That means it consists (gosh im tired of writing ill write more later LOL)
 </p>
@@ -705,13 +705,13 @@ A hexagon is a regular 6-sided polygon. That means it consists (gosh im tired of
 </div>
 </div>
 
-<div id="outline-container-org96adbbf" class="outline-2">
-<h2 id="org96adbbf"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</h2>
+<div id="outline-container-org7051eab" class="outline-2">
+<h2 id="org7051eab"><span class="todo TODO">TODO</span> Circular groups in hexagonal tilings</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-20 Fri 19:32</p>
+<p class="date">Created: 2020-11-21 Sat 01:35</p>
 </div>
 </body>
 </html>
