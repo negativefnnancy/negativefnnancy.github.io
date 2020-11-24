@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mon 23:52 -->
+<!-- 2020-11-24 Tue 13:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s Guide to Dungeon Topology</title>
@@ -229,52 +229,52 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6c2b5ec">What da heckie is <i>dungeon topology</i>?</a></li>
-<li><a href="#org2e1e8dd">What da heckie is a <i>dungeon</i>?</a></li>
-<li><a href="#org76ccf04">Dungeon states</a>
+<li><a href="#org09a0da6">What da heckie is <i>dungeon topology</i>?</a></li>
+<li><a href="#org48065d7">What da heckie is a <i>dungeon</i>?</a></li>
+<li><a href="#org68a3fa9">Dungeon states</a>
 <ul>
-<li><a href="#org7c72841">What da heckie is <i>state</i>?</a></li>
-<li><a href="#org410eb52">What da heckie a <i>state variable</i>?</a></li>
-<li><a href="#orgdd8c4e8">What da heckie is a <i>side effect</i>?</a></li>
-<li><a href="#org9b7452e">What da heckie is a <i>configuration</i>?</a></li>
-<li><a href="#org200f0d5">What da heckie is a <i>state space</i>?</a></li>
-<li><a href="#orgd111b10">What da heckie is a <i>state space diagram</i>?</a></li>
-<li><a href="#org523d371">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</a>
+<li><a href="#org39da029">What da heckie is <i>state</i>?</a></li>
+<li><a href="#orgf755eb4">What da heckie a <i>state variable</i>?</a></li>
+<li><a href="#org1d375b2">What da heckie is a <i>side effect</i>?</a></li>
+<li><a href="#orgf06e89e">What da heckie is a <i>configuration</i>?</a></li>
+<li><a href="#org899018f">What da heckie is a <i>state space</i>?</a></li>
+<li><a href="#orgfb52df8">What da heckie is a <i>state space diagram</i>?</a></li>
+<li><a href="#org2ff557d">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</a>
 <ul>
-<li><a href="#orga993173">How many possible dungeon configurations are there?</a></li>
-<li><a href="#org7abefbe">State space diagrams show every possible configuration</a></li>
-<li><a href="#org6488f2e"><span class="todo TODO">TODO</span> State space constraints</a></li>
+<li><a href="#orgc299ac4">How many possible dungeon configurations are there?</a></li>
+<li><a href="#org05509fe">State space diagrams show every possible configuration</a></li>
+<li><a href="#org13470dd"><span class="todo TODO">TODO</span> State space constraints</a></li>
 </ul>
 </li>
-<li><a href="#orga096724">State space semantics and notation</a>
+<li><a href="#orgd9ac7b9">State space semantics and notation</a>
 <ul>
-<li><a href="#org2db0e96"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
-<li><a href="#orge1810ab">States</a></li>
-<li><a href="#orgaf6752e"><span class="todo TODO">TODO</span> Actions</a></li>
-<li><a href="#orgac63d0c"><span class="todo TODO">TODO</span> Action sequences</a></li>
+<li><a href="#org2ce2b6f"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
+<li><a href="#orgba16e6d">States</a></li>
+<li><a href="#org6aae7e8"><span class="todo TODO">TODO</span> Actions</a></li>
+<li><a href="#org7c16728"><span class="todo TODO">TODO</span> Action sequences</a></li>
 </ul>
 </li>
-<li><a href="#orge89d33e">What da heckie are <i>configuration classes</i>?</a></li>
+<li><a href="#org8d583f9">What da heckie are <i>configuration classes</i>?</a></li>
 </ul>
 </li>
-<li><a href="#orgc1e731d">Dungeon topology</a>
+<li><a href="#org5c6790c">Dungeon topology</a>
 <ul>
-<li><a href="#org5be45bb">The dungeon map</a>
+<li><a href="#org3e3f018">The dungeon map</a>
 <ul>
-<li><a href="#org6097c79"><span class="todo TODO">TODO</span> Conditional topology</a></li>
-<li><a href="#org0a5e019"><span class="todo TODO">TODO</span> Topological templates</a></li>
+<li><a href="#orgabd1281"><span class="todo TODO">TODO</span> Conditional topology</a></li>
+<li><a href="#orgf7e0a00"><span class="todo TODO">TODO</span> Topological templates</a></li>
 </ul>
 </li>
-<li><a href="#org4c153e4">Dungeon space</a>
+<li><a href="#org9182b70">Dungeon space</a>
 <ul>
-<li><a href="#orga811639"><span class="todo TODO">TODO</span> conditional topology × state space</a></li>
+<li><a href="#org0163e5a"><span class="todo TODO">TODO</span> conditional topology × state space</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org304f0b7"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
-<li><a href="#org555f78c"><span class="todo TODO">TODO</span> Analysis of game mechanics</a></li>
-<li><a href="#org9822f51"><span class="todo TODO">TODO</span> Dungeon generation</a></li>
+<li><a href="#org4665258"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
+<li><a href="#orgd389afd"><span class="todo TODO">TODO</span> Analysis of game mechanics</a></li>
+<li><a href="#orgea266ca"><span class="todo TODO">TODO</span> Dungeon generation</a></li>
 </ul>
 </div>
 </div>
@@ -286,9 +286,9 @@ an assimilation of <a href="20201118132041-dungeon_topology_notes.html">Dungeon 
 <i>big wip!</i>
 </p>
 
-<div id="outline-container-org6c2b5ec" class="outline-2">
-<h2 id="org6c2b5ec">What da heckie is <i>dungeon topology</i>?</h2>
-<div class="outline-text-2" id="text-org6c2b5ec">
+<div id="outline-container-org09a0da6" class="outline-2">
+<h2 id="org09a0da6">What da heckie is <i>dungeon topology</i>?</h2>
+<div class="outline-text-2" id="text-org09a0da6">
 <p>
 It&rsquo;s a way of analysing Zelda-style <b>dungeons</b>! :0
 </p>
@@ -299,9 +299,9 @@ It&rsquo;s a way of analysing Zelda-style <b>dungeons</b>! :0
 </div>
 </div>
 
-<div id="outline-container-org2e1e8dd" class="outline-2">
-<h2 id="org2e1e8dd">What da heckie is a <i>dungeon</i>?</h2>
-<div class="outline-text-2" id="text-org2e1e8dd">
+<div id="outline-container-org48065d7" class="outline-2">
+<h2 id="org48065d7">What da heckie is a <i>dungeon</i>?</h2>
+<div class="outline-text-2" id="text-org48065d7">
 <p>
 I&rsquo;m not sure! XD I think it&rsquo;s where you throw prisoners to rot or something. Just kidding! It&rsquo;s <i>actually</i> like the dungeons in Zelda! Where there are enemies and puzzles and you have to navigate through all the dungeon puzzles to the boss! (Or something like that! <code>0_0</code>)
 </p>
@@ -321,13 +321,13 @@ We&rsquo;ll talk about all three of these things!
 </div>
 </div>
 
-<div id="outline-container-org76ccf04" class="outline-2">
-<h2 id="org76ccf04">Dungeon states</h2>
-<div class="outline-text-2" id="text-org76ccf04">
+<div id="outline-container-org68a3fa9" class="outline-2">
+<h2 id="org68a3fa9">Dungeon states</h2>
+<div class="outline-text-2" id="text-org68a3fa9">
 </div>
-<div id="outline-container-org7c72841" class="outline-3">
-<h3 id="org7c72841">What da heckie is <i>state</i>?</h3>
-<div class="outline-text-3" id="text-org7c72841">
+<div id="outline-container-org39da029" class="outline-3">
+<h3 id="org39da029">What da heckie is <i>state</i>?</h3>
+<div class="outline-text-3" id="text-org39da029">
 <p>
 The first thing to note about a dungeon is that it has <b>state</b>. That means at any given time the configuration of the dungeon might be one thing or it might be another.
 </p>
@@ -346,9 +346,9 @@ All of these particularities of the configuration of the dungeon at any point in
 </div>
 </div>
 
-<div id="outline-container-org410eb52" class="outline-3">
-<h3 id="org410eb52">What da heckie a <i>state variable</i>?</h3>
-<div class="outline-text-3" id="text-org410eb52">
+<div id="outline-container-orgf755eb4" class="outline-3">
+<h3 id="orgf755eb4">What da heckie a <i>state variable</i>?</h3>
+<div class="outline-text-3" id="text-orgf755eb4">
 <p>
 The state is controlled by a collection of variables called <b>state variables</b>. These are variables whose value can change over the course of progressing through the dungeon. The values of these variables determine or represent certain aspects of the current configuration of the dungeon.
 </p>
@@ -363,9 +363,9 @@ A value of <code>true</code> or <code>false</code> is called a <i>boolean value<
 </div>
 </div>
 
-<div id="outline-container-orgdd8c4e8" class="outline-3">
-<h3 id="orgdd8c4e8">What da heckie is a <i>side effect</i>?</h3>
-<div class="outline-text-3" id="text-orgdd8c4e8">
+<div id="outline-container-org1d375b2" class="outline-3">
+<h3 id="org1d375b2">What da heckie is a <i>side effect</i>?</h3>
+<div class="outline-text-3" id="text-org1d375b2">
 <p>
 State variables generally change in response to meaningful <b>actions</b> of the player! An action that causes a change in a state variable is said to have a <b>side effect</b>. A <i>side effect</i> is a change in dungeon state that occurs as an external consequence to some <i>action</i>.
 </p>
@@ -380,9 +380,9 @@ More specifically, the action of pressing the switch has the side effect of <i>c
 </div>
 </div>
 
-<div id="outline-container-org9b7452e" class="outline-3">
-<h3 id="org9b7452e">What da heckie is a <i>configuration</i>?</h3>
-<div class="outline-text-3" id="text-org9b7452e">
+<div id="outline-container-orgf06e89e" class="outline-3">
+<h3 id="orgf06e89e">What da heckie is a <i>configuration</i>?</h3>
+<div class="outline-text-3" id="text-orgf06e89e">
 <p>
 At any given time, the dungeon&rsquo;s state variables might have any number of possible combinations of values. The current combination of values makes up the current <b>configuration</b> of the dungeon.
 </p>
@@ -401,9 +401,9 @@ For example, suppose the switch to activate the water wheel is behind the locked
 </div>
 </div>
 
-<div id="outline-container-org200f0d5" class="outline-3">
-<h3 id="org200f0d5">What da heckie is a <i>state space</i>?</h3>
-<div class="outline-text-3" id="text-org200f0d5">
+<div id="outline-container-org899018f" class="outline-3">
+<h3 id="org899018f">What da heckie is a <i>state space</i>?</h3>
+<div class="outline-text-3" id="text-org899018f">
 <p>
 The <b>state space</b> of the dungeon is like a map of all possible configurations. All the <i>points</i> in this space are unique configurations of the dungeon. Each point also has any number of <i>paths</i> from it to another point. These paths are the particular actions available to the player when the dungeon is in that configuration.
 </p>
@@ -413,7 +413,7 @@ Just to give you a preview of next topic, here&rsquo;s a simple <i>state space d
 </p>
 
 
-<div id="orga1a553b" class="figure">
+<div id="org8e9ce74" class="figure">
 <p><img src="../images/dungeon_a.png" alt="dungeon_a.png" />
 </p>
 </div>
@@ -432,18 +432,18 @@ What the state space diagram tells you at a glance is how many possible configur
 </div>
 </div>
 
-<div id="outline-container-orgd111b10" class="outline-3">
-<h3 id="orgd111b10">What da heckie is a <i>state space diagram</i>?</h3>
-<div class="outline-text-3" id="text-orgd111b10">
+<div id="outline-container-orgfb52df8" class="outline-3">
+<h3 id="orgfb52df8">What da heckie is a <i>state space diagram</i>?</h3>
+<div class="outline-text-3" id="text-orgfb52df8">
 <p>
 As introduced above, a <b>state space diagram</b> is a visual depiction of the state space of a dungeon, including labeled circles representing all possible configurations as well as arrows between the circles representing the possible actions that get you from one configuration to another.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org523d371" class="outline-3">
-<h3 id="org523d371">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</h3>
-<div class="outline-text-3" id="text-org523d371">
+<div id="outline-container-org2ff557d" class="outline-3">
+<h3 id="org2ff557d">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</h3>
+<div class="outline-text-3" id="text-org2ff557d">
 <p>
 Recall that a <i>dungeon configuration</i> is determined by a particular unique combination of the dungeon&rsquo;s state variables. In other words, a particular set of values per state variable denotes a particular dungeon configuration.
 </p>
@@ -457,9 +457,9 @@ Quick detour!
 </p>
 </div>
 
-<div id="outline-container-orga993173" class="outline-4">
-<h4 id="orga993173">How many possible dungeon configurations are there?</h4>
-<div class="outline-text-4" id="text-orga993173">
+<div id="outline-container-orgc299ac4" class="outline-4">
+<h4 id="orgc299ac4">How many possible dungeon configurations are there?</h4>
+<div class="outline-text-4" id="text-orgc299ac4">
 <p>
 Notice that a boolean variable has <i>two</i> possible values: namely, <code>true</code> and <code>false</code>. Notice that a pair (group of two) of boolean variables has <i>four</i> possible <i>combinations</i> of values: namely, (<code>true</code> and <code>true</code>), (<code>true</code> and <code>false</code>), (<code>false</code> and <code>true</code>), and (<code>false</code> and <code>false</code>). That&rsquo;s because the first one can be true and the second one can be true. Or the first one can be true and the second one can be false. Or the first one can be false and the second one can be true. Or they can both be false.
 </p>
@@ -478,9 +478,9 @@ All of this is to say that the maximum number of possible dungeon configurations
 </div>
 </div>
 
-<div id="outline-container-org7abefbe" class="outline-4">
-<h4 id="org7abefbe">State space diagrams show every possible configuration</h4>
-<div class="outline-text-4" id="text-org7abefbe">
+<div id="outline-container-org05509fe" class="outline-4">
+<h4 id="org05509fe">State space diagrams show every possible configuration</h4>
+<div class="outline-text-4" id="text-org05509fe">
 <p>
 Now we can see the more clearly note the correlation between state space diagrams and state space variables.
 </p>
@@ -494,7 +494,7 @@ This is clearly depicted in the state space diagram for this dungeon. Every conf
 </p>
 
 
-<div id="org1fdea0d" class="figure">
+<div id="org78dfa17" class="figure">
 <p><img src="../images/dungeon_c.png" alt="dungeon_c.png" />
 </p>
 </div>
@@ -509,33 +509,33 @@ Notice that I didn&rsquo;t draw any arrows on this diagram yet! That&rsquo;s bec
 </div>
 </div>
 
-<div id="outline-container-org6488f2e" class="outline-4">
-<h4 id="org6488f2e"><span class="todo TODO">TODO</span> State space constraints</h4>
-<div class="outline-text-4" id="text-org6488f2e">
+<div id="outline-container-org13470dd" class="outline-4">
+<h4 id="org13470dd"><span class="todo TODO">TODO</span> State space constraints</h4>
+<div class="outline-text-4" id="text-org13470dd">
 </div>
 <ul class="org-ul">
-<li><a id="org0790800"></a><span class="todo TODO">TODO</span> Explicit constraints<br /></li>
+<li><a id="org6e0f443"></a><span class="todo TODO">TODO</span> Explicit constraints<br /></li>
 
-<li><a id="org130ea28"></a><span class="todo TODO">TODO</span> Topologically implied constraints<br /></li>
+<li><a id="org8da4e14"></a><span class="todo TODO">TODO</span> Topologically implied constraints<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga096724" class="outline-3">
-<h3 id="orga096724">State space semantics and notation</h3>
-<div class="outline-text-3" id="text-orga096724">
+<div id="outline-container-orgd9ac7b9" class="outline-3">
+<h3 id="orgd9ac7b9">State space semantics and notation</h3>
+<div class="outline-text-3" id="text-orgd9ac7b9">
 </div>
-<div id="outline-container-org2db0e96" class="outline-4">
-<h4 id="org2db0e96"><span class="todo TODO">TODO</span> State space as a formal language</h4>
+<div id="outline-container-org2ce2b6f" class="outline-4">
+<h4 id="org2ce2b6f"><span class="todo TODO">TODO</span> State space as a formal language</h4>
 </div>
 
-<div id="outline-container-orge1810ab" class="outline-4">
-<h4 id="orge1810ab">States</h4>
-<div class="outline-text-4" id="text-orge1810ab">
+<div id="outline-container-orgba16e6d" class="outline-4">
+<h4 id="orgba16e6d">States</h4>
+<div class="outline-text-4" id="text-orgba16e6d">
 </div>
 <ul class="org-ul">
-<li><a id="org5c678ca"></a>Starting states<br />
-<div class="outline-text-5" id="text-org5c678ca">
+<li><a id="org679fd52"></a>Starting states<br />
+<div class="outline-text-5" id="text-org679fd52">
 <p>
 A <b>starting state</b> is a dungeon configuration the dungeon can have when the player firsts begins the dungeon.
 </p>
@@ -545,7 +545,7 @@ We can visually depict a starting state in a state space diagram by writing an a
 </p>
 
 
-<div id="orge394319" class="figure">
+<div id="orgdb60b19" class="figure">
 <p><img src="../images/dungeon_d.png" alt="dungeon_d.png" />
 </p>
 </div>
@@ -564,8 +564,8 @@ Also note that it&rsquo;s possible for a dungeon to have multiple starting state
 </div>
 </li>
 
-<li><a id="org0341e25"></a>Solution states<br />
-<div class="outline-text-5" id="text-org0341e25">
+<li><a id="org71590f6"></a>Solution states<br />
+<div class="outline-text-5" id="text-org71590f6">
 <p>
 A <b>solution state</b> is any possible dungeon configuration such that the the dungeon has been completed.
 </p>
@@ -579,7 +579,7 @@ We can visually depict a solution state in a state space diagram by drawing a do
 </p>
 
 
-<div id="org200d870" class="figure">
+<div id="orgfd98130" class="figure">
 <p><img src="../images/dungeon_e.png" alt="dungeon_e.png" />
 </p>
 </div>
@@ -598,8 +598,8 @@ Note also that it would technically be possible for a configuration to be both a
 </div>
 </li>
 
-<li><a id="orgaccc9eb"></a>Non-solution states<br />
-<div class="outline-text-5" id="text-orgaccc9eb">
+<li><a id="orgd99156c"></a>Non-solution states<br />
+<div class="outline-text-5" id="text-orgd99156c">
 <p>
 A non-solution state is any possible dungeon configuration such that the dungeon has <i>not</i> been completed. Simply put, every configuration that isn&rsquo;t a solution state, is a non-solution state.
 </p>
@@ -609,7 +609,7 @@ We visually depict a non-solution state by drawing a single circle, in contrast 
 </p>
 
 
-<div id="org2818bcb" class="figure">
+<div id="org908e4b7" class="figure">
 <p><img src="../images/dungeon_f.png" alt="dungeon_f.png" />
 </p>
 </div>
@@ -624,8 +624,8 @@ To be precise, it&rsquo;s <i>impossible</i> for a configuration to be simultaneo
 </div>
 </li>
 
-<li><a id="orgc804b90"></a>Non-states<br />
-<div class="outline-text-5" id="text-orgc804b90">
+<li><a id="org4934850"></a>Non-states<br />
+<div class="outline-text-5" id="text-org4934850">
 <p>
 A non-state is any impossible dungeon configuration. That is, some combination of values for state variables that can never occur in the dungeon. The existence of non-states is the reason why the number of configurations in the state space diagram is usually less than the maximum number of possible configurations.
 </p>
@@ -647,7 +647,7 @@ A non-state is easily seen as a configuration X such that there is <i>no chain o
 </p>
 
 
-<div id="org34fe27e" class="figure">
+<div id="org009074d" class="figure">
 <p><img src="../images/dungeon_g.png" alt="dungeon_g.png" />
 </p>
 </div>
@@ -682,8 +682,8 @@ Notice also that F is a non-state. It&rsquo;s easy to see why. But notice also t
 </div>
 
 <ul class="org-ul">
-<li><a id="org1cfcb8d"></a>Configuration v.s. state<br />
-<div class="outline-text-6" id="text-org1cfcb8d">
+<li><a id="org5ffc513"></a>Configuration v.s. state<br />
+<div class="outline-text-6" id="text-org5ffc513">
 <p>
 Until now I have been trying to carefully avoid mixing up the words for <i>configuration</i> and <i>state</i>, but I haven&rsquo;t explicitly stated why. XD The reason is that both states and non-states are configurations. There exists a configuration for every combination of values for state variables. Some of those combinations are obtainable and thus correspond to <i>states</i>, and the rest are unobtainable and thus correspond to <i>non-states</i>.
 </p>
@@ -694,9 +694,9 @@ Until now I have been trying to carefully avoid mixing up the words for <i>confi
 </ul>
 </div>
 
-<div id="outline-container-orgaf6752e" class="outline-4">
-<h4 id="orgaf6752e"><span class="todo TODO">TODO</span> Actions</h4>
-<div class="outline-text-4" id="text-orgaf6752e">
+<div id="outline-container-org6aae7e8" class="outline-4">
+<h4 id="org6aae7e8"><span class="todo TODO">TODO</span> Actions</h4>
+<div class="outline-text-4" id="text-org6aae7e8">
 <p>
 An action is anything that the player can do in one configuration that leads to a different configuration.
 </p>
@@ -710,7 +710,7 @@ Here is an example of two configurations A and B, with the action from A to B la
 </p>
 
 
-<div id="org9f6f0ac" class="figure">
+<div id="orgd12226b" class="figure">
 <p><img src="../images/dungeon_h.png" alt="dungeon_h.png" />
 </p>
 </div>
@@ -724,7 +724,7 @@ Observe this diagram:
 </p>
 
 
-<div id="orgd4abd24" class="figure">
+<div id="org4fe93fd" class="figure">
 <p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
 </p>
 </div>
@@ -747,8 +747,8 @@ Then we can say that the action <code>a</code> is the action of <i>activating th
 </div>
 
 <ul class="org-ul">
-<li><a id="orgb38c07f"></a>Action alphabet<br />
-<div class="outline-text-5" id="text-orgb38c07f">
+<li><a id="org4c6dedf"></a>Action alphabet<br />
+<div class="outline-text-5" id="text-org4c6dedf">
 <p>
 The <b>action alphabet</b> for a dungeon is the set of all letters denoting all possible actions that exist in the dungeon.
 </p>
@@ -765,9 +765,9 @@ The action alphabet gives us at a glance an idea of all the actions that exist i
 </ul>
 </div>
 
-<div id="outline-container-orgac63d0c" class="outline-4">
-<h4 id="orgac63d0c"><span class="todo TODO">TODO</span> Action sequences</h4>
-<div class="outline-text-4" id="text-orgac63d0c">
+<div id="outline-container-org7c16728" class="outline-4">
+<h4 id="org7c16728"><span class="todo TODO">TODO</span> Action sequences</h4>
+<div class="outline-text-4" id="text-org7c16728">
 <p>
 An <b>action sequence</b> is a sequence of actions the player can take that leads them from aa starting state to any valid dungeon configuration. We can denote an action sequence as a string of letters denoting actions.
 </p>
@@ -789,7 +789,7 @@ Let&rsquo;s look at the above example again:
 </p>
 
 
-<div id="org3ea1c40" class="figure">
+<div id="orgd2502d4" class="figure">
 <p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
 </p>
 </div>
@@ -834,8 +834,8 @@ This is true of our discovery of two action sequences above: all two action sequ
 </div>
 
 <ul class="org-ul">
-<li><a id="orgc92592e"></a>How many possible action sequences are there from some configuration?<br />
-<div class="outline-text-5" id="text-orgc92592e">
+<li><a id="org6ce9b9a"></a>How many possible action sequences are there from some configuration?<br />
+<div class="outline-text-5" id="text-org6ce9b9a">
 <p>
 Sometimes there are a <i>finite</i> number of possible action sequences, and sometimes there are an <i>infinite</i> number of possible action sequences from some configuration. (From most configurations in most dungeons there will be an infinite number of possible action sequences.)
 </p>
@@ -849,7 +849,7 @@ Here is an example of <i>finite</i> possible action sequences from any configura
 </p>
 
 
-<div id="orgdb633e0" class="figure">
+<div id="org952e7e7" class="figure">
 <p><img src="../images/dungeon_j.png" alt="dungeon_j.png" />
 </p>
 </div>
@@ -887,7 +887,7 @@ Here is an example of <i>infinite</i> possible action sequences from any configu
 </p>
 
 
-<div id="orgf293507" class="figure">
+<div id="org1f6f23d" class="figure">
 <p><img src="../images/dungeon_k.png" alt="dungeon_k.png" />
 </p>
 </div>
@@ -906,8 +906,8 @@ In this example, this process can be repeated forever. Most important to note, i
 </div>
 
 <ul class="org-ul">
-<li><a id="org2c95eac"></a>What da heckie is a <i>loop</i>?<br />
-<div class="outline-text-6" id="text-org2c95eac">
+<li><a id="org431b025"></a>What da heckie is a <i>loop</i>?<br />
+<div class="outline-text-6" id="text-org431b025">
 <p>
 First, an <i>action subsequence</i> is a part of an action sequence. For example, in the above example, consider the action sequence from A: &ldquo;adbcdad&rdquo;. In this action sequence, &ldquo;adb&rdquo;, &ldquo;bcd&rdquo;, &ldquo;b&rdquo;, &ldquo;dbcdad&rdquo;, and even &ldquo;&rdquo; are all action subsequences, because they can be found inside of &ldquo;adbcdad&rdquo;. However, &ldquo;cdb&rdquo;, is not an action subsequence because it cannot be found inside &ldquo;adbcdad&rdquo;.
 </p>
@@ -945,7 +945,7 @@ Our first definition requires that all configurations in the loop can be gotten 
 </p>
 
 
-<div id="org22a8098" class="figure">
+<div id="org99900f8" class="figure">
 <p><img src="../images/dungeon_u.png" alt="dungeon_u.png" />
 </p>
 </div>
@@ -977,12 +977,12 @@ With our second definition it&rsquo;s more straightforward. The definition says 
 </div>
 </li>
 
-<li><a id="orgb9504cb"></a><span class="todo TODO">TODO</span> talk about composition of action subsequences and cases of commutativity and non commutativity<br /></li>
+<li><a id="orgc5d40f6"></a><span class="todo TODO">TODO</span> talk about composition of action subsequences and cases of commutativity and non commutativity<br /></li>
 </ul>
 </li>
 
-<li><a id="org2426612"></a><span class="todo TODO">TODO</span> Non-sequences<br />
-<div class="outline-text-5" id="text-org2426612">
+<li><a id="orgd99be32"></a><span class="todo TODO">TODO</span> Non-sequences<br />
+<div class="outline-text-5" id="text-orgd99be32">
 <p>
 Not all possible strings of letters denote valid action sequences. A non-sequence is any sequence of actions that can never occur starting from a starting state.
 </p>
@@ -992,7 +992,7 @@ Returing once again to the above example:
 </p>
 
 
-<div id="orgc43ea33" class="figure">
+<div id="org5e657df" class="figure">
 <p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
 </p>
 </div>
@@ -1011,22 +1011,22 @@ Notice that because the empty sequence is always a valid action sequence, that, 
 </div>
 
 <ul class="org-ul">
-<li><a id="org51cdfcb"></a><span class="todo TODO">TODO</span> think about this more; what would it mean for &ldquo;no action&rdquo; not to be a possibility?<br /></li>
+<li><a id="org339ea99"></a><span class="todo TODO">TODO</span> think about this more; what would it mean for &ldquo;no action&rdquo; not to be a possibility?<br /></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge89d33e" class="outline-3">
-<h3 id="orge89d33e">What da heckie are <i>configuration classes</i>?</h3>
-<div class="outline-text-3" id="text-orge89d33e">
+<div id="outline-container-org8d583f9" class="outline-3">
+<h3 id="org8d583f9">What da heckie are <i>configuration classes</i>?</h3>
+<div class="outline-text-3" id="text-org8d583f9">
 <p>
 Sometimes it&rsquo;s not a singular particular dungeon configuration you are interested in getting to, but a <i>class</i> of dungeon configurations, i.e., a <b>configuration class</b>. For example, suppose you want to unlock the big scary door. Suppose also that there is a switch that controls whether the water wheel is on or off. But the key to the big scary door is accessible regardless of the state of the water wheel. In other words, it doesn&rsquo;t matter to you whether the water wheel is activated or not, you only care about whether the big scary door is unlocked. Thus what you care about is not a singular particular dungeon configuration, but rather the <i>class of all dungeon configurations such that the big scary door is unlocked</i>, which consists of at least two different dungeon configurations: one where the water wheel is activated, and one where the water wheel in not activated.
 </p>
 
 
-<div id="orgd891035" class="figure">
+<div id="orga89eb60" class="figure">
 <p><img src="../images/dungeon_b.png" alt="dungeon_b.png" />
 </p>
 </div>
@@ -1056,9 +1056,9 @@ Notice also that there&rsquo;s no single action the player can take to simultane
 </div>
 </div>
 
-<div id="outline-container-orgc1e731d" class="outline-2">
-<h2 id="orgc1e731d">Dungeon topology</h2>
-<div class="outline-text-2" id="text-orgc1e731d">
+<div id="outline-container-org5c6790c" class="outline-2">
+<h2 id="org5c6790c">Dungeon topology</h2>
+<div class="outline-text-2" id="text-org5c6790c">
 <p>
 A dungeon is similar to a maze in that from any point A to any point B there may be any number (possibly 0) of possible paths you can take. Unlike a maze though, which has fixed topology, a dungeon often has <i>dynamic topology</i>. In particular, this dynamism is due to the fact that the topology of the dungeon is a <i>function of the dungeon&rsquo;s state</i>. In other words, the collection of sets for each location in the dungeon of all possible paths you can take from that location varies depending on the value of dungeon&rsquo;s state variables.
 </p>
@@ -1068,9 +1068,9 @@ For example, suppose you can only get from across a moat if the draw bridge is l
 </p>
 </div>
 
-<div id="outline-container-org5be45bb" class="outline-3">
-<h3 id="org5be45bb">The dungeon map</h3>
-<div class="outline-text-3" id="text-org5be45bb">
+<div id="outline-container-org3e3f018" class="outline-3">
+<h3 id="org3e3f018">The dungeon map</h3>
+<div class="outline-text-3" id="text-org3e3f018">
 <p>
 Consider the dungeon map. This shows the general physical layout of the dungeon, ignoring the specifics that vary.
 </p>
@@ -1080,7 +1080,7 @@ Here&rsquo;s an example of a dungeon map:
 </p>
 
 
-<div id="org2235257" class="figure">
+<div id="org509e98e" class="figure">
 <p><img src="../images/dungeon_l.png" alt="dungeon_l.png" />
 </p>
 </div>
@@ -1094,7 +1094,7 @@ Suppose we want to represent this map using a diagram similar to state space dia
 </p>
 
 
-<div id="orge9fe795" class="figure">
+<div id="org4b212d9" class="figure">
 <p><img src="../images/dungeon_m.png" alt="dungeon_m.png" />
 </p>
 </div>
@@ -1108,7 +1108,7 @@ However, this diagram is equivalent in an important sense to this one:
 </p>
 
 
-<div id="orge4074cb" class="figure">
+<div id="orgd690e16" class="figure">
 <p><img src="../images/dungeon_n.png" alt="dungeon_n.png" />
 </p>
 </div>
@@ -1122,7 +1122,7 @@ Contrast with this dungeon map:
 </p>
 
 
-<div id="org292eda0" class="figure">
+<div id="orgd0a63c5" class="figure">
 <p><img src="../images/dungeon_o.png" alt="dungeon_o.png" />
 </p>
 </div>
@@ -1136,7 +1136,7 @@ The equivalent diagram for this dungeon would be this:
 </p>
 
 
-<div id="orgc958274" class="figure">
+<div id="org9c726a3" class="figure">
 <p><img src="../images/dungeon_p.png" alt="dungeon_p.png" />
 </p>
 </div>
@@ -1154,7 +1154,7 @@ Take this diagram for example:
 </p>
 
 
-<div id="org867ccba" class="figure">
+<div id="orge7c2dfb" class="figure">
 <p><img src="../images/dungeon_r.png" alt="dungeon_r.png" />
 </p>
 </div>
@@ -1168,7 +1168,7 @@ So the first step in simplifying this diagram is to merge A and B:
 </p>
 
 
-<div id="orgb102297" class="figure">
+<div id="org2937633" class="figure">
 <p><img src="../images/dungeon_s.png" alt="dungeon_s.png" />
 </p>
 </div>
@@ -1186,7 +1186,7 @@ Our rule turns out to be insufficient for capturing all opportunities for simpli
 </p>
 
 
-<div id="orgff2dd46" class="figure">
+<div id="org0611c23" class="figure">
 <p><img src="../images/dungeon_t.png" alt="dungeon_t.png" />
 </p>
 </div>
@@ -1208,7 +1208,7 @@ The first step simplifying a loop is to identify the loop. Suppose we identify t
 </p>
 
 
-<div id="org3170d76" class="figure">
+<div id="orgaa32653" class="figure">
 <p><img src="../images/dungeon_n.png" alt="dungeon_n.png" />
 </p>
 </div>
@@ -1222,7 +1222,7 @@ Our new rule for simplification should be sufficient for all cases. Let&rsquo;s 
 </p>
 
 
-<div id="org2e7d3ea" class="figure">
+<div id="org7415ddc" class="figure">
 <p><img src="../images/dungeon_q.png" alt="dungeon_q.png" />
 </p>
 </div>
@@ -1232,7 +1232,7 @@ Our first rule is still useful as aa rule of thumb, because symetric pairs are q
 </p>
 
 
-<div id="org6afd10b" class="figure">
+<div id="orgcf6ae28" class="figure">
 <p><img src="../images/dungeon_v.png" alt="dungeon_v.png" />
 </p>
 </div>
@@ -1246,7 +1246,7 @@ The next step in simplification is to notice the loop containing &ldquo;A/D&rdqu
 </p>
 
 
-<div id="org7cec2a0" class="figure">
+<div id="org5c2d38b" class="figure">
 <p><img src="../images/dungeon_w.png" alt="dungeon_w.png" />
 </p>
 </div>
@@ -1256,27 +1256,27 @@ We replaced &ldquo;A/D&rdquo;, &ldquo;B/E&rdquo;, and C with &ldquo;A/B/C/D/E&rd
 </p>
 </div>
 
-<div id="outline-container-org6097c79" class="outline-4">
-<h4 id="org6097c79"><span class="todo TODO">TODO</span> Conditional topology</h4>
+<div id="outline-container-orgabd1281" class="outline-4">
+<h4 id="orgabd1281"><span class="todo TODO">TODO</span> Conditional topology</h4>
 </div>
 
-<div id="outline-container-org0a5e019" class="outline-4">
-<h4 id="org0a5e019"><span class="todo TODO">TODO</span> Topological templates</h4>
-<div class="outline-text-4" id="text-org0a5e019">
+<div id="outline-container-orgf7e0a00" class="outline-4">
+<h4 id="orgf7e0a00"><span class="todo TODO">TODO</span> Topological templates</h4>
+<div class="outline-text-4" id="text-orgf7e0a00">
 <p>
 Suppose we want to depict the general physical layout of the dungeon, similar to a map, except we dont wan&rsquo;t to ignore the ways in which the topology varies depending on the state variables.
 </p>
 </div>
 
 <ul class="org-ul">
-<li><a id="org13ac674"></a><span class="todo TODO">TODO</span> Template notation<br /></li>
+<li><a id="org3b84896"></a><span class="todo TODO">TODO</span> Template notation<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4c153e4" class="outline-3">
-<h3 id="org4c153e4">Dungeon space</h3>
-<div class="outline-text-3" id="text-org4c153e4">
+<div id="outline-container-org9182b70" class="outline-3">
+<h3 id="org9182b70">Dungeon space</h3>
+<div class="outline-text-3" id="text-org9182b70">
 <p>
 Notice that its possible for any point in the dungeon topology to be paired with multiple possible dungeon configurations. And notice that its possible for any point in the dungeon state space (i.e., every dungeon configuration) to be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
 </p>
@@ -1290,27 +1290,27 @@ Dungeon space is useful because it allows us to represent wholistically how the 
 </p>
 </div>
 
-<div id="outline-container-orga811639" class="outline-4">
-<h4 id="orga811639"><span class="todo TODO">TODO</span> conditional topology × state space</h4>
+<div id="outline-container-org0163e5a" class="outline-4">
+<h4 id="org0163e5a"><span class="todo TODO">TODO</span> conditional topology × state space</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org304f0b7" class="outline-2">
-<h2 id="org304f0b7"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
+<div id="outline-container-org4665258" class="outline-2">
+<h2 id="org4665258"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
 </div>
 
-<div id="outline-container-org555f78c" class="outline-2">
-<h2 id="org555f78c"><span class="todo TODO">TODO</span> Analysis of game mechanics</h2>
+<div id="outline-container-orgd389afd" class="outline-2">
+<h2 id="orgd389afd"><span class="todo TODO">TODO</span> Analysis of game mechanics</h2>
 </div>
 
-<div id="outline-container-org9822f51" class="outline-2">
-<h2 id="org9822f51"><span class="todo TODO">TODO</span> Dungeon generation</h2>
+<div id="outline-container-orgea266ca" class="outline-2">
+<h2 id="orgea266ca"><span class="todo TODO">TODO</span> Dungeon generation</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-23 Mon 23:52</p>
+<p class="date">Created: 2020-11-24 Tue 13:36</p>
 </div>
 </body>
 </html>
