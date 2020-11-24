@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-21 Sat 16:47 -->
+<!-- 2020-11-23 Mon 23:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s C Style Guide</title>
@@ -236,9 +236,9 @@
 <li><a href="#org2426e33">Libc implementation</a></li>
 <li><a href="#org29bbdb5">Build system</a>
 <ul>
-<li><a href="#org372d8c5">Meson</a>
+<li><a href="#org7101233">CMake</a>
 <ul>
-<li><a href="#org41e4f34">Meson project definition</a></li>
+<li><a href="#org038648f">CMake project definition templates</a></li>
 <li><a href="#org90c090c">Build configurations</a></li>
 </ul>
 </li>
@@ -247,7 +247,12 @@
 <li><a href="#orgd471d69"><span class="todo TODO">TODO</span> build system agnosticism?</a></li>
 </ul>
 </li>
-<li><a href="#org0fd77d0">Version control</a></li>
+<li><a href="#org0fd77d0">Version control</a>
+<ul>
+<li><a href="#org6c50e46"><span class="todo TODO">TODO</span> Branches</a></li>
+<li><a href="#org52b12bb"><span class="todo TODO">TODO</span> GitHub repositories</a></li>
+</ul>
+</li>
 <li><a href="#org0804951"><span class="todo TODO">TODO</span> Documentation</a>
 <ul>
 <li><a href="#org852d3e3"><span class="todo TODO">TODO</span> investigate doxygen and man files</a></li>
@@ -261,7 +266,7 @@
 <li><a href="#org9e1b123"><span class="todo TODO">TODO</span> discuss README template</a></li>
 </ul>
 </li>
-<li><a href="#org50328ea">LICENSE</a></li>
+<li><a href="#orgf85e85a"><code>LICENSE</code></a></li>
 <li><a href="#org10fa238"><code>.gitignore</code></a></li>
 <li><a href="#orgcb89ff3"><code>.gitattributes</code></a></li>
 <li><a href="#orga99baa6"><span class="todo TODO">TODO</span> <code>meson.build</code></a></li>
@@ -382,29 +387,30 @@ I&rsquo;m not particularly familiar with libc implementations, nor is it really 
 <h2 id="org29bbdb5">Build system</h2>
 <div class="outline-text-2" id="text-org29bbdb5">
 </div>
-<div id="outline-container-org372d8c5" class="outline-3">
-<h3 id="org372d8c5">Meson</h3>
-<div class="outline-text-3" id="text-org372d8c5">
+<div id="outline-container-org7101233" class="outline-3">
+<h3 id="org7101233">CMake</h3>
+<div class="outline-text-3" id="text-org7101233">
 <p>
-I currently like to use <a href="https://mesonbuild.com/">Meson</a>!
+I decided I want to start using <a href="https://cmake.org">CMake</a>! XD I&rsquo;m only just figuring out how to use it, so I don&rsquo;t know much yet.
 </p>
 
 <p>
-Here are the criteria that lead me to choose Meson:
+Here are the criteria that lead me to choose CMake:
 </p>
 
 <ul class="org-ul">
-<li>It&rsquo;s pretty easy to use.</li>
+<li>So far it seems easy enough to use (I&rsquo;ll report back lol).</li>
 <li>It easily supports build configuration variants, which allows me to focus on the project definition and delegate the specifics for each build to build configuration time.
 <ul class="org-ul">
 <li>This makes it easy to separate release and debug builds.</li>
 <li>And it makes cross-builds targeting non-native platforms easier too.</li>
 </ul></li>
 <li>It&rsquo;s cross platform, so with one build definition I can build on multiple host platforms.</li>
+<li>Build system agnostic! It&rsquo;s not a build system <i>itself</i>, but generates build configurations for backend build systems. I like this!</li>
 </ul>
 
 <p>
-Things I don&rsquo;t like about Meson that aren&rsquo;t deal-breakers:
+Things I don&rsquo;t like about CMake that aren&rsquo;t deal-breakers:
 </p>
 
 <ul class="org-ul">
@@ -413,13 +419,27 @@ Things I don&rsquo;t like about Meson that aren&rsquo;t deal-breakers:
 </ul>
 </div>
 
-<div id="outline-container-org41e4f34" class="outline-4">
-<h4 id="org41e4f34">Meson project definition</h4>
-<div class="outline-text-4" id="text-org41e4f34">
+<div id="outline-container-org038648f" class="outline-4">
+<h4 id="org038648f">CMake project definition templates</h4>
+<div class="outline-text-4" id="text-org038648f">
+</div>
+<ul class="org-ul">
+<li><a id="org0419f49"></a>Executable<br />
+<div class="outline-text-5" id="text-org0419f49">
 <p>
-Here&rsquo;s how [..todo..]
+Here is my current template:
 </p>
 </div>
+</li>
+
+<li><a id="orgc1f6b19"></a>Library<br />
+<div class="outline-text-5" id="text-orgc1f6b19">
+<p>
+Here is my current template:
+</p>
+</div>
+</li>
+</ul>
 </div>
 
 <div id="outline-container-org90c090c" class="outline-4">
@@ -430,11 +450,14 @@ Here&rsquo;s how [..todo..]
 <li><a id="org3838011"></a>Debug/development<br />
 <div class="outline-text-5" id="text-org3838011">
 <p>
-Here&rsquo;s how I set up a Meson build directory for general development:
+Here&rsquo;s how I set up an out of source build directory for general development. In the root of the repository:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">meson builddir --warnlevel=<span style="color: #FFB85B; font-weight: bold;">3</span>
+<pre class="src src-sh"><span style="color: #FFE261;">mkdir</span> build                       <span style="color: #91889B;"># </span><span style="color: #91889B;">create the build directory</span>
+<span style="color: #FFE261;">cd</span> build                          <span style="color: #91889B;"># </span><span style="color: #91889B;">switch to the build directory</span>
+cmake -DCMAKE_BUILD_TYPE=Debug .. <span style="color: #91889B;"># </span><span style="color: #91889B;">configure the build</span>
+cmake --build .                   <span style="color: #91889B;"># </span><span style="color: #91889B;">perform the build</span>
 </pre>
 </div>
 </div>
@@ -443,17 +466,26 @@ Here&rsquo;s how I set up a Meson build directory for general development:
 <li><a id="org0698f56"></a>Native release<br />
 <div class="outline-text-5" id="text-org0698f56">
 <p>
-Here&rsquo;s how I set up a Meson build directory for native release builds:
+Here&rsquo;s how I set up an out of source build directory for native release builds. In the root of the repository:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">meson builddir --buildtype=release --werror
+<pre class="src src-sh"><span style="color: #FFE261;">mkdir</span> build                         <span style="color: #91889B;"># </span><span style="color: #91889B;">create the build directory</span>
+<span style="color: #FFE261;">cd</span> build                            <span style="color: #91889B;"># </span><span style="color: #91889B;">switch to the build directory</span>
+cmake -DCMAKE_BUILD_TYPE=Release .. <span style="color: #91889B;"># </span><span style="color: #91889B;">configure the build</span>
+cmake --build .                     <span style="color: #91889B;"># </span><span style="color: #91889B;">perform the build</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org6c18d29"></a><span class="todo TODO">TODO</span> Cross builds<br /></li>
+<li><a id="org6c18d29"></a><span class="todo TODO">TODO</span> Cross builds<br />
+<div class="outline-text-5" id="text-org6c18d29">
+<p>
+I gotta figure out how to do this! <code>0_0</code>
+</p>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -473,6 +505,12 @@ What strikes me as interesting about these is their upside down dependency graph
 
 <div id="outline-container-orge9a6d42" class="outline-3">
 <h3 id="orge9a6d42"><span class="todo TODO">TODO</span> use of pkg-build</h3>
+<div class="outline-text-3" id="text-orge9a6d42">
+<p>
+<a href="https://mesonbuild.com/Pkg-config-files.html">https://mesonbuild.com/Pkg-config-files.html</a>
+<a href="https://cboard.cprogramming.com/cplusplus-programming/111796-how-generate-pc-file-library.html">https://cboard.cprogramming.com/cplusplus-programming/111796-how-generate-pc-file-library.html</a>
+</p>
+</div>
 </div>
 <div id="outline-container-orgd471d69" class="outline-3">
 <h3 id="orgd471d69"><span class="todo TODO">TODO</span> build system agnosticism?</h3>
@@ -485,6 +523,19 @@ What strikes me as interesting about these is their upside down dependency graph
 <p>
 I like to use <a href="https://git-scm.com/">Git</a> and host my main projects on <a href="https://github.com/negativefnnancy">GitHub</a>! (I use my <a href="https://github.com/MegaLoler/">other GitHub</a> account for projects I either don&rsquo;t consider to be my main projects, or that I haven&rsquo;t revisited since making my new account.)
 </p>
+</div>
+
+<div id="outline-container-org6c50e46" class="outline-3">
+<h3 id="org6c50e46"><span class="todo TODO">TODO</span> Branches</h3>
+<div class="outline-text-3" id="text-org6c50e46">
+<p>
+The main branch should be called <code>master</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org52b12bb" class="outline-3">
+<h3 id="org52b12bb"><span class="todo TODO">TODO</span> GitHub repositories</h3>
 </div>
 </div>
 
@@ -540,9 +591,9 @@ Because my projects are hosted on GitHub, I like to use a <code>README.md</code>
 </div>
 </div>
 
-<div id="outline-container-org50328ea" class="outline-3">
-<h3 id="org50328ea">LICENSE</h3>
-<div class="outline-text-3" id="text-org50328ea">
+<div id="outline-container-orgf85e85a" class="outline-3">
+<h3 id="orgf85e85a"><code>LICENSE</code></h3>
+<div class="outline-text-3" id="text-orgf85e85a">
 <p>
 Unless there&rsquo;s a reason to use something else, I like to use the <a href="https://opensource.org/licenses/MIT">MIT license</a>. :o
 </p>
@@ -1075,7 +1126,7 @@ Some examples:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-21 Sat 16:47</p>
+<p class="date">Created: 2020-11-23 Mon 23:16</p>
 </div>
 </body>
 </html>
