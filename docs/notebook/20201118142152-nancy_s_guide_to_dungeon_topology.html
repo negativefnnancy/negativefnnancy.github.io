@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mon 23:38 -->
+<!-- 2020-11-23 Mon 23:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s Guide to Dungeon Topology</title>
@@ -229,52 +229,52 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org09238e5">What da heckie is <i>dungeon topology</i>?</a></li>
-<li><a href="#org4a951de">What da heckie is a <i>dungeon</i>?</a></li>
-<li><a href="#org120eb95">Dungeon states</a>
+<li><a href="#org6c2b5ec">What da heckie is <i>dungeon topology</i>?</a></li>
+<li><a href="#org2e1e8dd">What da heckie is a <i>dungeon</i>?</a></li>
+<li><a href="#org76ccf04">Dungeon states</a>
 <ul>
-<li><a href="#org84958ac">What da heckie is <i>state</i>?</a></li>
-<li><a href="#org5c8a2a8">What da heckie a <i>state variable</i>?</a></li>
-<li><a href="#orgede5cef">What da heckie is a <i>side effect</i>?</a></li>
-<li><a href="#orgb5278f3">What da heckie is a <i>configuration</i>?</a></li>
-<li><a href="#org60539e6">What da heckie is a <i>state space</i>?</a></li>
-<li><a href="#org5b2464f">What da heckie is a <i>state space diagram</i>?</a></li>
-<li><a href="#org60724b0">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</a>
+<li><a href="#org7c72841">What da heckie is <i>state</i>?</a></li>
+<li><a href="#org410eb52">What da heckie a <i>state variable</i>?</a></li>
+<li><a href="#orgdd8c4e8">What da heckie is a <i>side effect</i>?</a></li>
+<li><a href="#org9b7452e">What da heckie is a <i>configuration</i>?</a></li>
+<li><a href="#org200f0d5">What da heckie is a <i>state space</i>?</a></li>
+<li><a href="#orgd111b10">What da heckie is a <i>state space diagram</i>?</a></li>
+<li><a href="#org523d371">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</a>
 <ul>
-<li><a href="#org04f5c89">How many possible dungeon configurations are there?</a></li>
-<li><a href="#org0e5ad8d">State space diagrams show every possible configuration</a></li>
-<li><a href="#org5933928"><span class="todo TODO">TODO</span> State space constraints</a></li>
+<li><a href="#orga993173">How many possible dungeon configurations are there?</a></li>
+<li><a href="#org7abefbe">State space diagrams show every possible configuration</a></li>
+<li><a href="#org6488f2e"><span class="todo TODO">TODO</span> State space constraints</a></li>
 </ul>
 </li>
-<li><a href="#org95129ce">State space semantics and notation</a>
+<li><a href="#orga096724">State space semantics and notation</a>
 <ul>
-<li><a href="#org0482445"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
-<li><a href="#orgb03aacb">States</a></li>
-<li><a href="#orgcb4596b"><span class="todo TODO">TODO</span> Actions</a></li>
-<li><a href="#orged66b35"><span class="todo TODO">TODO</span> Action sequences</a></li>
+<li><a href="#org2db0e96"><span class="todo TODO">TODO</span> State space as a formal language</a></li>
+<li><a href="#orge1810ab">States</a></li>
+<li><a href="#orgaf6752e"><span class="todo TODO">TODO</span> Actions</a></li>
+<li><a href="#orgac63d0c"><span class="todo TODO">TODO</span> Action sequences</a></li>
 </ul>
 </li>
-<li><a href="#org835d504">What da heckie are <i>configuration classes</i>?</a></li>
+<li><a href="#orge89d33e">What da heckie are <i>configuration classes</i>?</a></li>
 </ul>
 </li>
-<li><a href="#org8f00272">Dungeon topology</a>
+<li><a href="#orgc1e731d">Dungeon topology</a>
 <ul>
-<li><a href="#orgcf6dabb">Conditional topology</a>
+<li><a href="#org5be45bb">The dungeon map</a>
 <ul>
-<li><a href="#org2d27b1a"><span class="todo TODO">TODO</span> The dungeon map</a></li>
-<li><a href="#orgc0eba1f"><span class="todo TODO">TODO</span> Topological templates</a></li>
+<li><a href="#org6097c79"><span class="todo TODO">TODO</span> Conditional topology</a></li>
+<li><a href="#org0a5e019"><span class="todo TODO">TODO</span> Topological templates</a></li>
 </ul>
 </li>
-<li><a href="#orgae0e57f">Dungeon space</a>
+<li><a href="#org4c153e4">Dungeon space</a>
 <ul>
-<li><a href="#org22efb48"><span class="todo TODO">TODO</span> conditional topology × state space</a></li>
+<li><a href="#orga811639"><span class="todo TODO">TODO</span> conditional topology × state space</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org434c5c2"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
-<li><a href="#orgfc7ed7b"><span class="todo TODO">TODO</span> Analysis of game mechanics</a></li>
-<li><a href="#org3abb792"><span class="todo TODO">TODO</span> Dungeon generation</a></li>
+<li><a href="#org304f0b7"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</a></li>
+<li><a href="#org555f78c"><span class="todo TODO">TODO</span> Analysis of game mechanics</a></li>
+<li><a href="#org9822f51"><span class="todo TODO">TODO</span> Dungeon generation</a></li>
 </ul>
 </div>
 </div>
@@ -286,9 +286,9 @@ an assimilation of <a href="20201118132041-dungeon_topology_notes.html">Dungeon 
 <i>big wip!</i>
 </p>
 
-<div id="outline-container-org09238e5" class="outline-2">
-<h2 id="org09238e5">What da heckie is <i>dungeon topology</i>?</h2>
-<div class="outline-text-2" id="text-org09238e5">
+<div id="outline-container-org6c2b5ec" class="outline-2">
+<h2 id="org6c2b5ec">What da heckie is <i>dungeon topology</i>?</h2>
+<div class="outline-text-2" id="text-org6c2b5ec">
 <p>
 It&rsquo;s a way of analysing Zelda-style <b>dungeons</b>! :0
 </p>
@@ -299,9 +299,9 @@ It&rsquo;s a way of analysing Zelda-style <b>dungeons</b>! :0
 </div>
 </div>
 
-<div id="outline-container-org4a951de" class="outline-2">
-<h2 id="org4a951de">What da heckie is a <i>dungeon</i>?</h2>
-<div class="outline-text-2" id="text-org4a951de">
+<div id="outline-container-org2e1e8dd" class="outline-2">
+<h2 id="org2e1e8dd">What da heckie is a <i>dungeon</i>?</h2>
+<div class="outline-text-2" id="text-org2e1e8dd">
 <p>
 I&rsquo;m not sure! XD I think it&rsquo;s where you throw prisoners to rot or something. Just kidding! It&rsquo;s <i>actually</i> like the dungeons in Zelda! Where there are enemies and puzzles and you have to navigate through all the dungeon puzzles to the boss! (Or something like that! <code>0_0</code>)
 </p>
@@ -321,13 +321,13 @@ We&rsquo;ll talk about all three of these things!
 </div>
 </div>
 
-<div id="outline-container-org120eb95" class="outline-2">
-<h2 id="org120eb95">Dungeon states</h2>
-<div class="outline-text-2" id="text-org120eb95">
+<div id="outline-container-org76ccf04" class="outline-2">
+<h2 id="org76ccf04">Dungeon states</h2>
+<div class="outline-text-2" id="text-org76ccf04">
 </div>
-<div id="outline-container-org84958ac" class="outline-3">
-<h3 id="org84958ac">What da heckie is <i>state</i>?</h3>
-<div class="outline-text-3" id="text-org84958ac">
+<div id="outline-container-org7c72841" class="outline-3">
+<h3 id="org7c72841">What da heckie is <i>state</i>?</h3>
+<div class="outline-text-3" id="text-org7c72841">
 <p>
 The first thing to note about a dungeon is that it has <b>state</b>. That means at any given time the configuration of the dungeon might be one thing or it might be another.
 </p>
@@ -346,9 +346,9 @@ All of these particularities of the configuration of the dungeon at any point in
 </div>
 </div>
 
-<div id="outline-container-org5c8a2a8" class="outline-3">
-<h3 id="org5c8a2a8">What da heckie a <i>state variable</i>?</h3>
-<div class="outline-text-3" id="text-org5c8a2a8">
+<div id="outline-container-org410eb52" class="outline-3">
+<h3 id="org410eb52">What da heckie a <i>state variable</i>?</h3>
+<div class="outline-text-3" id="text-org410eb52">
 <p>
 The state is controlled by a collection of variables called <b>state variables</b>. These are variables whose value can change over the course of progressing through the dungeon. The values of these variables determine or represent certain aspects of the current configuration of the dungeon.
 </p>
@@ -363,9 +363,9 @@ A value of <code>true</code> or <code>false</code> is called a <i>boolean value<
 </div>
 </div>
 
-<div id="outline-container-orgede5cef" class="outline-3">
-<h3 id="orgede5cef">What da heckie is a <i>side effect</i>?</h3>
-<div class="outline-text-3" id="text-orgede5cef">
+<div id="outline-container-orgdd8c4e8" class="outline-3">
+<h3 id="orgdd8c4e8">What da heckie is a <i>side effect</i>?</h3>
+<div class="outline-text-3" id="text-orgdd8c4e8">
 <p>
 State variables generally change in response to meaningful <b>actions</b> of the player! An action that causes a change in a state variable is said to have a <b>side effect</b>. A <i>side effect</i> is a change in dungeon state that occurs as an external consequence to some <i>action</i>.
 </p>
@@ -380,9 +380,9 @@ More specifically, the action of pressing the switch has the side effect of <i>c
 </div>
 </div>
 
-<div id="outline-container-orgb5278f3" class="outline-3">
-<h3 id="orgb5278f3">What da heckie is a <i>configuration</i>?</h3>
-<div class="outline-text-3" id="text-orgb5278f3">
+<div id="outline-container-org9b7452e" class="outline-3">
+<h3 id="org9b7452e">What da heckie is a <i>configuration</i>?</h3>
+<div class="outline-text-3" id="text-org9b7452e">
 <p>
 At any given time, the dungeon&rsquo;s state variables might have any number of possible combinations of values. The current combination of values makes up the current <b>configuration</b> of the dungeon.
 </p>
@@ -401,9 +401,9 @@ For example, suppose the switch to activate the water wheel is behind the locked
 </div>
 </div>
 
-<div id="outline-container-org60539e6" class="outline-3">
-<h3 id="org60539e6">What da heckie is a <i>state space</i>?</h3>
-<div class="outline-text-3" id="text-org60539e6">
+<div id="outline-container-org200f0d5" class="outline-3">
+<h3 id="org200f0d5">What da heckie is a <i>state space</i>?</h3>
+<div class="outline-text-3" id="text-org200f0d5">
 <p>
 The <b>state space</b> of the dungeon is like a map of all possible configurations. All the <i>points</i> in this space are unique configurations of the dungeon. Each point also has any number of <i>paths</i> from it to another point. These paths are the particular actions available to the player when the dungeon is in that configuration.
 </p>
@@ -413,7 +413,7 @@ Just to give you a preview of next topic, here&rsquo;s a simple <i>state space d
 </p>
 
 
-<div id="org2804844" class="figure">
+<div id="orga1a553b" class="figure">
 <p><img src="../images/dungeon_a.png" alt="dungeon_a.png" />
 </p>
 </div>
@@ -432,18 +432,18 @@ What the state space diagram tells you at a glance is how many possible configur
 </div>
 </div>
 
-<div id="outline-container-org5b2464f" class="outline-3">
-<h3 id="org5b2464f">What da heckie is a <i>state space diagram</i>?</h3>
-<div class="outline-text-3" id="text-org5b2464f">
+<div id="outline-container-orgd111b10" class="outline-3">
+<h3 id="orgd111b10">What da heckie is a <i>state space diagram</i>?</h3>
+<div class="outline-text-3" id="text-orgd111b10">
 <p>
 As introduced above, a <b>state space diagram</b> is a visual depiction of the state space of a dungeon, including labeled circles representing all possible configurations as well as arrows between the circles representing the possible actions that get you from one configuration to another.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org60724b0" class="outline-3">
-<h3 id="org60724b0">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</h3>
-<div class="outline-text-3" id="text-org60724b0">
+<div id="outline-container-org523d371" class="outline-3">
+<h3 id="org523d371">What da heckie does a <i>state space diagram</i> haf ta do wif <i>state variables</i>?</h3>
+<div class="outline-text-3" id="text-org523d371">
 <p>
 Recall that a <i>dungeon configuration</i> is determined by a particular unique combination of the dungeon&rsquo;s state variables. In other words, a particular set of values per state variable denotes a particular dungeon configuration.
 </p>
@@ -457,9 +457,9 @@ Quick detour!
 </p>
 </div>
 
-<div id="outline-container-org04f5c89" class="outline-4">
-<h4 id="org04f5c89">How many possible dungeon configurations are there?</h4>
-<div class="outline-text-4" id="text-org04f5c89">
+<div id="outline-container-orga993173" class="outline-4">
+<h4 id="orga993173">How many possible dungeon configurations are there?</h4>
+<div class="outline-text-4" id="text-orga993173">
 <p>
 Notice that a boolean variable has <i>two</i> possible values: namely, <code>true</code> and <code>false</code>. Notice that a pair (group of two) of boolean variables has <i>four</i> possible <i>combinations</i> of values: namely, (<code>true</code> and <code>true</code>), (<code>true</code> and <code>false</code>), (<code>false</code> and <code>true</code>), and (<code>false</code> and <code>false</code>). That&rsquo;s because the first one can be true and the second one can be true. Or the first one can be true and the second one can be false. Or the first one can be false and the second one can be true. Or they can both be false.
 </p>
@@ -478,9 +478,9 @@ All of this is to say that the maximum number of possible dungeon configurations
 </div>
 </div>
 
-<div id="outline-container-org0e5ad8d" class="outline-4">
-<h4 id="org0e5ad8d">State space diagrams show every possible configuration</h4>
-<div class="outline-text-4" id="text-org0e5ad8d">
+<div id="outline-container-org7abefbe" class="outline-4">
+<h4 id="org7abefbe">State space diagrams show every possible configuration</h4>
+<div class="outline-text-4" id="text-org7abefbe">
 <p>
 Now we can see the more clearly note the correlation between state space diagrams and state space variables.
 </p>
@@ -494,7 +494,7 @@ This is clearly depicted in the state space diagram for this dungeon. Every conf
 </p>
 
 
-<div id="orgd8f6308" class="figure">
+<div id="org1fdea0d" class="figure">
 <p><img src="../images/dungeon_c.png" alt="dungeon_c.png" />
 </p>
 </div>
@@ -509,33 +509,33 @@ Notice that I didn&rsquo;t draw any arrows on this diagram yet! That&rsquo;s bec
 </div>
 </div>
 
-<div id="outline-container-org5933928" class="outline-4">
-<h4 id="org5933928"><span class="todo TODO">TODO</span> State space constraints</h4>
-<div class="outline-text-4" id="text-org5933928">
+<div id="outline-container-org6488f2e" class="outline-4">
+<h4 id="org6488f2e"><span class="todo TODO">TODO</span> State space constraints</h4>
+<div class="outline-text-4" id="text-org6488f2e">
 </div>
 <ul class="org-ul">
-<li><a id="orgcdbffec"></a><span class="todo TODO">TODO</span> Explicit constraints<br /></li>
+<li><a id="org0790800"></a><span class="todo TODO">TODO</span> Explicit constraints<br /></li>
 
-<li><a id="org01dc702"></a><span class="todo TODO">TODO</span> Topologically implied constraints<br /></li>
+<li><a id="org130ea28"></a><span class="todo TODO">TODO</span> Topologically implied constraints<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org95129ce" class="outline-3">
-<h3 id="org95129ce">State space semantics and notation</h3>
-<div class="outline-text-3" id="text-org95129ce">
+<div id="outline-container-orga096724" class="outline-3">
+<h3 id="orga096724">State space semantics and notation</h3>
+<div class="outline-text-3" id="text-orga096724">
 </div>
-<div id="outline-container-org0482445" class="outline-4">
-<h4 id="org0482445"><span class="todo TODO">TODO</span> State space as a formal language</h4>
+<div id="outline-container-org2db0e96" class="outline-4">
+<h4 id="org2db0e96"><span class="todo TODO">TODO</span> State space as a formal language</h4>
 </div>
 
-<div id="outline-container-orgb03aacb" class="outline-4">
-<h4 id="orgb03aacb">States</h4>
-<div class="outline-text-4" id="text-orgb03aacb">
+<div id="outline-container-orge1810ab" class="outline-4">
+<h4 id="orge1810ab">States</h4>
+<div class="outline-text-4" id="text-orge1810ab">
 </div>
 <ul class="org-ul">
-<li><a id="org6c3f9b7"></a>Starting states<br />
-<div class="outline-text-5" id="text-org6c3f9b7">
+<li><a id="org5c678ca"></a>Starting states<br />
+<div class="outline-text-5" id="text-org5c678ca">
 <p>
 A <b>starting state</b> is a dungeon configuration the dungeon can have when the player firsts begins the dungeon.
 </p>
@@ -545,7 +545,7 @@ We can visually depict a starting state in a state space diagram by writing an a
 </p>
 
 
-<div id="orgf44b1a9" class="figure">
+<div id="orge394319" class="figure">
 <p><img src="../images/dungeon_d.png" alt="dungeon_d.png" />
 </p>
 </div>
@@ -564,8 +564,8 @@ Also note that it&rsquo;s possible for a dungeon to have multiple starting state
 </div>
 </li>
 
-<li><a id="org8d3fcb4"></a>Solution states<br />
-<div class="outline-text-5" id="text-org8d3fcb4">
+<li><a id="org0341e25"></a>Solution states<br />
+<div class="outline-text-5" id="text-org0341e25">
 <p>
 A <b>solution state</b> is any possible dungeon configuration such that the the dungeon has been completed.
 </p>
@@ -579,7 +579,7 @@ We can visually depict a solution state in a state space diagram by drawing a do
 </p>
 
 
-<div id="org8b813d0" class="figure">
+<div id="org200d870" class="figure">
 <p><img src="../images/dungeon_e.png" alt="dungeon_e.png" />
 </p>
 </div>
@@ -598,8 +598,8 @@ Note also that it would technically be possible for a configuration to be both a
 </div>
 </li>
 
-<li><a id="orgbff0459"></a>Non-solution states<br />
-<div class="outline-text-5" id="text-orgbff0459">
+<li><a id="orgaccc9eb"></a>Non-solution states<br />
+<div class="outline-text-5" id="text-orgaccc9eb">
 <p>
 A non-solution state is any possible dungeon configuration such that the dungeon has <i>not</i> been completed. Simply put, every configuration that isn&rsquo;t a solution state, is a non-solution state.
 </p>
@@ -609,7 +609,7 @@ We visually depict a non-solution state by drawing a single circle, in contrast 
 </p>
 
 
-<div id="orge9c5582" class="figure">
+<div id="org2818bcb" class="figure">
 <p><img src="../images/dungeon_f.png" alt="dungeon_f.png" />
 </p>
 </div>
@@ -624,8 +624,8 @@ To be precise, it&rsquo;s <i>impossible</i> for a configuration to be simultaneo
 </div>
 </li>
 
-<li><a id="org5cd1021"></a>Non-states<br />
-<div class="outline-text-5" id="text-org5cd1021">
+<li><a id="orgc804b90"></a>Non-states<br />
+<div class="outline-text-5" id="text-orgc804b90">
 <p>
 A non-state is any impossible dungeon configuration. That is, some combination of values for state variables that can never occur in the dungeon. The existence of non-states is the reason why the number of configurations in the state space diagram is usually less than the maximum number of possible configurations.
 </p>
@@ -647,7 +647,7 @@ A non-state is easily seen as a configuration X such that there is <i>no chain o
 </p>
 
 
-<div id="orgfdcc757" class="figure">
+<div id="org34fe27e" class="figure">
 <p><img src="../images/dungeon_g.png" alt="dungeon_g.png" />
 </p>
 </div>
@@ -682,8 +682,8 @@ Notice also that F is a non-state. It&rsquo;s easy to see why. But notice also t
 </div>
 
 <ul class="org-ul">
-<li><a id="orgad22820"></a>Configuration v.s. state<br />
-<div class="outline-text-6" id="text-orgad22820">
+<li><a id="org1cfcb8d"></a>Configuration v.s. state<br />
+<div class="outline-text-6" id="text-org1cfcb8d">
 <p>
 Until now I have been trying to carefully avoid mixing up the words for <i>configuration</i> and <i>state</i>, but I haven&rsquo;t explicitly stated why. XD The reason is that both states and non-states are configurations. There exists a configuration for every combination of values for state variables. Some of those combinations are obtainable and thus correspond to <i>states</i>, and the rest are unobtainable and thus correspond to <i>non-states</i>.
 </p>
@@ -694,58 +694,339 @@ Until now I have been trying to carefully avoid mixing up the words for <i>confi
 </ul>
 </div>
 
-<div id="outline-container-orgcb4596b" class="outline-4">
-<h4 id="orgcb4596b"><span class="todo TODO">TODO</span> Actions</h4>
-<div class="outline-text-4" id="text-orgcb4596b">
+<div id="outline-container-orgaf6752e" class="outline-4">
+<h4 id="orgaf6752e"><span class="todo TODO">TODO</span> Actions</h4>
+<div class="outline-text-4" id="text-orgaf6752e">
 <p>
 An action is anything that the player can do in one configuration that leads to a different configuration.
 </p>
-</div>
 
-<ul class="org-ul">
-<li><a id="org8d49eec"></a><span class="todo TODO">TODO</span> Action alphabet<br />
-<div class="outline-text-5" id="text-org8d49eec">
 <p>
 In the state space diagrams, the actions are represented by the arrows drawn between the circles. We can label the arrows with single lowercase letters denoting a particular action.
 </p>
 
 <p>
-The <b>action alphabet</b> for a dungeon is the set of all characters denoting all possible actions that exist in the dungeon.
+Here is an example of two configurations A and B, with the action from A to B labeled &ldquo;d&rdquo;:
+</p>
+
+
+<div id="org9f6f0ac" class="figure">
+<p><img src="../images/dungeon_h.png" alt="dungeon_h.png" />
 </p>
 </div>
-</li>
-</ul>
+
+<p>
+Maybe configuration A is a configuration before a monster has been defeated and configuration B is a configuration after it has been defeated. The action &ldquo;d&rdquo; the is the action of defeated that monster.
+</p>
+
+<p>
+Observe this diagram:
+</p>
+
+
+<div id="orgd4abd24" class="figure">
+<p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
+</p>
 </div>
 
-<div id="outline-container-orged66b35" class="outline-4">
-<h4 id="orged66b35"><span class="todo TODO">TODO</span> Action sequences</h4>
-<div class="outline-text-4" id="text-orged66b35">
 <p>
-An <b>action sequence</b> is a sequence of actions the player can take that leads them from aa starting state to any valid dungeon configuration. We can denote an action sequence as a string of letters denoting actions.
+First note that there are four states: A_∅, B<sub>w</sub>, C<sub>wo</sub>, and D<sub>o</sub>. Second note that there are three actions: <code>a</code>, <code>d</code>, and <code>u</code>. Also note that in association with the four states there are two variables: <code>w</code> and <code>o</code>.
+</p>
+
+<p>
+We can imagine this might be a scenario where there is a possibly locked door and a water wheel. The water wheel can be either activated or deactivated, and the door, independantly, can be either locked or unlocked. We can associate the variable <code>o</code> with the door such that the door is unlocked if and only if the value of <code>o</code> is <code>true</code>. And we can associate the variable <code>w</code> with the water wheel such that the water wheel is activated if and only if the value of <code>w</code> is <code>true</code>.
+</p>
+
+<p>
+With this established, we can see that configurations A and D are configurations such that the water wheel is <i>deactivated</i>, and we can see that configurations B ad C are configurations such that the water wheel is <i>activated</i>. And we can see that configurations A and B are configurations such that the door is <i>locked</i>, and we can see that configurations C and D are configurations such that the door is <i>unlocked</i>.
+</p>
+
+<p>
+Then we can say that the action <code>a</code> is the action of <i>activating the water wheel</i>, since all arrows labeled &ldquo;a&rdquo; are <i>from</i> a configuration such that the water wheel is <i>deactivated</i> and <i>to</i> a configuration such that the water wheel is <i>activated</i>. Similarly, we can say that the action <code>d</code> is the action of <i>deactivating the water wheel</i>, since all arrows labeled &ldquo;d&rdquo; are <i>from</i> a configurations such that the water wheel is <i>activated</i> and <i>to</i> a configuration such that the water wheel is <i>deactivated</i>. And finally, we can say that the action <code>u</code> is the action of <i>unlocking the door</i>, since all arrows labeled &ldquo;u&rdquo; are <i>from</i> a configuration such that the door is <i>locked</i> and <i>to</i> a configuration such that the door is <i>unlocked</i>.
 </p>
 </div>
 
 <ul class="org-ul">
-<li><a id="org115431e"></a><span class="todo TODO">TODO</span> Non-sequences<br />
-<div class="outline-text-5" id="text-org115431e">
+<li><a id="orgb38c07f"></a>Action alphabet<br />
+<div class="outline-text-5" id="text-orgb38c07f">
 <p>
-Not all possible strings of letters denote valid action sequences. A non-sequence is any sequence of actions that can never occur starting from a starting state.
+The <b>action alphabet</b> for a dungeon is the set of all letters denoting all possible actions that exist in the dungeon.
+</p>
+
+<p>
+In the above example, there are a total of three actions depicted in the diagram, with the names &ldquo;a&rdquo;, &ldquo;d&rdquo;, and &ldquo;u&rdquo;. So in that example, the <i>action alphabet</i> is &ldquo;adu&rdquo;.
+</p>
+
+<p>
+The action alphabet gives us at a glance an idea of all the actions that exist in the dungeon.
 </p>
 </div>
 </li>
 </ul>
 </div>
+
+<div id="outline-container-orgac63d0c" class="outline-4">
+<h4 id="orgac63d0c"><span class="todo TODO">TODO</span> Action sequences</h4>
+<div class="outline-text-4" id="text-orgac63d0c">
+<p>
+An <b>action sequence</b> is a sequence of actions the player can take that leads them from aa starting state to any valid dungeon configuration. We can denote an action sequence as a string of letters denoting actions.
+</p>
+
+<p>
+For example, if &ldquo;b&rdquo; denotes the action of using a bomb, and &ldquo;s&rdquo; denotes the action of playing a song, then the <i>action sequence</i> &ldquo;sbs&rdquo; denotes the sequence of actions such that the player first plays a song, then uses a bomb, and then plays a song again.
+</p>
+
+<p>
+The simplest possible action sequence is the <b>empty sequence</b>. This is the action sequence consisting of exactly no actions at all, and it looks like this: &ldquo;&rdquo;.
+</p>
+
+<p>
+Possible action sequences are completely determined by the possible chains of actions from one configuration to another. If in configuration A the action &ldquo;a&rdquo; takes the player to configuration B wherein the action &ldquo;b&rdquo; takes the player to configuration C, then, supposing the player is initially in configuration A, a possible action sequence is &ldquo;ab&rdquo;.
+</p>
+
+<p>
+Let&rsquo;s look at the above example again:
+</p>
+
+
+<div id="org3ea1c40" class="figure">
+<p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
+</p>
 </div>
 
-<div id="outline-container-org835d504" class="outline-3">
-<h3 id="org835d504">What da heckie are <i>configuration classes</i>?</h3>
-<div class="outline-text-3" id="text-org835d504">
+<p>
+Suppose the player is initially in configuration A. What possible action sequences exist for the player?
+</p>
+
+<p>
+The first sequence that we know exists is the <i>empty sequence</i>. That is to say, the player can simply do nothing at all. This is the only action sequence that we know is always valid under all circumstances.
+</p>
+
+<p>
+What possible <i>single action sequences</i> exist from A? A single action sequence is an action sequence that consists of a single action. We know that there is exactly one single action sequence from some configuration for each action available from that configuration. The actions available from A, as can be seen by the arrows that start from A, are &ldquo;a&rdquo; and &ldquo;u&rdquo;. Therefore the possible single action sequences are also &ldquo;a&rdquo; and &ldquo;u&rdquo;. That is to say, if the player were in configuration A and they were given the choice to make a single action, they could either <i>activate the water wheel</i> or <i>unlock the door</i>. And note that, in this case, there are <i>two</i> possible single action sequences.
+</p>
+
+<p>
+What possible <i>two action sequences</i> exist from A? A <i>two action sequence</i> is an action sequence that consists of exactly <i>two</i> actions. To find such an action sequence, we can first ask, what <i>first</i> action can the player take from A? This we already determined in the above paragraph. Then we can ask, from the configuration lead to by that action, what <i>second</i> action can the player take? These possible second actions of course can be found by the arrows from the configuration lead to by the first action.
+</p>
+
+<p>
+If we attempt to manually determine all possible two action sequences from A, we find:
+</p>
+
+<dl class="org-dl">
+<dt>&ldquo;ad&rdquo;</dt><dd>The player can activate the water wheel (leading to configuration B) and then deactivate the water wheel (leading back to configuration A).</dd>
+<dt>&ldquo;au&rdquo;</dt><dd>The player can activate the water wheel (leading to configuration B) and then unlock the door (leading to configuration C).</dd>
+<dt>&ldquo;ua&rdquo;</dt><dd>The player can unlock the door (leading to configuration D) and then activate the water wheel (leading to configuration C).</dd>
+</dl>
+
+<p>
+Notice that in this particular case, there are three possible two action sequences. Why? Let&rsquo;s see: we have two possible first actions, &ldquo;a&rdquo; and &ldquo;u&rdquo;. Action &ldquo;a&rdquo; brings us to configuration B where we have two possible second actions: &ldquo;d&rdquo; and &ldquo;u&rdquo;. Thus, following the first action, we have two actions. Action &ldquo;u&rdquo; brings us to configuration D, where we only have one possible second action: &ldquo;a&rdquo;. Thus, following the second action, we have one action. The two actions following the first possible first action plus the one action following the second possible first action equals a total of three possible two action sequences.
+</p>
+
+<p>
+Note that all possible two action sequences necessarily have a <i>prefix</i> that exists in the set of all possible <i>single action sequences</i>. In plain English, this means that every pair of subsequent actions from A must begin with an action from A. More generally, when N &gt; 0, all possible <i>N action sequences</i> (action sequences consisting of N number of actions) necessarily have a <i>prefix</i> that exists in the set of all possible N-1 action sequences (action sequences consisting of <i>N-1</i> number of actions). In other words, <i>all N action sequences can be formed by adding one more action to the end of an N-1 action sequence</i>.
+</p>
+
+<p>
+This is true of our discovery of two action sequences above: all two action sequences begin with one of the single action sequences that we determined previously, namely either &ldquo;a&rdquo; or &ldquo;u&rdquo;.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgc92592e"></a>How many possible action sequences are there from some configuration?<br />
+<div class="outline-text-5" id="text-orgc92592e">
+<p>
+Sometimes there are a <i>finite</i> number of possible action sequences, and sometimes there are an <i>infinite</i> number of possible action sequences from some configuration. (From most configurations in most dungeons there will be an infinite number of possible action sequences.)
+</p>
+
+<p>
+First some examples!
+</p>
+
+<p>
+Here is an example of <i>finite</i> possible action sequences from any configuration:
+</p>
+
+
+<div id="orgdb633e0" class="figure">
+<p><img src="../images/dungeon_j.png" alt="dungeon_j.png" />
+</p>
+</div>
+
+<p>
+From A, all possible action sequences (of which there are a finite many) are the following:
+</p>
+
+<dl class="org-dl">
+<dt>&ldquo;&rdquo;</dt><dd>The player can do nothing so they remain in A.</dd>
+<dt>&ldquo;a&rdquo;</dt><dd>The player can take action &ldquo;a&rdquo; leading them to C.</dd>
+<dt>&ldquo;b&rdquo;</dt><dd>The player can take action &ldquo;b&rdquo; leading them to B.</dd>
+<dt>&ldquo;bc&rdquo;</dt><dd>The player can take action &ldquo;b&rdquo; followed by action &ldquo;c&rdquo; leading them to C.</dd>
+</dl>
+
+<p>
+From B, all possible action sequences (of which there are a finite many) are the following:
+</p>
+
+<dl class="org-dl">
+<dt>&ldquo;&rdquo;</dt><dd>The player can do nothig so they remain in B.</dd>
+<dt>&ldquo;c&rdquo;</dt><dd>The player can take action &ldquo;c&rdquo; leading them to C.</dd>
+</dl>
+
+<p>
+From C, all possible action sequences (of which there are a finite many, in fact there is only one!) are the following:
+</p>
+
+<dl class="org-dl">
+<dt>&ldquo;&rdquo;</dt><dd>The player can do nothing so they remain in C. This is the only possible action sequence in C because there are no arrows from C.</dd>
+</dl>
+
+<p>
+Here is an example of <i>infinite</i> possible action sequences from any configuration:
+</p>
+
+
+<div id="orgf293507" class="figure">
+<p><img src="../images/dungeon_k.png" alt="dungeon_k.png" />
+</p>
+</div>
+
+<p>
+Notice that this is the same example as before, except now a new arrow has been added: &ldquo;d&rdquo; from C to A.
+</p>
+
+<p>
+What this means is that all possible action sequences from any configuration in this example consists of all possible action sequences from any configuration in the previous example with the addition that new action sequences can be formed by appending &ldquo;d&rdquo; to the end of any action sequence that ends in &ldquo;a&rdquo; or &ldquo;c&rdquo;. This is because actions &ldquo;a&rdquo; or &ldquo;c&rdquo; lead to configuration C, from which there is now the possible action &ldquo;d&rdquo;. But because &ldquo;d&rdquo; leads to A, and because from A there are possible actions &ldquo;a&rdquo; and &ldquo;b&rdquo;, any of the newly formed action sequences ending in &ldquo;d&rdquo; can also be appended with &ldquo;a&rdquo; or &ldquo;b&rdquo; to form yet more new possible action sequences.
+</p>
+
+<p>
+In this example, this process can be repeated forever. Most important to note, is that the reason this process can be repeated forever is because of the presence of an action in the action sequence that <i>returns the player to a previously visited configuration once visited over the course of the action sequence</i>. In other words, there are <i>loops</i>. Where there are loops there are endless possibilities! Intuitively, the player can run around in circles endlessly. Concretely, the player can, for example, move from A via &ldquo;a&rdquo; to C, and then via &ldquo;d&rdquo; back to A, from which this <i>action subsequence</i> of &ldquo;ad&rdquo; can be repeated endlessly.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org2c95eac"></a>What da heckie is a <i>loop</i>?<br />
+<div class="outline-text-6" id="text-org2c95eac">
+<p>
+First, an <i>action subsequence</i> is a part of an action sequence. For example, in the above example, consider the action sequence from A: &ldquo;adbcdad&rdquo;. In this action sequence, &ldquo;adb&rdquo;, &ldquo;bcd&rdquo;, &ldquo;b&rdquo;, &ldquo;dbcdad&rdquo;, and even &ldquo;&rdquo; are all action subsequences, because they can be found inside of &ldquo;adbcdad&rdquo;. However, &ldquo;cdb&rdquo;, is not an action subsequence because it cannot be found inside &ldquo;adbcdad&rdquo;.
+</p>
+
+<p>
+A <i>repeatable action subsequence</i> is any action subsequence that can be replaced by <i>any number of itself</i>. For example, in the same action sequence as above &ldquo;adbcdad&rdquo;, &ldquo;dbc&rdquo; is a repeatable action subsequence because it can be replaced with, &ldquo;dbcdbc&rdquo;, &ldquo;dbcdbcdbc&rdquo;, &ldquo;dbcdbcdbcdbc&rdquo;, or even &ldquo;&rdquo; and we still end up with a valid action sequence. This corresponds to a <i>loop</i> in the diagram.
+</p>
+
+<p>
+What is a loop then? A first attempt at a definition says that a loop is <i>any sequence of configurations such that from each configuration in the sequence, the following configuration can be gotten to by an action, and from the last configuration in the sequence, the first configuration can be gotten to by an action</i>.
+</p>
+
+<p>
+We&rsquo;ll call a sequence of configurations a <i>configuration sequence</i> to distinguish it from an <i>action sequence</i>.
+</p>
+
+<p>
+For example, the loop corresponding to the repeatable action subsequence &ldquo;dbc&rdquo; is A-&gt;B-&gt;C. Another loop in the above diagram is A-&gt;C, because C can be gotten to <i>directly</i> from A, and A can be gotten to <i>directly</i> by B.
+</p>
+
+<p>
+Another definition of a loop might be this: a loop is <i>any configuration sequence such that each subsequent configuration corresponds to the target of each subsequent action in some repeatable action subsequence</i>. The <i>target</i> of an action is the configuration that it leads to.
+</p>
+
+<p>
+For example, consider the repeatable action subsequence &ldquo;dbc&rdquo;. We know that this corresponds to loop A-&gt;B-&gt;C. According to our second definition, this is because the target of &ldquo;d&rdquo; is A, the target of &ldquo;b&rdquo; is B, and the target of &ldquo;c&rdquo; is C.
+</p>
+
+<p>
+At first thought, every configuration sequence consisting of a single configuration is a necessarily a loop, because from any configuration, the <i>empty sequence</i> will always return the player to that same configuration. However, this defies both of our definitions.
+</p>
+
+<p>
+Our first definition requires that all configurations in the loop can be gotten to by an action. However this isn&rsquo;t the necessarily the case. While it <i>is</i> true that from all configurations there exists an action subsequence that leads back to that same configuration (namely, the empty sequence), it is <i>not</i> necessarily true that there is an <i>action</i> that leads back to the same configuration. Consider this diagram:
+</p>
+
+
+<div id="org22a8098" class="figure">
+<p><img src="../images/dungeon_u.png" alt="dungeon_u.png" />
+</p>
+</div>
+
+<p>
+There are two possible action sequences from A that lead to A:
+</p>
+
+<dl class="org-dl">
+<dt>&ldquo;&rdquo;</dt><dd>The player can do nothing in A, leaving them in A.</dd>
+<dt>&ldquo;a&rdquo;</dt><dd>The player can perform action &ldquo;a&rdquo; in A, leading them back to A.</dd>
+</dl>
+
+<p>
+In the first case, the means by which the player returns to A is <i>not</i> an action. More specifically it is the <i>lack</i> of action that leaves the player in A.
+</p>
+
+<p>
+In the second case, the means by which the player returns to A <i>is</i> an action, namely &ldquo;a&rdquo;.
+</p>
+
+<p>
+The difference here illustrates that the existence of the empty sequence is not sufficient to consider all configuration sequences containing a single configuration a loop.
+</p>
+
+<p>
+With our second definition it&rsquo;s more straightforward. The definition says that every configuration in a loop must correspond to the target of an action in a repeatable action subsequence. And while the empty sequence is a repeatable action subsequence, it contains no actions, and thus there are no targets for any configuration to correspond to.
+</p>
+</div>
+</li>
+
+<li><a id="orgb9504cb"></a><span class="todo TODO">TODO</span> talk about composition of action subsequences and cases of commutativity and non commutativity<br /></li>
+</ul>
+</li>
+
+<li><a id="org2426612"></a><span class="todo TODO">TODO</span> Non-sequences<br />
+<div class="outline-text-5" id="text-org2426612">
+<p>
+Not all possible strings of letters denote valid action sequences. A non-sequence is any sequence of actions that can never occur starting from a starting state.
+</p>
+
+<p>
+Returing once again to the above example:
+</p>
+
+
+<div id="orgc43ea33" class="figure">
+<p><img src="../images/dungeon_i.png" alt="dungeon_i.png" />
+</p>
+</div>
+
+<p>
+An example of a non-sequence from A would be the sequence &ldquo;aua&rdquo;. The reason that it&rsquo;s a non sequence can be found out by following each action in the sequence on the diagram. From A, we take the &ldquo;a&rdquo; arrow to B, from which we take the &ldquo;u&rdquo; arrow to C, from which we <i>can&rsquo;t</i> take any such &ldquo;a&rdquo; arrow because there aren&rsquo;t any &ldquo;a&rdquo; arrows from C! Therefore &ldquo;aua&rdquo; is a non-sequence from A.
+</p>
+
+<p>
+Notice that a string that denotes a <i>non-sequence</i> from one configuration may denote a <i>sequence</i> from another configuration. For example, the string &ldquo;uad&rdquo; from A denotes a sequence, because there is a chain of arrows &ldquo;u&rdquo; to D, &ldquo;a&rdquo; to C, and then &ldquo;d&rdquo; to D that can be followed from A. But the same string denotes a <i>non-sequence</i> from, for example, B, because attempting to follow the same chain fails: we can follow the initial action &ldquo;u&rdquo; from B to C, but we can&rsquo;t follow the second action &ldquo;a&rdquo; from C, because there is no action &ldquo;a&rdquo; from C.
+</p>
+
+<p>
+Notice that because the empty sequence is always a valid action sequence, that, correspondingly, the empty sequence is <i>never</i> a valid non-sequence. In other words, it is <i>always</i> possible to do nothing.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org51cdfcb"></a><span class="todo TODO">TODO</span> think about this more; what would it mean for &ldquo;no action&rdquo; not to be a possibility?<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge89d33e" class="outline-3">
+<h3 id="orge89d33e">What da heckie are <i>configuration classes</i>?</h3>
+<div class="outline-text-3" id="text-orge89d33e">
 <p>
 Sometimes it&rsquo;s not a singular particular dungeon configuration you are interested in getting to, but a <i>class</i> of dungeon configurations, i.e., a <b>configuration class</b>. For example, suppose you want to unlock the big scary door. Suppose also that there is a switch that controls whether the water wheel is on or off. But the key to the big scary door is accessible regardless of the state of the water wheel. In other words, it doesn&rsquo;t matter to you whether the water wheel is activated or not, you only care about whether the big scary door is unlocked. Thus what you care about is not a singular particular dungeon configuration, but rather the <i>class of all dungeon configurations such that the big scary door is unlocked</i>, which consists of at least two different dungeon configurations: one where the water wheel is activated, and one where the water wheel in not activated.
 </p>
 
 
-<div id="org447190d" class="figure">
+<div id="orgd891035" class="figure">
 <p><img src="../images/dungeon_b.png" alt="dungeon_b.png" />
 </p>
 </div>
@@ -775,9 +1056,9 @@ Notice also that there&rsquo;s no single action the player can take to simultane
 </div>
 </div>
 
-<div id="outline-container-org8f00272" class="outline-2">
-<h2 id="org8f00272">Dungeon topology</h2>
-<div class="outline-text-2" id="text-org8f00272">
+<div id="outline-container-orgc1e731d" class="outline-2">
+<h2 id="orgc1e731d">Dungeon topology</h2>
+<div class="outline-text-2" id="text-orgc1e731d">
 <p>
 A dungeon is similar to a maze in that from any point A to any point B there may be any number (possibly 0) of possible paths you can take. Unlike a maze though, which has fixed topology, a dungeon often has <i>dynamic topology</i>. In particular, this dynamism is due to the fact that the topology of the dungeon is a <i>function of the dungeon&rsquo;s state</i>. In other words, the collection of sets for each location in the dungeon of all possible paths you can take from that location varies depending on the value of dungeon&rsquo;s state variables.
 </p>
@@ -787,36 +1068,215 @@ For example, suppose you can only get from across a moat if the draw bridge is l
 </p>
 </div>
 
-<div id="outline-container-orgcf6dabb" class="outline-3">
-<h3 id="orgcf6dabb">Conditional topology</h3>
-<div class="outline-text-3" id="text-orgcf6dabb">
-</div>
-<div id="outline-container-org2d27b1a" class="outline-4">
-<h4 id="org2d27b1a"><span class="todo TODO">TODO</span> The dungeon map</h4>
-<div class="outline-text-4" id="text-org2d27b1a">
+<div id="outline-container-org5be45bb" class="outline-3">
+<h3 id="org5be45bb">The dungeon map</h3>
+<div class="outline-text-3" id="text-org5be45bb">
 <p>
 Consider the dungeon map. This shows the general physical layout of the dungeon, ignoring the specifics that vary.
 </p>
-</div>
+
+<p>
+Here&rsquo;s an example of a dungeon map:
+</p>
+
+
+<div id="org2235257" class="figure">
+<p><img src="../images/dungeon_l.png" alt="dungeon_l.png" />
+</p>
 </div>
 
-<div id="outline-container-orgc0eba1f" class="outline-4">
-<h4 id="orgc0eba1f"><span class="todo TODO">TODO</span> Topological templates</h4>
-<div class="outline-text-4" id="text-orgc0eba1f">
+<p>
+Here we have a map of a dungeon which can be seen as having four rooms: A, B, C, and D. Three squarish shaped rooms A, B, and C at the top and a round room D at the bottom. Room B is conjoined with all three other rooms via small passageways.
+</p>
+
+<p>
+Suppose we want to represent this map using a diagram similar to state space diagrams. It might be tempting to create a diagram like this one:
+</p>
+
+
+<div id="orge9fe795" class="figure">
+<p><img src="../images/dungeon_m.png" alt="dungeon_m.png" />
+</p>
+</div>
+
+<p>
+The intuition here is that each room corresponds to a circle in the diagram, and each arrow corresponds to a way from one room to another room. Each arrow here is accompanied with a corresponding arrow in the reverse direction, because each passageway can be walked through in both directions.
+</p>
+
+<p>
+However, this diagram is equivalent in an important sense to this one:
+</p>
+
+
+<div id="orge4074cb" class="figure">
+<p><img src="../images/dungeon_n.png" alt="dungeon_n.png" />
+</p>
+</div>
+
+<p>
+In other words, the more complex diagram above expclitly depicting rooms A, B, C, and D can be simplified into a single circle. This is because in the diagram above, all possible circles can be gotten to from any other circle at any time. If the player is in room C, for example, it&rsquo;s no different than if they were in room B, or A, or D, because from any of those other rooms, C can be gotten to, and from C, any of the other rooms can be gotten to.
+</p>
+
+<p>
+Contrast with this dungeon map:
+</p>
+
+
+<div id="org292eda0" class="figure">
+<p><img src="../images/dungeon_o.png" alt="dungeon_o.png" />
+</p>
+</div>
+
+<p>
+Here are two rooms A and B conjoined by a ledge denoted by the yellow arrow pointing from A to B. The ledge is too high up to climb up, but it can be jumped off of from A into B.
+</p>
+
+<p>
+The equivalent diagram for this dungeon would be this:
+</p>
+
+
+<div id="orgc958274" class="figure">
+<p><img src="../images/dungeon_p.png" alt="dungeon_p.png" />
+</p>
+</div>
+
+<p>
+This time the diagram is already completely simplified. The reason this diagram can&rsquo;t be simplified to a single circle is that A and B are different in what can be gotten to from them. From A, B can be gotten to, but from B, A cannot be gotten to. This is the critical difference between this dungeon map and the previous one: <i>not all parts of the dungeon can be accessed from all other parts of the dungeon</i>.
+</p>
+
+<p>
+A first attempt at a rule can be formed for simplifying any such diagram: <i>All pairs of circles with a symetric pair of arrows between them can be reduced to a single node</i>.
+</p>
+
+<p>
+Take this diagram for example:
+</p>
+
+
+<div id="org867ccba" class="figure">
+<p><img src="../images/dungeon_r.png" alt="dungeon_r.png" />
+</p>
+</div>
+
+<p>
+A and B have a <i>symetric pair of arrows</i> between them. That is, corresponding to the arrow from A to B is an arrow from B to A, and, equivalently, corresponding to the arrow from B to A, there is an arrow from A to B.
+</p>
+
+<p>
+So the first step in simplifying this diagram is to merge A and B:
+</p>
+
+
+<div id="orgb102297" class="figure">
+<p><img src="../images/dungeon_s.png" alt="dungeon_s.png" />
+</p>
+</div>
+
+<p>
+Here we have replaced A and B with a single circle labeled &ldquo;A/B&rdquo; to represent both A and B simultaneously.
+</p>
+
+<p>
+When we look for further opportunities for simplification, we find none, because there are no more symetric pairs of arrows between any two circles.
+</p>
+
+<p>
+Our rule turns out to be insufficient for capturing all opportunities for simplification. Consider this diagram:
+</p>
+
+
+<div id="orgff2dd46" class="figure">
+<p><img src="../images/dungeon_t.png" alt="dungeon_t.png" />
+</p>
+</div>
+
+<p>
+In this diagram it is clear that all circles can be gotten to from any other circles. A, for example, can be gotten to directly from C, and indirectly from B; B can be gotten to directly from A, and indirectly from C; and C can be gotten to directly from B, and indirectly from A.
+</p>
+
+<p>
+However, there are no symetric pairs of arrows. But we can see that there is a <i>loop</i>. So we need a more general rule: <i>all circles participating in the same loop can be replaced with a single circle corresponding with that loop</i>.
+</p>
+
+<p>
+Recall that a <i>loop</i> is <i>a configuration sequence such that each subsequent configuration corresponds to the target of each subsequent action in some repeatable action subsequence</i>.
+</p>
+
+<p>
+The first step simplifying a loop is to identify the loop. Suppose we identify the loop A-&gt;B-&gt;C. We know its a loop because its a sequence of configurations that corresponds to the  repeatable action subsequence &ldquo;zxy&rdquo;. The second step is to replace all configurations participating in this loop; namely, A, B, and C; with a single circle, and we get this:
+</p>
+
+
+<div id="org3170d76" class="figure">
+<p><img src="../images/dungeon_n.png" alt="dungeon_n.png" />
+</p>
+</div>
+
+<p>
+(We could have named it &ldquo;A/B/C&rdquo; to denote that it is equivalent to A, B, and C combined.)
+</p>
+
+<p>
+Our new rule for simplification should be sufficient for all cases. Let&rsquo;s consider this slightly more complex example:
+</p>
+
+
+<div id="org2e7d3ea" class="figure">
+<p><img src="../images/dungeon_q.png" alt="dungeon_q.png" />
+</p>
+</div>
+
+<p>
+Our first rule is still useful as aa rule of thumb, because symetric pairs are quick to spot. We can start to simplify this diagram by first combining A and D as well as B and E, because it is clear that they have symetric pairs of arrows between them:
+</p>
+
+
+<div id="org6afd10b" class="figure">
+<p><img src="../images/dungeon_v.png" alt="dungeon_v.png" />
+</p>
+</div>
+
+<p>
+We replaced A and D with &ldquo;A/D&rdquo; and we replaced B and E with &ldquo;B/E&rdquo;. Notice what remained the same and what changed about the arrows. We removed the arrows between A and D and beween B and E, because we merged those into one. The arrow from C to A is now the arrow from C to &ldquo;A/D&rdquo;, because the original target A became &ldquo;A/D&rdquo;. Likewise, the arrow from F to E is now the arrow from F to &ldquo;B/E&rdquo;, because the original target E became &ldquo;B/E&rdquo;. The arrow from B to C became the arrow from &ldquo;B/E&rdquo; to C, because the original <i>source</i> B became &ldquo;B/E&rdquo;. And lastly, notice that the arrows from A to B and from D to E were replaced with a single arrow from &ldquo;A/D&rdquo; to &ldquo;B/E&rdquo;. Strictly speaking, we skipped a step. Logically, there should now be <i>two</i> arrows from &ldquo;A/D&rdquo; to &ldquo;B/E&rdquo;. But more on this later!
+</p>
+
+<p>
+The next step in simplification is to notice the loop containing &ldquo;A/D&rdquo;, &ldquo;B/E&rdquo; and C. We can simplify this loop as follows:
+</p>
+
+
+<div id="org7cec2a0" class="figure">
+<p><img src="../images/dungeon_w.png" alt="dungeon_w.png" />
+</p>
+</div>
+
+<p>
+We replaced &ldquo;A/D&rdquo;, &ldquo;B/E&rdquo;, and C with &ldquo;A/B/C/D/E&rdquo;. The arrows from F to C ad from F to &ldquo;B/E&rdquo; were replaced with the arrow from A/B/C/D/E. No more simplification can be done!
+</p>
+</div>
+
+<div id="outline-container-org6097c79" class="outline-4">
+<h4 id="org6097c79"><span class="todo TODO">TODO</span> Conditional topology</h4>
+</div>
+
+<div id="outline-container-org0a5e019" class="outline-4">
+<h4 id="org0a5e019"><span class="todo TODO">TODO</span> Topological templates</h4>
+<div class="outline-text-4" id="text-org0a5e019">
 <p>
 Suppose we want to depict the general physical layout of the dungeon, similar to a map, except we dont wan&rsquo;t to ignore the ways in which the topology varies depending on the state variables.
 </p>
 </div>
 
 <ul class="org-ul">
-<li><a id="org5a48d91"></a><span class="todo TODO">TODO</span> Template notation<br /></li>
+<li><a id="org13ac674"></a><span class="todo TODO">TODO</span> Template notation<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgae0e57f" class="outline-3">
-<h3 id="orgae0e57f">Dungeon space</h3>
-<div class="outline-text-3" id="text-orgae0e57f">
+<div id="outline-container-org4c153e4" class="outline-3">
+<h3 id="org4c153e4">Dungeon space</h3>
+<div class="outline-text-3" id="text-org4c153e4">
 <p>
 Notice that its possible for any point in the dungeon topology to be paired with multiple possible dungeon configurations. And notice that its possible for any point in the dungeon state space (i.e., every dungeon configuration) to be paired with multiple points in the dungeon topology. In other words, for every location you could be in the dungeon, there are typically multiple configurations that the dungeon could have. And conversely, for every configuration the dungeon could have, you could typically be in several different locations in the dungeon.
 </p>
@@ -830,27 +1290,27 @@ Dungeon space is useful because it allows us to represent wholistically how the 
 </p>
 </div>
 
-<div id="outline-container-org22efb48" class="outline-4">
-<h4 id="org22efb48"><span class="todo TODO">TODO</span> conditional topology × state space</h4>
+<div id="outline-container-orga811639" class="outline-4">
+<h4 id="orga811639"><span class="todo TODO">TODO</span> conditional topology × state space</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org434c5c2" class="outline-2">
-<h2 id="org434c5c2"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
+<div id="outline-container-org304f0b7" class="outline-2">
+<h2 id="org304f0b7"><span class="todo TODO">TODO</span> Analysis: Temple of Time (Twilight Princess)</h2>
 </div>
 
-<div id="outline-container-orgfc7ed7b" class="outline-2">
-<h2 id="orgfc7ed7b"><span class="todo TODO">TODO</span> Analysis of game mechanics</h2>
+<div id="outline-container-org555f78c" class="outline-2">
+<h2 id="org555f78c"><span class="todo TODO">TODO</span> Analysis of game mechanics</h2>
 </div>
 
-<div id="outline-container-org3abb792" class="outline-2">
-<h2 id="org3abb792"><span class="todo TODO">TODO</span> Dungeon generation</h2>
+<div id="outline-container-org9822f51" class="outline-2">
+<h2 id="org9822f51"><span class="todo TODO">TODO</span> Dungeon generation</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-23 Mon 23:38</p>
+<p class="date">Created: 2020-11-23 Mon 23:52</p>
 </div>
 </body>
 </html>
