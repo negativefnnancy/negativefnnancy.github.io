@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-23 Mon 23:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nancy&rsquo;s Projects</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nancy&rsquo;s Projects</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org94e3081"><span class="todo TODO">TODO</span> Consumption projects</a></li>
+<li><a href="#orgc150355">Learning projects</a>
+<ul>
+<li><a href="#org15124f1">Subjects</a></li>
+<li><a href="#org4869e14">Programming languages</a></li>
+<li><a href="#org74bac08">Natural languages</a></li>
+<li><a href="#org9ecda52">Creative skills</a></li>
+<li><a href="#orgd6fc7f4">Games</a></li>
+<li><a href="#org3330ef7">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a href="#org768b7ce">Creative projects</a>
+<ul>
+<li><a href="#org7ba8e1a">Money projects</a>
+<ul>
+<li><a href="#org7c898e0">Digital marketing</a></li>
+<li><a href="#org1c3aee0">Discord bot business</a></li>
+<li><a href="#org72eb4fc">Micro-programming commissions</a></li>
+<li><a href="#org0b4dfe4">Android apps</a></li>
+<li><a href="#orge5851b7">Ads</a></li>
+<li><a href="#org00035ce">Donations</a></li>
+</ul>
+</li>
+<li><a href="#org835e5b2">Presence</a>
+<ul>
+<li><a href="#orge082ad7">Tator Tot Club</a></li>
+<li><a href="#orgd7d9e17">Negative Nancy&rsquo;s Nuthouse for the Nuts (N4)</a></li>
+<li><a href="#orgb20d76d">GitHub</a></li>
+<li><a href="#orgd608786">YouTube channel</a></li>
+<li><a href="#org362f5b6">Ko-fi</a></li>
+<li><a href="#org59ae186">Bandcamp</a></li>
+<li><a href="#org7d4bf82">Itch.io</a></li>
+</ul>
+</li>
+<li><a href="#org6012718">Nancy&rsquo;s Guide</a>
+<ul>
+<li><a href="#orgb84f0c0">Dream journal</a></li>
+</ul>
+</li>
+<li><a href="#orgd43f91b">Litera.cy</a></li>
+<li><a href="#org3f2e23d">Chamomile OS</a></li>
+<li><a href="#org4fde9b6">OmniLingo</a></li>
+<li><a href="#org0a98bde">Ocha</a></li>
+<li><a href="#org947b6c7">Gateway</a></li>
+<li><a href="#org1b4ea4c">Bots</a>
+<ul>
+<li><a href="#orgcbc2311">LilyBot</a></li>
+<li><a href="#orgf58fc5e">FridgeBot</a></li>
+</ul>
+</li>
+<li><a href="#orgf060744">Treatise</a></li>
+<li><a href="#org2b38732">SiMP: SIgnal Manipulation Program</a></li>
+<li><a href="#org0e2431d">Keffie Tracker</a></li>
+<li><a href="#orgb670b6b">Simulations</a>
+<ul>
+<li><a href="#org862ce5d">Crayon simulation</a></li>
+<li><a href="#org1edebbb">CRT/Vector display simulation</a></li>
+<li><a href="#org1a316c4">Nanceloid</a></li>
+<li><a href="#org07e6374">Little girl simulator</a></li>
+</ul>
+</li>
+<li><a href="#org49740bc">Creative projects</a>
+<ul>
+<li><a href="#orgf36b66c">Writing</a></li>
+<li><a href="#orgc4a8952">Music</a></li>
+<li><a href="#org8d49092">Art</a></li>
+<li><a href="#org25f3068">Homebrew (games)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+This is my list of projects sorted by the <a href="20201114170218-projects.html">pillars of the creative cycle</a>.
+</p>
+
+<div id="outline-container-org94e3081" class="outline-2">
+<h2 id="org94e3081"><span class="todo TODO">TODO</span> Consumption projects</h2>
+<div class="outline-text-2" id="text-org94e3081">
+<p>
+Here I can put things I would like to experience, but I can also put things I <i>have</i> experienced that are favorites and long-term sources of inspiration.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc150355" class="outline-2">
+<h2 id="orgc150355">Learning projects</h2>
+<div class="outline-text-2" id="text-orgc150355">
+<p>
+Things I need and want to learn either for the sake of themselves or because they benefit my other projects!
+</p>
+</div>
+
+<div id="outline-container-org15124f1" class="outline-3">
+<h3 id="org15124f1">Subjects</h3>
+<div class="outline-text-3" id="text-org15124f1">
+<p>
+In a haphazardly organized manner:
+</p>
+
+<ul class="org-ul">
+<li>Category theory</li>
+<li>Set theory</li>
+<li>Topology</li>
+<li>Homotopy type theory</li>
+<li>Linear algebra</li>
+<li>Tensor calculus</li>
+<li>Statistical modeling</li>
+<li>Machine learning</li>
+<li>Music theory</li>
+<li>Physical modeling (DSP)</li>
+<li>Physically based rendering (graphics)</li>
+<li>Physics simulation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4869e14" class="outline-3">
+<h3 id="org4869e14">Programming languages</h3>
+<div class="outline-text-3" id="text-org4869e14">
+<p>
+It&rsquo;s easy to jump in and just start using new programming languages off the shelf (usually) but&#x2026;. I would like to really refine my knowledge and fluency in a few specially picked languages for specific purposes. :o
+</p>
+
+<p>
+So which ones? Right now I&rsquo;m thinking&#x2026;
+</p>
+
+<dl class="org-dl">
+<dt>Python</dt><dd>prototyping, bots</dd>
+<dt>Java</dt><dd>android development</dd>
+<dt>Idris</dt><dd>formal, high-level programming</dd>
+<dt>C++</dt><dd>performance, ubiquity</dd>
+<dt>C90</dt><dd>language of discipline?! I&rsquo;m not sure, but I feel a need to perfect it for some reason <code>0_0</code></dd>
+<dt>x86</dt><dd>i feel compelled to know this well&#x2026; but I&rsquo;ll hold off on it for now&#x2026;.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org74bac08" class="outline-3">
+<h3 id="org74bac08">Natural languages</h3>
+<div class="outline-text-3" id="text-org74bac08">
+<p>
+Natural languages to learn to speak!!! (And write in!)
+</p>
+
+<dl class="org-dl">
+<dt>Germanic</dt><dd>I want to learn a bunch of germanic languages so that I can experience generalization from a family of closely related languages.</dd>
+<dt>Japanese</dt><dd>Lots of media inspirations in Japanese, so gotta learn this! <code>0_0</code></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org9ecda52" class="outline-3">
+<h3 id="org9ecda52">Creative skills</h3>
+<div class="outline-text-3" id="text-org9ecda52">
+<ul class="org-ul">
+<li>Writing narrative</li>
+<li>Art
+<ul class="org-ul">
+<li>Drawing</li>
+<li>Animation</li>
+</ul></li>
+<li>Music
+<ul class="org-ul">
+<li>Music composition</li>
+<li>Keyboard instrument technique</li>
+<li>Notational fluency</li>
+<li>Ear training</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6fc7f4" class="outline-3">
+<h3 id="orgd6fc7f4">Games</h3>
+<div class="outline-text-3" id="text-orgd6fc7f4">
+<p>
+Games I&rsquo;d like to be good at! :0
+</p>
+
+<ul class="org-ul">
+<li>Tetris</li>
+<li>Touhou</li>
+<li>Go</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3330ef7" class="outline-3">
+<h3 id="org3330ef7">Miscellaneous</h3>
+<div class="outline-text-3" id="text-org3330ef7">
+<ul class="org-ul">
+<li>Gregg shorthand</li>
+<li>Mechanical stenography</li>
+<li>Toe dexterity</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org768b7ce" class="outline-2">
+<h2 id="org768b7ce">Creative projects</h2>
+<div class="outline-text-2" id="text-org768b7ce">
+<p>
+These are the projects that involve cultivating a piece of myself outside of myself.
+</p>
+
+<p>
+All the these projects should follow these guidelines:
+</p>
+
+<ol class="org-ol">
+<li>It begins with a place in version control!
+<ul class="org-ul">
+<li>For strictly writing projects it can just be a part of my org files!</li>
+<li>For anything else, it&rsquo;ll get its own repository and get its own mirror on GitHub!
+<ul class="org-ul">
+<li>If it&rsquo;s a single media file, it can go in a repository of single media files (like art repo, or music repo, etc)</li>
+</ul></li>
+</ul></li>
+<li>It should be produced with &ldquo;literacy&rdquo; throughout! (I.e., literate programming.)</li>
+<li>It should be produced according to whatever applicable <a href="guide.html">guidelines</a> I have set for my self.</li>
+<li>The end product should be distributed through appropriate channels! (Choose applicable ones:)
+<ul class="org-ul">
+<li>Tator Tot Club sub-site</li>
+<li>GitHub releases</li>
+<li>AUR</li>
+<li>Language-specific repositories</li>
+<li>App stores</li>
+<li>Bandcamp</li>
+<li>YouTube</li>
+<li>Itch.io</li>
+<li>Ko-fi post</li>
+</ul></li>
+<li>The end meta-product (literate product; product about the product) should be distributed through appropriate channels!
+<ul class="org-ul">
+<li>Org-mode blog post</li>
+<li>YouTube</li>
+</ul></li>
+<li>It should be indefinitely revised and updated over time!</li>
+</ol>
+</div>
+
+<div id="outline-container-org7ba8e1a" class="outline-3">
+<h3 id="org7ba8e1a">Money projects</h3>
+<div class="outline-text-3" id="text-org7ba8e1a">
+<p>
+Projects oriented at making money! Gotta find a way to support me n stella&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;.
+</p>
+</div>
+
+<div id="outline-container-org7c898e0" class="outline-4">
+<h4 id="org7c898e0">Digital marketing</h4>
+<div class="outline-text-4" id="text-org7c898e0">
+<p>
+I aim for this to be my main source of income!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c3aee0" class="outline-4">
+<h4 id="org1c3aee0">Discord bot business</h4>
+<div class="outline-text-4" id="text-org1c3aee0">
+<p>
+I think it would be cool to write and host Discord bots for people.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72eb4fc" class="outline-4">
+<h4 id="org72eb4fc">Micro-programming commissions</h4>
+<div class="outline-text-4" id="text-org72eb4fc">
+<p>
+I like to be able to do small programming tasks for people!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b4dfe4" class="outline-4">
+<h4 id="org0b4dfe4">Android apps</h4>
+<div class="outline-text-4" id="text-org0b4dfe4">
+<p>
+I don&rsquo;t need to be particularly original I don&rsquo;t think&#x2026;. lol
+</p>
+
+<p>
+But here&rsquo;s some apps I&rsquo;d like to see, and so I should make them:
+</p>
+
+<ul class="org-ul">
+<li>A decent MP3 voice recorder!!!</li>
+<li>Comfy sight-reading practice app with generation and audio feedback</li>
+<li>Kanji practice app</li>
+<li>Nonogram generator</li>
+<li>Virtual pet of some kind</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge5851b7" class="outline-4">
+<h4 id="orge5851b7">Ads</h4>
+<div class="outline-text-4" id="text-orge5851b7">
+<p>
+I should put ads in some of my apps, on some of my sites, and on YouTube videos!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org00035ce" class="outline-4">
+<h4 id="org00035ce">Donations</h4>
+<div class="outline-text-4" id="text-org00035ce">
+<p>
+Donations, including if people buy my stuff!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org835e5b2" class="outline-3">
+<h3 id="org835e5b2">Presence</h3>
+<div class="outline-text-3" id="text-org835e5b2">
+<p>
+Projects related to my presence online! :o
+</p>
+</div>
+
+<div id="outline-container-orge082ad7" class="outline-4">
+<h4 id="orge082ad7"><a href="https://negativefnnancy.github.io">Tator Tot Club</a></h4>
+<div class="outline-text-4" id="text-orge082ad7">
+<p>
+It should be a central place for me to put all of my things, and links to other websites where I have stuff.
+</p>
+
+<p>
+I should have pages featuring all my projects and things!
+</p>
+
+<p>
+And it should be a mirror of all my org-mode writings.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd7d9e17" class="outline-4">
+<h4 id="orgd7d9e17">Negative Nancy&rsquo;s Nuthouse for the Nuts (N4)</h4>
+<div class="outline-text-4" id="text-orgd7d9e17">
+<p>
+My Discord server that I should revive at some point. XD
+</p>
+
+<p>
+It should have mostly my close friends and be themed around my bots LilyBot and FridgeBot primarily.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb20d76d" class="outline-4">
+<h4 id="orgb20d76d"><a href="https://github.com/negativefnnancy">GitHub</a></h4>
+<div class="outline-text-4" id="text-orgb20d76d">
+<p>
+A place for my code repositories.
+</p>
+
+<p>
+This is where all my projects that I intend to revise continually should go!
+</p>
+
+<p>
+For anything else I&rsquo;ll use my other account.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd608786" class="outline-4">
+<h4 id="orgd608786"><a href="https://www.youtube.com/channel/UChXn_SEQmPqio60j2vWAkcg">YouTube channel</a></h4>
+<div class="outline-text-4" id="text-orgd608786">
+<p>
+My YouTube channel which should be centered around video presentations of my projects.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org362f5b6" class="outline-4">
+<h4 id="org362f5b6"><a href="https://ko-fi.com/negativefnnancy">Ko-fi</a></h4>
+<div class="outline-text-4" id="text-org362f5b6">
+<p>
+Place for donations!!! I should keep updates about projects here eventually.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org59ae186" class="outline-4">
+<h4 id="org59ae186"><a href="https://aardbei.bandcamp.com/">Bandcamp</a></h4>
+<div class="outline-text-4" id="text-org59ae186">
+<p>
+A place to release albums!!! Which I should do!!! (And get back into making music!!!)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d4bf82" class="outline-4">
+<h4 id="org7d4bf82">Itch.io</h4>
+<div class="outline-text-4" id="text-org7d4bf82">
+<p>
+I should totally make an itch.io at some point to put games on !! :0
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6012718" class="outline-3">
+<h3 id="org6012718"><a href="guide.html">Nancy&rsquo;s Guide</a></h3>
+<div class="outline-text-3" id="text-org6012718">
+<p>
+Writing related projects!
+</p>
+
+<p>
+A collection of writings about my thoughts on various things!! Also&#x2026; I should write essays about various topics of interest in order to solidify my understanding of them!!
+</p>
+</div>
+
+<div id="outline-container-orgb84f0c0" class="outline-4">
+<h4 id="orgb84f0c0">Dream journal</h4>
+<div class="outline-text-4" id="text-orgb84f0c0">
+<p>
+I want to do something with a dream journal but I&rsquo;m not sure yet!!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd43f91b" class="outline-3">
+<h3 id="orgd43f91b">Litera.cy</h3>
+<div class="outline-text-3" id="text-orgd43f91b">
+<p>
+I want to write a tool that sort of&#x2026; extends org-mode as a literate programming/writing environment and is also a play-writing-esque scripting language! The tool then can convert an org file into a video presentation! This will then power my YouTube channel! Basically I can add &ldquo;literate documentation&rdquo; to all of my projects, which gets automatically mirrored in text form onto the Tator Tot Club as well as to my YouTube channel. The &ldquo;literate part&rdquo; is sort of the meta project, and it produces a &ldquo;behind the scenes&rdquo; piece of content. So for every content I produce, I get a &ldquo;meta-content&rdquo; for free!
+</p>
+
+<p>
+Powered by little girl simulator!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f2e23d" class="outline-3">
+<h3 id="org3f2e23d">Chamomile OS</h3>
+<div class="outline-text-3" id="text-org3f2e23d">
+<p>
+I want to build an &ldquo;operating system&rdquo; that encompasses the following ideas:
+</p>
+
+<ul class="org-ul">
+<li>Lisp OS inspired</li>
+<li>Emacs inspired</li>
+<li>Org-mode inspired</li>
+<li>Zettelkasten inspired</li>
+<li>Super-memo inspired</li>
+<li>Anki inspired</li>
+<li>Self-tracking features</li>
+<li>Probabilistic shell language with inspiration from Lisp and languages like Idris</li>
+</ul>
+
+<p>
+Essentially, it&rsquo;s a certain kind of environment that aims to sort of maximize and generalize the idea of a computer as an extension of yourself. It doesn&rsquo;t have to strictly be implemented as a standalone operating system, but that would be very satisfying! In the mean time, I use Emacs and configure it as closely to this goal as possible. (And so far it&rsquo;s very functionable!)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4fde9b6" class="outline-3">
+<h3 id="org4fde9b6">OmniLingo</h3>
+<div class="outline-text-3" id="text-org4fde9b6">
+<p>
+A social website aimed at language learning! With inspiration from Lang-8, but using a more generalized diff-based and version controlled wiki system for community post edits. And with badges and rewards and a currency system with inspiration from an old version of RosaSecta (old defunct private art site).
+</p>
+
+<p>
+It should also be centered around learning via <i>parallel-media</i> with many languages in parallel. Spaced repetition tools similar to Anki+subs2srs. Inspiration also from LWT (Learning With Texts) and LingQ.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a98bde" class="outline-3">
+<h3 id="org0a98bde">Ocha</h3>
+<div class="outline-text-3" id="text-org0a98bde">
+<p>
+Bot-oriented multi-user turing-complete shell programming language. For use in my bots!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org947b6c7" class="outline-3">
+<h3 id="org947b6c7">Gateway</h3>
+<div class="outline-text-3" id="text-org947b6c7">
+<p>
+Bot-oriented abstraction over multiple chat services. Ultimately also to be used with my bots!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b4ea4c" class="outline-3">
+<h3 id="org1b4ea4c">Bots</h3>
+<div class="outline-text-3" id="text-org1b4ea4c">
+<p>
+My main bots!
+</p>
+</div>
+
+<div id="outline-container-orgcbc2311" class="outline-4">
+<h4 id="orgcbc2311">LilyBot</h4>
+</div>
+
+<div id="outline-container-orgf58fc5e" class="outline-4">
+<h4 id="orgf58fc5e">FridgeBot</h4>
+</div>
+</div>
+
+<div id="outline-container-orgf060744" class="outline-3">
+<h3 id="orgf060744">Treatise</h3>
+<div class="outline-text-3" id="text-orgf060744">
+<p>
+My ideal high-level programming language!
+</p>
+
+<p>
+Inspirations from Lisp, Idris, probabilistic programming, and topology.
+</p>
+
+<p>
+I want a language that can be used to model mathematical spaces. And also one that fully supports probabilistic programming. And, in combination, I want to be able to model <i>probabalistic spaces</i>. And with built in devices for exploring these spaces through generation and translation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b38732" class="outline-3">
+<h3 id="org2b38732">SiMP: SIgnal Manipulation Program</h3>
+<div class="outline-text-3" id="text-org2b38732">
+<p>
+A generalized DSP tool?!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0e2431d" class="outline-3">
+<h3 id="org0e2431d">Keffie Tracker</h3>
+<div class="outline-text-3" id="text-org0e2431d">
+<p>
+Not strictly <i>my</i> project, but the project that is the brainchild of Keffie and that I am helping to build! Details withheld for now&#x2026;&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb670b6b" class="outline-3">
+<h3 id="orgb670b6b">Simulations</h3>
+<div class="outline-text-3" id="text-orgb670b6b">
+</div>
+<div id="outline-container-org862ce5d" class="outline-4">
+<h4 id="org862ce5d">Crayon simulation</h4>
+</div>
+<div id="outline-container-org1edebbb" class="outline-4">
+<h4 id="org1edebbb">CRT/Vector display simulation</h4>
+</div>
+<div id="outline-container-org1a316c4" class="outline-4">
+<h4 id="org1a316c4">Nanceloid</h4>
+<div class="outline-text-4" id="text-org1a316c4">
+<p>
+Physical modeling vocal synth!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org07e6374" class="outline-4">
+<h4 id="org07e6374">Little girl simulator</h4>
+<div class="outline-text-4" id="text-org07e6374">
+<p>
+Procedurally generated ragdoll puppets with physics???
+</p>
+
+<p>
+Powered in part by Nanceloid!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49740bc" class="outline-3">
+<h3 id="org49740bc">Creative projects</h3>
+<div class="outline-text-3" id="text-org49740bc">
+</div>
+<div id="outline-container-orgf36b66c" class="outline-4">
+<h4 id="orgf36b66c">Writing</h4>
+<div class="outline-text-4" id="text-orgf36b66c">
+<p>
+Hmm&#x2026;.. I want to write a bunch of short stories involving a little girl!!
+</p>
+
+<p>
+I also want to write a series of &ldquo;horror&rdquo; stories that are silly and absurd!!
+</p>
+
+<p>
+And&#x2026;.. I want to do some kind of interactive fiction stuff, but I&rsquo;m not sure what yet !!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc4a8952" class="outline-4">
+<h4 id="orgc4a8952">Music</h4>
+<div class="outline-text-4" id="text-orgc4a8952">
+<p>
+Something to do with chipmusic&#x2026;
+</p>
+
+<p>
+And generative music&#x2026;.
+</p>
+
+<p>
+And probably sound tracks
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8d49092" class="outline-4">
+<h4 id="org8d49092">Art</h4>
+<div class="outline-text-4" id="text-org8d49092">
+<p>
+I want to illustrate my stories!!!
+</p>
+
+<p>
+And do game art for my games: pixels, models, etc..
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25f3068" class="outline-4">
+<h4 id="org25f3068">Homebrew (games)</h4>
+<div class="outline-text-4" id="text-org25f3068">
+<ul class="org-ul">
+<li>Step On It!™ demake/port/reverse engineering/clone</li>
+<li>Stel and Nancy&rsquo;s Dreamhouse (N64)</li>
+<li>N64 rail shooter</li>
+<li>Nuthouse series
+<ul class="org-ul">
+<li>Nuthouse (Famicom)</li>
+<li>Nuthouse 2 (Super Famicom)</li>
+<li>Nuthouse 3 (GameBoy)</li>
+<li>Nuthouse 4 (GameBoy Advance)</li>
+<li>Nancy&rsquo;s Mansion (N64)</li>
+</ul></li>
+<li>Kirby and the Grassland Blockade (PC, MMO)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-11-23 Mon 23:38</p>
+</div>
+</body>
+</html>

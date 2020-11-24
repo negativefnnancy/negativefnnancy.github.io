@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mon 23:21 -->
+<!-- 2020-11-23 Mon 23:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nancy&rsquo;s C Style Guide</title>
@@ -229,68 +229,68 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org42885d8">Language version</a></li>
-<li><a href="#orga26b502">Compiler</a></li>
-<li><a href="#org023952a">C flags</a></li>
-<li><a href="#org3aa6795">Static v.s. dynamic linking</a></li>
-<li><a href="#org1cb1307">Libc implementation</a></li>
-<li><a href="#org0182142">Build system</a>
+<li><a href="#org6d6057c">Language version</a></li>
+<li><a href="#orgbe0db90">Compiler</a></li>
+<li><a href="#org2c88418">C flags</a></li>
+<li><a href="#org2b89e0b">Static v.s. dynamic linking</a></li>
+<li><a href="#org0b71cec">Libc implementation</a></li>
+<li><a href="#org3f5518d">Build system</a>
 <ul>
-<li><a href="#org9bad881">CMake</a>
+<li><a href="#org589d041">CMake</a>
 <ul>
-<li><a href="#org06ea9f1">CMake project definition templates</a></li>
-<li><a href="#org10b2ce4">Build configurations</a></li>
+<li><a href="#org2e92020">CMake project definition templates</a></li>
+<li><a href="#org9ac3e8b">Build configurations</a></li>
 </ul>
 </li>
-<li><a href="#org6437fd8">Other interesting build systems</a></li>
-<li><a href="#org3a4df05"><span class="todo TODO">TODO</span> use of pkg-build</a></li>
-<li><a href="#orgae288b3"><span class="todo TODO">TODO</span> build system agnosticism?</a></li>
+<li><a href="#org143147c">Other interesting build systems</a></li>
+<li><a href="#orgdaa7b6f"><span class="todo TODO">TODO</span> use of pkg-build</a></li>
+<li><a href="#orgab5cd79"><span class="todo TODO">TODO</span> build system agnosticism?</a></li>
 </ul>
 </li>
-<li><a href="#orgb36d5c3">Version control</a>
+<li><a href="#orge3bf9af">Version control</a>
 <ul>
-<li><a href="#org8a45a4b"><span class="todo TODO">TODO</span> Branches</a></li>
-<li><a href="#org3386a26"><span class="todo TODO">TODO</span> GitHub repositories</a></li>
+<li><a href="#orgf923c96"><span class="todo TODO">TODO</span> Branches</a></li>
+<li><a href="#org4a4dc45"><span class="todo TODO">TODO</span> GitHub repositories</a></li>
 </ul>
 </li>
-<li><a href="#orgaa8f3a5"><span class="todo TODO">TODO</span> Documentation</a>
+<li><a href="#orgc694784"><span class="todo TODO">TODO</span> Documentation</a>
 <ul>
-<li><a href="#org6f9d3f1"><span class="todo TODO">TODO</span> investigate doxygen and man files</a></li>
+<li><a href="#orgbcc3fab"><span class="todo TODO">TODO</span> investigate doxygen and man files</a></li>
 </ul>
 </li>
-<li><a href="#org8553ee7"><span class="todo TODO">TODO</span> Distribution</a></li>
-<li><a href="#orgc9aedb6">Project directory structure</a>
+<li><a href="#org99933d2"><span class="todo TODO">TODO</span> Distribution</a></li>
+<li><a href="#org640bf0e">Project directory structure</a>
 <ul>
-<li><a href="#org484b456"><code>README.md</code></a>
+<li><a href="#org8adda5b"><code>README.md</code></a>
 <ul>
-<li><a href="#org2d33502"><span class="todo TODO">TODO</span> discuss README template</a></li>
+<li><a href="#org9aa1edd"><span class="todo TODO">TODO</span> discuss README template</a></li>
 </ul>
 </li>
-<li><a href="#orge531e7e"><code>LICENSE</code></a></li>
-<li><a href="#orgcd2f985"><code>.gitignore</code></a></li>
-<li><a href="#orgab26650"><code>.gitattributes</code></a></li>
-<li><a href="#org2a5b1e7"><span class="todo TODO">TODO</span> <code>meson.build</code></a></li>
+<li><a href="#org7662b92"><code>LICENSE</code></a></li>
+<li><a href="#org7010a37"><code>.gitignore</code></a></li>
+<li><a href="#org85b01b4"><code>.gitattributes</code></a></li>
+<li><a href="#org44912b5"><span class="todo TODO">TODO</span> <code>meson.build</code></a></li>
 </ul>
 </li>
-<li><a href="#org7ae6b11">Comments</a></li>
-<li><a href="#org847fd96">Formatting</a>
+<li><a href="#orgc57da9d">Comments</a></li>
+<li><a href="#orgadc9c8c">Formatting</a>
 <ul>
-<li><a href="#org1437c82">TODO</a></li>
+<li><a href="#orga00ec14">TODO</a></li>
 </ul>
 </li>
-<li><a href="#orgdbdbb6c">Naming conventions</a>
+<li><a href="#org675fb62">Naming conventions</a>
 <ul>
-<li><a href="#org18522a5"><span class="todo TODO">TODO</span> write more!</a></li>
+<li><a href="#orgf597b7d"><span class="todo TODO">TODO</span> write more!</a></li>
 </ul>
 </li>
-<li><a href="#org35dd233">Code conventions</a></li>
-<li><a href="#org1048b7d">Object-orientation</a></li>
-<li><a href="#org1b0d83e"><span class="todo TODO">TODO</span> Multiple constructors and initializers</a>
+<li><a href="#orgf882986">Code conventions</a></li>
+<li><a href="#orga9d9678">Object-orientation</a></li>
+<li><a href="#org91b1922"><span class="todo TODO">TODO</span> Multiple constructors and initializers</a>
 <ul>
-<li><a href="#orgf02f399"><span class="todo TODO">TODO</span> Polymorphism</a></li>
+<li><a href="#orgb67e008"><span class="todo TODO">TODO</span> Polymorphism</a></li>
 </ul>
 </li>
-<li><a href="#org3d8a4a3"><span class="todo TODO">TODO</span> Use of <code>goto</code></a></li>
+<li><a href="#orgb751f6d"><span class="todo TODO">TODO</span> Use of <code>goto</code></a></li>
 </ul>
 </div>
 </div>
@@ -310,9 +310,9 @@ I like my code to be clean, readable, consistent, and pretty! @_@
 <i>(this is a work in progress hehe)</i>
 </p>
 
-<div id="outline-container-org42885d8" class="outline-2">
-<h2 id="org42885d8">Language version</h2>
-<div class="outline-text-2" id="text-org42885d8">
+<div id="outline-container-org6d6057c" class="outline-2">
+<h2 id="org6d6057c">Language version</h2>
+<div class="outline-text-2" id="text-org6d6057c">
 <p>
 I like ANSI C! (C89/C90) (This probably corresponds to any of the <code>-ansi</code> or <code>-std=c89</code> or <code>-std=c90</code> compiler flags.)
 </p>
@@ -323,9 +323,9 @@ The reason I choose ANSI C is simply because I&rsquo;ve yet to master it. And be
 </div>
 </div>
 
-<div id="outline-container-orga26b502" class="outline-2">
-<h2 id="orga26b502">Compiler</h2>
-<div class="outline-text-2" id="text-orga26b502">
+<div id="outline-container-orgbe0db90" class="outline-2">
+<h2 id="orgbe0db90">Compiler</h2>
+<div class="outline-text-2" id="text-orgbe0db90">
 <p>
 I&rsquo;m not too picky about which compiler to use, and furthermore, as long as I intend to conform to a standard, and as long as the compiler supports that standard, the choice of compiler is immaterial to the code I write.
 </p>
@@ -340,9 +340,9 @@ Sometimes I play with <a href="https://bellard.org/tcc/">TCC</a>, but I don&rsqu
 </div>
 </div>
 
-<div id="outline-container-org023952a" class="outline-2">
-<h2 id="org023952a">C flags</h2>
-<div class="outline-text-2" id="text-org023952a">
+<div id="outline-container-org2c88418" class="outline-2">
+<h2 id="org2c88418">C flags</h2>
+<div class="outline-text-2" id="text-org2c88418">
 <p>
 For release builds, I always compile with <code>-Wall</code>, <code>-Werror</code>, and <code>-Wpedantic</code> because everything&rsquo;s gotta be perfect. :3
 </p>
@@ -357,9 +357,9 @@ Since I use Meson, this is set up with each build configuration.
 </div>
 </div>
 
-<div id="outline-container-org3aa6795" class="outline-2">
-<h2 id="org3aa6795">Static v.s. dynamic linking</h2>
-<div class="outline-text-2" id="text-org3aa6795">
+<div id="outline-container-org2b89e0b" class="outline-2">
+<h2 id="org2b89e0b">Static v.s. dynamic linking</h2>
+<div class="outline-text-2" id="text-org2b89e0b">
 <p>
 When I am involved explicitly with compilation, I generally prefer static linking. The exceptions are with large and ubiquitous libraries such as GTK.
 </p>
@@ -370,9 +370,9 @@ However this should be immaterial to the code I write, so whether I am writing c
 </div>
 </div>
 
-<div id="outline-container-org1cb1307" class="outline-2">
-<h2 id="org1cb1307">Libc implementation</h2>
-<div class="outline-text-2" id="text-org1cb1307">
+<div id="outline-container-org0b71cec" class="outline-2">
+<h2 id="org0b71cec">Libc implementation</h2>
+<div class="outline-text-2" id="text-org0b71cec">
 <p>
 I&rsquo;m not particularly familiar with libc implementations, nor is it really relevant to the code I write which one is used.
 </p>
@@ -383,13 +383,13 @@ I&rsquo;m not particularly familiar with libc implementations, nor is it really 
 </div>
 </div>
 
-<div id="outline-container-org0182142" class="outline-2">
-<h2 id="org0182142">Build system</h2>
-<div class="outline-text-2" id="text-org0182142">
+<div id="outline-container-org3f5518d" class="outline-2">
+<h2 id="org3f5518d">Build system</h2>
+<div class="outline-text-2" id="text-org3f5518d">
 </div>
-<div id="outline-container-org9bad881" class="outline-3">
-<h3 id="org9bad881">CMake</h3>
-<div class="outline-text-3" id="text-org9bad881">
+<div id="outline-container-org589d041" class="outline-3">
+<h3 id="org589d041">CMake</h3>
+<div class="outline-text-3" id="text-org589d041">
 <p>
 I decided I want to start using <a href="https://cmake.org">CMake</a>! XD I&rsquo;m only just figuring out how to use it, so I don&rsquo;t know much yet.
 </p>
@@ -419,21 +419,21 @@ Things I don&rsquo;t like about CMake that aren&rsquo;t deal-breakers:
 </ul>
 </div>
 
-<div id="outline-container-org06ea9f1" class="outline-4">
-<h4 id="org06ea9f1">CMake project definition templates</h4>
-<div class="outline-text-4" id="text-org06ea9f1">
+<div id="outline-container-org2e92020" class="outline-4">
+<h4 id="org2e92020">CMake project definition templates</h4>
+<div class="outline-text-4" id="text-org2e92020">
 </div>
 <ul class="org-ul">
-<li><a id="org374762f"></a>Executable<br />
-<div class="outline-text-5" id="text-org374762f">
+<li><a id="org024c42f"></a>Executable<br />
+<div class="outline-text-5" id="text-org024c42f">
 <p>
 Here is my current template:
 </p>
 </div>
 </li>
 
-<li><a id="org7befd25"></a>Library<br />
-<div class="outline-text-5" id="text-org7befd25">
+<li><a id="org255b9d8"></a>Library<br />
+<div class="outline-text-5" id="text-org255b9d8">
 <p>
 Here is my current template:
 </p>
@@ -442,13 +442,13 @@ Here is my current template:
 </ul>
 </div>
 
-<div id="outline-container-org10b2ce4" class="outline-4">
-<h4 id="org10b2ce4">Build configurations</h4>
-<div class="outline-text-4" id="text-org10b2ce4">
+<div id="outline-container-org9ac3e8b" class="outline-4">
+<h4 id="org9ac3e8b">Build configurations</h4>
+<div class="outline-text-4" id="text-org9ac3e8b">
 </div>
 <ul class="org-ul">
-<li><a id="orgef78b52"></a>Debug/development<br />
-<div class="outline-text-5" id="text-orgef78b52">
+<li><a id="org14ea851"></a>Debug/development<br />
+<div class="outline-text-5" id="text-org14ea851">
 <p>
 Here&rsquo;s how I set up an out of source build directory for general development. In the root of the repository:
 </p>
@@ -463,8 +463,8 @@ cmake --build .                   <span style="color: #91889B;"># </span><span s
 </div>
 </li>
 
-<li><a id="org035e4b1"></a>Native release<br />
-<div class="outline-text-5" id="text-org035e4b1">
+<li><a id="orga34048c"></a>Native release<br />
+<div class="outline-text-5" id="text-orga34048c">
 <p>
 Here&rsquo;s how I set up an out of source build directory for native release builds. In the root of the repository:
 </p>
@@ -479,8 +479,8 @@ cmake --build .                     <span style="color: #91889B;"># </span><span
 </div>
 </li>
 
-<li><a id="orgb767cca"></a><span class="todo TODO">TODO</span> Cross builds<br />
-<div class="outline-text-5" id="text-orgb767cca">
+<li><a id="orgb7c1463"></a><span class="todo TODO">TODO</span> Cross builds<br />
+<div class="outline-text-5" id="text-orgb7c1463">
 <p>
 I gotta figure out how to do this! <code>0_0</code>
 </p>
@@ -490,9 +490,9 @@ I gotta figure out how to do this! <code>0_0</code>
 </div>
 </div>
 
-<div id="outline-container-org6437fd8" class="outline-3">
-<h3 id="org6437fd8">Other interesting build systems</h3>
-<div class="outline-text-3" id="text-org6437fd8">
+<div id="outline-container-org143147c" class="outline-3">
+<h3 id="org143147c">Other interesting build systems</h3>
+<div class="outline-text-3" id="text-org143147c">
 <p>
 Some other build systems that seem interesting to me: <a href="http://gittup.org/tup/">tup</a>, <a href="http://cr.yp.to/redo.html">redo</a>
 </p>
@@ -503,58 +503,58 @@ What strikes me as interesting about these is their upside down dependency graph
 </div>
 </div>
 
-<div id="outline-container-org3a4df05" class="outline-3">
-<h3 id="org3a4df05"><span class="todo TODO">TODO</span> use of pkg-build</h3>
-<div class="outline-text-3" id="text-org3a4df05">
+<div id="outline-container-orgdaa7b6f" class="outline-3">
+<h3 id="orgdaa7b6f"><span class="todo TODO">TODO</span> use of pkg-build</h3>
+<div class="outline-text-3" id="text-orgdaa7b6f">
 <p>
 <a href="https://mesonbuild.com/Pkg-config-files.html">https://mesonbuild.com/Pkg-config-files.html</a>
 <a href="https://cboard.cprogramming.com/cplusplus-programming/111796-how-generate-pc-file-library.html">https://cboard.cprogramming.com/cplusplus-programming/111796-how-generate-pc-file-library.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgae288b3" class="outline-3">
-<h3 id="orgae288b3"><span class="todo TODO">TODO</span> build system agnosticism?</h3>
+<div id="outline-container-orgab5cd79" class="outline-3">
+<h3 id="orgab5cd79"><span class="todo TODO">TODO</span> build system agnosticism?</h3>
 </div>
 </div>
 
-<div id="outline-container-orgb36d5c3" class="outline-2">
-<h2 id="orgb36d5c3">Version control</h2>
-<div class="outline-text-2" id="text-orgb36d5c3">
+<div id="outline-container-orge3bf9af" class="outline-2">
+<h2 id="orge3bf9af">Version control</h2>
+<div class="outline-text-2" id="text-orge3bf9af">
 <p>
 I like to use <a href="https://git-scm.com/">Git</a> and host my main projects on <a href="https://github.com/negativefnnancy">GitHub</a>! (I use my <a href="https://github.com/MegaLoler/">other GitHub</a> account for projects I either don&rsquo;t consider to be my main projects, or that I haven&rsquo;t revisited since making my new account.)
 </p>
 </div>
 
-<div id="outline-container-org8a45a4b" class="outline-3">
-<h3 id="org8a45a4b"><span class="todo TODO">TODO</span> Branches</h3>
-<div class="outline-text-3" id="text-org8a45a4b">
+<div id="outline-container-orgf923c96" class="outline-3">
+<h3 id="orgf923c96"><span class="todo TODO">TODO</span> Branches</h3>
+<div class="outline-text-3" id="text-orgf923c96">
 <p>
 The main branch should be called <code>master</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3386a26" class="outline-3">
-<h3 id="org3386a26"><span class="todo TODO">TODO</span> GitHub repositories</h3>
+<div id="outline-container-org4a4dc45" class="outline-3">
+<h3 id="org4a4dc45"><span class="todo TODO">TODO</span> GitHub repositories</h3>
 </div>
 </div>
 
-<div id="outline-container-orgaa8f3a5" class="outline-2">
-<h2 id="orgaa8f3a5"><span class="todo TODO">TODO</span> Documentation</h2>
-<div class="outline-text-2" id="text-orgaa8f3a5">
+<div id="outline-container-orgc694784" class="outline-2">
+<h2 id="orgc694784"><span class="todo TODO">TODO</span> Documentation</h2>
+<div class="outline-text-2" id="text-orgc694784">
 </div>
-<div id="outline-container-org6f9d3f1" class="outline-3">
-<h3 id="org6f9d3f1"><span class="todo TODO">TODO</span> investigate doxygen and man files</h3>
+<div id="outline-container-orgbcc3fab" class="outline-3">
+<h3 id="orgbcc3fab"><span class="todo TODO">TODO</span> investigate doxygen and man files</h3>
 </div>
-</div>
-
-<div id="outline-container-org8553ee7" class="outline-2">
-<h2 id="org8553ee7"><span class="todo TODO">TODO</span> Distribution</h2>
 </div>
 
-<div id="outline-container-orgc9aedb6" class="outline-2">
-<h2 id="orgc9aedb6">Project directory structure</h2>
-<div class="outline-text-2" id="text-orgc9aedb6">
+<div id="outline-container-org99933d2" class="outline-2">
+<h2 id="org99933d2"><span class="todo TODO">TODO</span> Distribution</h2>
+</div>
+
+<div id="outline-container-org640bf0e" class="outline-2">
+<h2 id="org640bf0e">Project directory structure</h2>
+<div class="outline-text-2" id="text-org640bf0e">
 <p>
 The directory structure should look like this:
 </p>
@@ -578,22 +578,22 @@ Some of these are optional or only relevant to certain kinds of projects. For ex
 </p>
 </div>
 
-<div id="outline-container-org484b456" class="outline-3">
-<h3 id="org484b456"><code>README.md</code></h3>
-<div class="outline-text-3" id="text-org484b456">
+<div id="outline-container-org8adda5b" class="outline-3">
+<h3 id="org8adda5b"><code>README.md</code></h3>
+<div class="outline-text-3" id="text-org8adda5b">
 <p>
 Because my projects are hosted on GitHub, I like to use a <code>README.md</code> markdown file as opposed to a <code>README.org</code> file (which I was considering, since I use org-mode now). The reason is because markdown is the primary markup format supported by GitHub, and so I consider it to be GitHub&rsquo;s &ldquo;native&rdquo; language for markup.
 </p>
 </div>
 
-<div id="outline-container-org2d33502" class="outline-4">
-<h4 id="org2d33502"><span class="todo TODO">TODO</span> discuss README template</h4>
+<div id="outline-container-org9aa1edd" class="outline-4">
+<h4 id="org9aa1edd"><span class="todo TODO">TODO</span> discuss README template</h4>
 </div>
 </div>
 
-<div id="outline-container-orge531e7e" class="outline-3">
-<h3 id="orge531e7e"><code>LICENSE</code></h3>
-<div class="outline-text-3" id="text-orge531e7e">
+<div id="outline-container-org7662b92" class="outline-3">
+<h3 id="org7662b92"><code>LICENSE</code></h3>
+<div class="outline-text-3" id="text-org7662b92">
 <p>
 Unless there&rsquo;s a reason to use something else, I like to use the <a href="https://opensource.org/licenses/MIT">MIT license</a>. :o
 </p>
@@ -604,9 +604,9 @@ I keep a folder in my home directory called <code>~/licenses</code> which contai
 </div>
 </div>
 
-<div id="outline-container-orgcd2f985" class="outline-3">
-<h3 id="orgcd2f985"><code>.gitignore</code></h3>
-<div class="outline-text-3" id="text-orgcd2f985">
+<div id="outline-container-org7010a37" class="outline-3">
+<h3 id="org7010a37"><code>.gitignore</code></h3>
+<div class="outline-text-3" id="text-org7010a37">
 <p>
 At minimum, this should contain something like this to exclude build-related directories from version control:
 </p>
@@ -617,9 +617,9 @@ build*/
 </div>
 </div>
 
-<div id="outline-container-orgab26650" class="outline-3">
-<h3 id="orgab26650"><code>.gitattributes</code></h3>
-<div class="outline-text-3" id="text-orgab26650">
+<div id="outline-container-org85b01b4" class="outline-3">
+<h3 id="org85b01b4"><code>.gitattributes</code></h3>
+<div class="outline-text-3" id="text-org85b01b4">
 <p>
 Currently my only use for this is with git-crypt to encrypt files in the repository. If that&rsquo;s the case, there should be an entry like this for every pattern of filenames I want to keep encrypted. Here&rsquo;s an example for encrypting <code>.org</code> files:
 </p>
@@ -630,14 +630,14 @@ Currently my only use for this is with git-crypt to encrypt files in the reposit
 </div>
 </div>
 
-<div id="outline-container-org2a5b1e7" class="outline-3">
-<h3 id="org2a5b1e7"><span class="todo TODO">TODO</span> <code>meson.build</code></h3>
+<div id="outline-container-org44912b5" class="outline-3">
+<h3 id="org44912b5"><span class="todo TODO">TODO</span> <code>meson.build</code></h3>
 </div>
 </div>
 
-<div id="outline-container-org7ae6b11" class="outline-2">
-<h2 id="org7ae6b11">Comments</h2>
-<div class="outline-text-2" id="text-org7ae6b11">
+<div id="outline-container-orgc57da9d" class="outline-2">
+<h2 id="orgc57da9d">Comments</h2>
+<div class="outline-text-2" id="text-orgc57da9d">
 <ul class="org-ul">
 <li>Since it&rsquo;s ANSI C, all comments must use <code>/* this style */</code> (as opposed to <code>// this style</code>).</li>
 <li>In general, comments should be all lower case and without the use of full stops at the end.</li>
@@ -729,9 +729,9 @@ Inline comments should be kept short and generally only used to address really s
 </div>
 </div>
 
-<div id="outline-container-org847fd96" class="outline-2">
-<h2 id="org847fd96">Formatting</h2>
-<div class="outline-text-2" id="text-org847fd96">
+<div id="outline-container-orgadc9c8c" class="outline-2">
+<h2 id="orgadc9c8c">Formatting</h2>
+<div class="outline-text-2" id="text-orgadc9c8c">
 <ul class="org-ul">
 <li>Indention should be four spaces and tabs shouldn&rsquo;t be used at all.</li>
 <li>Parentheses should always be preceded by a space, even in function definitions and calls!</li>
@@ -832,9 +832,9 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-org1437c82" class="outline-3">
-<h3 id="org1437c82">TODO</h3>
-<div class="outline-text-3" id="text-org1437c82">
+<div id="outline-container-orga00ec14" class="outline-3">
+<h3 id="orga00ec14">TODO</h3>
+<div class="outline-text-3" id="text-orga00ec14">
 <p>
 <i>don&rsquo;t miss out!!</i>
 <i>next time on <b><b>nancy&rsquo;s C style guide</b></b>: what to do when the line is too long to fit in 80 columns!</i>
@@ -843,9 +843,9 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-orgdbdbb6c" class="outline-2">
-<h2 id="orgdbdbb6c">Naming conventions</h2>
-<div class="outline-text-2" id="text-orgdbdbb6c">
+<div id="outline-container-org675fb62" class="outline-2">
+<h2 id="org675fb62">Naming conventions</h2>
+<div class="outline-text-2" id="text-org675fb62">
 <ul class="org-ul">
 <li>In general, function names, type names, and variable names should all use <code>lowercase_snake_case</code>.</li>
 <li>Enumeration constants and preprocessor constants should be <code>UPPERCASE_SNAKE_CASE</code></li>
@@ -877,14 +877,14 @@ Some examples:
 </div>
 </div>
 
-<div id="outline-container-org18522a5" class="outline-3">
-<h3 id="org18522a5"><span class="todo TODO">TODO</span> write more!</h3>
+<div id="outline-container-orgf597b7d" class="outline-3">
+<h3 id="orgf597b7d"><span class="todo TODO">TODO</span> write more!</h3>
 </div>
 </div>
 
-<div id="outline-container-org35dd233" class="outline-2">
-<h2 id="org35dd233">Code conventions</h2>
-<div class="outline-text-2" id="text-org35dd233">
+<div id="outline-container-orgf882986" class="outline-2">
+<h2 id="orgf882986">Code conventions</h2>
+<div class="outline-text-2" id="text-orgf882986">
 <ul class="org-ul">
 <li>All functions should be implemented in <code>.c</code> files and only public functions should be declared in <code>.h</code> files.</li>
 <li>Additionally all header files should use header guards following the exact pattern depicted.</li>
@@ -996,9 +996,9 @@ Redundant <code>else</code>&rsquo;s should be avoided, e.g. in the case that eac
 </div>
 </div>
 
-<div id="outline-container-org1048b7d" class="outline-2">
-<h2 id="org1048b7d">Object-orientation</h2>
-<div class="outline-text-2" id="text-org1048b7d">
+<div id="outline-container-orga9d9678" class="outline-2">
+<h2 id="orga9d9678">Object-orientation</h2>
+<div class="outline-text-2" id="text-orga9d9678">
 <ul class="org-ul">
 <li>When using structs in an objected oriented way, method names associated with a type should all be suffixed with the name of the type (without the <code>_t</code>) like this: <code>_type</code>, for example, if the type name is <code>chicken_t</code>, the suffix would be <code>_chicken</code>.</li>
 <li>Objects should be designed explicitly to either be passed by pointer or passed by value. In general, only simpler types should be used in the latter way.</li>
@@ -1111,22 +1111,22 @@ Some examples:
 </div>
 </div>
 
-<div id="outline-container-org1b0d83e" class="outline-2">
-<h2 id="org1b0d83e"><span class="todo TODO">TODO</span> Multiple constructors and initializers</h2>
-<div class="outline-text-2" id="text-org1b0d83e">
+<div id="outline-container-org91b1922" class="outline-2">
+<h2 id="org91b1922"><span class="todo TODO">TODO</span> Multiple constructors and initializers</h2>
+<div class="outline-text-2" id="text-org91b1922">
 </div>
-<div id="outline-container-orgf02f399" class="outline-3">
-<h3 id="orgf02f399"><span class="todo TODO">TODO</span> Polymorphism</h3>
+<div id="outline-container-orgb67e008" class="outline-3">
+<h3 id="orgb67e008"><span class="todo TODO">TODO</span> Polymorphism</h3>
 </div>
 </div>
 
-<div id="outline-container-org3d8a4a3" class="outline-2">
-<h2 id="org3d8a4a3"><span class="todo TODO">TODO</span> Use of <code>goto</code></h2>
+<div id="outline-container-orgb751f6d" class="outline-2">
+<h2 id="orgb751f6d"><span class="todo TODO">TODO</span> Use of <code>goto</code></h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-11-23 Mon 23:21</p>
+<p class="date">Created: 2020-11-23 Mon 23:38</p>
 </div>
 </body>
 </html>
