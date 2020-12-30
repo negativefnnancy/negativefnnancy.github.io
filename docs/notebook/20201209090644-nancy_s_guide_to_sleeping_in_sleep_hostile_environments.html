@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-12-29 Tue 19:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nancy&rsquo;s Guide to Sleeping in Sleep-Hostile Environments</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nancy&rsquo;s Guide to Sleeping in Sleep-Hostile Environments</h1>
+<p>
+My sleep-hostile environment is my grandma&rsquo;s house, where I don&rsquo;t have a good place to sleep. I share a room with my dad, and there is always the danger of noises and movements. In the winter, the air from the heating is grating and makes it hard to breath easy. People slam doors and talk loudly without any regard that I&rsquo;m trying to sleep.
+</p>
+
+<p>
+Here are things that help me deal with this:
+</p>
+
+<dl class="org-dl">
+<dt>Place maximum priority on sleep. (Hiberate)</dt><dd>Sleep as long as I have to in order to have sufficiently slept. Why be awake at all if I&rsquo;ll only feel horrible?</dd>
+<dt>Have faith in my body&rsquo;s ability to sleep when I need to.</dt><dd>When I am in need of sleep, I should trust that my body is essentially capable of falling into sleep. The sleep drive is present, and it&rsquo;s up to me to do everything I can to allow the sleep drive to win over my environmental distractions.</dd>
+<dt>Don&rsquo;t eat or drink water past 7pm.</dt><dd>This is to avoid digestive discomforts and distractions. And it&rsquo;s to avoid having to use the bathroom too much.</dd>
+<dt>Keep windows open 24/7 all year round.</dt><dd>Fresh air is vital for sleeping well to me. It&rsquo;s much more important to me to be able to breath easy than it is to be the perfect temperature. Being cold is okay and being hot is okay.</dd>
+<dt>Turn the window fan on at night.</dt><dd>This is to further aid with fresh circulating air.</dd>
+<dt>Close the vents in the winter.</dt><dd>This is also to breath easy. The harsh dry heating air causes me a lot of trouble.</dd>
+<dt>Always go through the motions.</dt><dd>Even when I feel too stimuated or anxious to sleep well, I should always make an attempt to have a nice nap and to sleep at a good time. Even if I don&rsquo;t succeed, I&rsquo;ll succeed far more often than otherwise if I always make an attempt. And even when I fail, I continue to learn and gain valuable insight about my sleeping patterns when I do this.</dd>
+<dt>Have a routine.</dt><dd>Having a daily routine helps in multiple ways. First it really does create a strong circadian signal about when it&rsquo;s time to sleep, which helps me to sleep. And further it makes every day a control for the next day. This allows me to much more easily notice which subtle differences between each day have which kinds of effects on my sleep.</dd>
+<dt>Be healthy.</dt><dd>Everything about health has the potential to affect sleep. By doing everything I can to be healthy, I can rule out as many things as possible that could contribute to sleep problems.</dd>
+<dt>Sleep early.</dt><dd>Ideally I could get to sleep around 8pm every night. This is because early morning is the quietest hours in the house, and I need to save this for late REM sleep. Late REM sleep is the most important part of sleep for me, and unfortunately it&rsquo;s the least accessible. It can only occur after a long bout of NREM and early REM, which lasts about 6 hours into my sleep. After this, late REM picks up. I need to aim for late REM to pick up at least as early as 4am, so I have plenty of quieter time for it.</dd>
+<dt>Be ready for the sleep signal.</dt><dd>The circadian signal to sleep will come on very suddenly! So it&rsquo;s good to have an idea of about when it usually occurs and 30 to 60 minutes before then be well ready for bed so that when it comes, you can take immediate advantage of it to fall swiftly into sleep!</dd>
+<dt>Sleep on my side.</dt><dd>At least for now, sleeping on my side is best because it reduces the chance of sleep apnea. Sleeping on my side brings with it many of its own complications, so whenever I&rsquo;m able to get a night guard, I&rsquo;ll definitly try sleeping on my back again.</dd>
+<dt>Avoid consuming anything that may interfere with REM sleep.</dt><dd>This includes many drugs (SSRIs, beta blockers, benzodiazepines) and possibly some herbs (passionflower, valerian).</dd>
+<dt>Be careful with salt.</dt><dd>It seems to me that when I eat salt before bed I have significantly more bathroom troubles and discomforts during sleep, so watch out!</dd>
+<dt>+Drink chamomile tea.</dt><dd>I&rsquo;m not sure if there&rsquo;s a real connection, but I found it noticibly easier to enter late REM sleep as soon as I started drinking it.+</dd>
+<dt>Eat eggs everyday.</dt><dd>Okay! It turns out that on the same day that I started drinking the chamomile tea and noticing the difference, I had also started drinking whey protein powder. And now I&rsquo;m suspecting that it was more likely to do with some protein deficiency or something? I just tried eating eggs and I slept noticibly better as well. So I&rsquo;m going to keep doing this!</dd>
+<dt>Don&rsquo;t spend too much time in bed before going to sleep.</dt><dd>This is to reduce &ldquo;bed fatigue&rdquo; so that I have plenty of &ldquo;bed stamina&rdquo; to last through the amount of time that I need to sleep enough.</dd>
+<dt>Wear earplugs as well as I can.</dt><dd>It helps to make sure that my earplugs are inserted so that they block as much sound as they can while not irritating my ears.</dd>
+<dt>Wear earmuffs on my upward facing ear.</dt><dd>To further block sound, I have on one ear my pillow, and the other ear, my earmuffs.</dd>
+<dt>Find a reasonable sleeping position and accept it.</dt><dd>I should do my best when sleeping on my side to ensure that my neck is well supported and my legs don&rsquo;t have too much pressure on them. But once I find this position, I should have faith that as my mind shifts towards sleep, I will forget about the minute discomforts. In particular before late REM, I should focus on accepting that I will be paralyzed in this position for a while. By accepting this ahead of time, I reduce the likelihood that I will fight sleep paralysis when it occurs, sabatoging my REM sleep.</dd>
+<dt>Use the pillow stack.</dt><dd>This is in relation to sleeping position: stack three pillows such that the lowest pillow is pulled out a bit. I rest my shoulder on the lower pillow, and my head on the top pillow. This provides good support and I don&rsquo;t have to worry about squashing my arm and it going to sleep!</dd>
+<dt>Meditate on my &ldquo;mental barometer.&rdquo;</dt><dd>After I have taken a few minutes to relax into my sleeping position, I can keep myself from distracting anxious and stimulating thoughts by focusing on holding on tight to a bar in my imagination. I hold on tight but allow the noise in my head to shape the environmental imagery however it likes. It&rsquo;s called a &ldquo;mental barometer&rdquo; because it is a guage of how excited my brain is. Sometimes it&rsquo;s stormy, and I&rsquo;m holding on to the bar for dear life. If I&rsquo;m lucky, it&rsquo;s calm, and it&rsquo;s easy to hold onto the bar and watch the scenery without it tossing me around.</dd>
+<dt>Mindfulness meditation.</dt><dd>By letting meself go and allowing myself to be in tune with my body and my senses, I find that it really helps calm my mind when it&rsquo;s time for sleep.</dd>
+<dt>Be aware of my sleep phase.</dt><dd>Falling into NREM is a different experience from falling into REM, and have different progressions of awareness as I fall into sleep. Knowing what kind of sleep I&rsquo;m about to have will help me focus on letting it happen. In general, if it&rsquo;s early in the night, I&rsquo;ll be entering NREM. If it&rsquo;s been about 5 or 6 hours of sleep so far, I&rsquo;ll be entering late REM. If I&rsquo;m taking a nap, it will usually be NREM, unless I&rsquo;m particularly REM deprived.</dd>
+<dt>When entering REM sleep, await the cue of &ldquo;REM breathing.&rdquo;</dt><dd>A strong sign that my body is begining its transition into REM sleep is a particularly strong shift towards autonomous breathing. My breathing becomes relatively mild but slightly more audible, and I often lose awareness of the exhalations, and I feel a strong relaxing lull in my lungs.</dd>
+<dt>After REM breathing, focus on &ldquo;sensory delight image streaming.&rdquo;</dt><dd>REM sleep is characterized by vivid sensory motor imagery. This occurs naturally, but expecting it and actively encouraging it seems to help. I like to focus on physically standing in some space, feeling my whole body, feeling in control of my muscles, seeing colors, hearing sounds, smelling the atmosphere, feeling the temperature and everything I touch.</dd>
+<dt>When sleep paralysis occurs, stay calm, and explore.</dt><dd>I should have faith that my body is in a safe position because I made sure to accept this in a previous step above. I should also be aware of any tricks my brain tries to play on me in order to convince me to wake myself up. I need to trust that in these moments there is nothing more important than staying asleep and getting as much precious REM sleep as possible!</dd>
+<dt>Stay warm when it&rsquo;s cold.</dt><dd>When I have to keep the window open for fresh air in the winter, I need to make sure I can stay warm enough: Wear 3 layers of pants, shirts, socks, and extra blankets.</dd>
+</dl>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-12-29 Tue 19:19</p>
+</div>
+</body>
+</html>

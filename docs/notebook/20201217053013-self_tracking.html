@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-12-29 Tue 19:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Self Tracking</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Self Tracking</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org142bf14">What?</a></li>
+<li><a href="#org944358f">Why?</a></li>
+<li><a href="#orgb36b306">History</a></li>
+<li><a href="#orgfefa6df">Process</a>
+<ul>
+<li><a href="#org4b3e9eb">The scientific method</a></li>
+<li><a href="#orga8cbe5c">Self tracking recipe</a></li>
+<li><a href="#orgcf03da3">Formula as I like it</a></li>
+</ul>
+</li>
+<li><a href="#orgc0b6a4b">Data</a>
+<ul>
+<li><a href="#org341fe4c">What to track</a></li>
+<li><a href="#org8f3390c">Schema</a></li>
+<li><a href="#orgf502bee"><span class="todo TODO">TODO</span> put a UML diagram here</a></li>
+</ul>
+</li>
+<li><a href="#org5e1c46c">Tools</a></li>
+<li><a href="#orga337498">Preparation</a></li>
+<li><a href="#org926aa6d">Self tracking</a>
+<ul>
+<li><a href="#org4821962">Observations</a></li>
+<li><a href="#orgf8f0ca5">Questions</a></li>
+<li><a href="#orgf362ad8">Conjectures</a></li>
+<li><a href="#org206e29d">Predictions</a></li>
+<li><a href="#org13d8634">Reports</a></li>
+<li><a href="#org49e19f6">Insights</a></li>
+</ul>
+</li>
+<li><a href="#org5fdb111">Meta</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org142bf14" class="outline-2">
+<h2 id="org142bf14">What?</h2>
+<div class="outline-text-2" id="text-org142bf14">
+<p>
+Keeping track of my biological and psychological status and functioning over the long term! Collecting yummy data and gathering insight!! :3
+</p>
+</div>
+</div>
+
+<div id="outline-container-org944358f" class="outline-2">
+<h2 id="org944358f">Why?</h2>
+<div class="outline-text-2" id="text-org944358f">
+<p>
+Taking inspiration from <a href="https://quantifiedself.com/get-started/">Quantified Self</a>, these are the main reasons I want to do this:
+</p>
+<ul class="org-ul">
+<li>increase self awareness and control</li>
+<li>creative data collection, analysis, and visualization</li>
+<li>fun hardware and software methods</li>
+</ul>
+
+<p>
+Most critically, the earlier I start collecting data, the more insight I will be able to gain moving forwards!!!
+</p>
+
+<p>
+I know that initially I might not have the best data, nor the best systems in place for collecting data, but that&rsquo;s okay! I have to start somewhere! And I know that I&rsquo;ll change up my schemas for collecting data often, particularly at first, and that&rsquo;s okay too!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb36b306" class="outline-2">
+<h2 id="orgb36b306">History</h2>
+<div class="outline-text-2" id="text-orgb36b306">
+<p>
+I have done this sort of thing in the past, to some extent, and in various forms. For example, for the latter half of 2019 I kept a sleep log using <a href="https://supermemo.guru/wiki/SleepChart">SuperMemo&rsquo;s Sleep Chart</a>. At the end of last year I started writing my own data collection and visualization tools for doing more than just tracking sleep! In early 2018 I did some mood tracking with Mood Panda, and towards the end of 2018 and beginnings of 2019 I used <a href="https://year-in-pixels.glitch.me/">Year in Pixels</a>.
+</p>
+
+<p>
+Here is my data from latter half of 2019: blue is sleep data, which comprises most of it because I didn&rsquo;t start collecting other data until much later! This is the result of importing my sleep chart data into my own visualization tools and combining it with my other data. The yellow-orange is eating data. And the lines are mood and other continuously assessed data.
+</p>
+
+
+<div id="orgd998d4c" class="figure">
+<p><img src="../images/sleepchart2.png" alt="sleepchart2.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfefa6df" class="outline-2">
+<h2 id="orgfefa6df">Process</h2>
+<div class="outline-text-2" id="text-orgfefa6df">
+</div>
+<div id="outline-container-org4b3e9eb" class="outline-3">
+<h3 id="org4b3e9eb">The scientific method</h3>
+<div class="outline-text-3" id="text-org4b3e9eb">
+<p>
+Following <a href="https://en.wikipedia.org/wiki/Scientific_method#Process">Wikipedia</a>,
+</p>
+<ol class="org-ol">
+<li>question</li>
+<li>conjecture</li>
+<li>predict</li>
+<li>test</li>
+<li>analyse</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga8cbe5c" class="outline-3">
+<h3 id="orga8cbe5c">Self tracking recipe</h3>
+<div class="outline-text-3" id="text-orga8cbe5c">
+<p>
+Following <a href="https://quantifiedself.com/get-started/">Quantified Self</a>,
+</p>
+<ol class="org-ol">
+<li>question</li>
+<li>observe</li>
+<li>reason</li>
+<li>consolidate insight</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgcf03da3" class="outline-3">
+<h3 id="orgcf03da3">Formula as I like it</h3>
+<div class="outline-text-3" id="text-orgcf03da3">
+<p>
+Taking inspiration from the above, I like this:
+</p>
+<ol class="org-ol">
+<li>question</li>
+<li>conjecture</li>
+<li>predict</li>
+<li>test</li>
+<li>analyse</li>
+<li>consolidate insight</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0b6a4b" class="outline-2">
+<h2 id="orgc0b6a4b">Data</h2>
+<div class="outline-text-2" id="text-orgc0b6a4b">
+<p>
+I will have to figure out what data I want to collect! I also need to define my <i>schema</i> for the database. This will change and evolve over time as I change my mind and get better ideas about what I want to collect and how I want to represent and organize it!
+</p>
+</div>
+
+<div id="outline-container-org341fe4c" class="outline-3">
+<h3 id="org341fe4c">What to track</h3>
+<div class="outline-text-3" id="text-org341fe4c">
+<p>
+Here are some ideas about some quantitative data what I want to collect:
+</p>
+<ul class="org-ul">
+<li>Food and fluid consumption, including precise measurements, and piggy back off of existing nutritional databases</li>
+<li>Sleep time and sleep stages</li>
+<li>Bathroom stuff</li>
+<li>Physical activity, exercise, walking, steps taken</li>
+<li>Pulse, blood pressure, and oxygen saturation over time</li>
+<li>Core body temperature over time</li>
+<li>Hunger, thirst, sleep drive, learn drive, and other drives and cravings</li>
+<li>Time spent on various activities</li>
+<li>Physical aptitude (e.g. how much energy I have when walking)</li>
+</ul>
+
+<p>
+And here are some ideas about some qualitative data I want to collect:
+</p>
+<ul class="org-ul">
+<li>Mood/feelings/emotions/anxiety/energy levels over the course of the day</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8f3390c" class="outline-3">
+<h3 id="org8f3390c">Schema</h3>
+<div class="outline-text-3" id="text-org8f3390c">
+<p>
+For time ranges I&rsquo;ll use begin and end datetime values.
+For subjective ratings I&rsquo;ll use the likert scale!
+For temperatures I&rsquo;ll use celsius.
+</p>
+
+<p>
+Here is my current ideas about the database scheme to use:
+</p>
+<ul class="org-ul">
+<li>Sleep
+<ul class="org-ul">
+<li>Time range</li>
+<li>Sleep satisfaction rating</li>
+</ul></li>
+<li>Exercise
+<ul class="org-ul">
+<li>Time range</li>
+<li>Soreness rating</li>
+<li>Energy rating</li>
+<li>Average ambient temperature</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf502bee" class="outline-3">
+<h3 id="orgf502bee"><span class="todo TODO">TODO</span> put a UML diagram here</h3>
+</div>
+</div>
+
+<div id="outline-container-org5e1c46c" class="outline-2">
+<h2 id="org5e1c46c">Tools</h2>
+<div class="outline-text-2" id="text-org5e1c46c">
+<p>
+I have to figure out what tools I will use to collect, store, and analyse the data!
+</p>
+<dl class="org-dl">
+<dt>What data collection hardware or software do I want to use?</dt><dd>I&rsquo;ll have to figure this out, but for now I will resort to manual data entry if I have to.</dd>
+<dt>What database solution should I use to store my data?</dt><dd>I think I want to use MySQL! It&rsquo;ll give me a good excuse to get more familiar with it anyways.</dd>
+<dt>And what programming language or other tools should I use to do analysis?</dt><dd>I suppose I&rsquo;ll use Python! :o I&rsquo;m quite comfy with it and it&rsquo;s a very practical language for data science. It&rsquo;d be really cool to use some machine learning stuff too, so I&rsquo;ll try out PyTorch.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orga337498" class="outline-2">
+<h2 id="orga337498">Preparation</h2>
+<div class="outline-text-2" id="text-orga337498">
+<p>
+In order to prepare I should familarize myself with a few things:
+</p>
+<ul class="org-ul">
+<li>MySQL</li>
+<li>Data analytics ecosystem in Python
+<ul class="org-ul">
+<li>Including PyTorch</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org926aa6d" class="outline-2">
+<h2 id="org926aa6d">Self tracking</h2>
+<div class="outline-text-2" id="text-org926aa6d">
+<p>
+So here&rsquo;s where I&rsquo;ll actually keep all my on-going top-level self tracking thoughts and reports!
+</p>
+
+<p>
+It&rsquo;s an ongoing process! Collecting data is a habit (and will eventually be partially automated in conjunction to the habits). And whenever I think of questions, conjectures, and predictions, I&rsquo;ll update the list here. I&rsquo;ll write reports and insights whenever I am inspired to do so by the collected data.
+</p>
+</div>
+
+<div id="outline-container-org4821962" class="outline-3">
+<h3 id="org4821962">Observations</h3>
+<div class="outline-text-3" id="text-org4821962">
+<p>
+Here I&rsquo;ll just make casual notes!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf8f0ca5" class="outline-3">
+<h3 id="orgf8f0ca5">Questions</h3>
+<div class="outline-text-3" id="text-orgf8f0ca5">
+<p>
+An ongoing list of questions that I will write (possibly tentative) answers to as I feel I&rsquo;ve collected sufficient evidence.
+</p>
+<ul class="org-ul">
+<li>Why do I have insomnia sometimes?</li>
+<li>Why do I need to use the bathroom so much at night sometimes?</li>
+<li>Why do I find my sleeping disturbed by physical discomfort sometimes?</li>
+<li>Why is it that sometimes when I go for a walk I have plenty of energy and speed, and other times I&rsquo;m a bit more sluggish?</li>
+<li>What amino acids and other nutrients effect my sleep, particularly REM?</li>
+<li>What is the ideal amount for me to eat, and when is the best time frame for me to eat?</li>
+<li>What foods give me good digestion?</li>
+<li>What is the best time for me to sleep?</li>
+<li>How much do I eat? (measure it with a scale!)</li>
+<li>How much do I weigh?</li>
+<li>Are there detectable fluctuations in my mental capacity that can be correlated with external habits such as diet, exercise, and sleep?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf362ad8" class="outline-3">
+<h3 id="orgf362ad8">Conjectures</h3>
+<div class="outline-text-3" id="text-orgf362ad8">
+<p>
+Here are my current hypotheses (including contradictory ones) which I will refine and expand over time.
+</p>
+<ul class="org-ul">
+<li>Too much protein (which amino acids?) causes me to be more sluggish when walking.</li>
+<li>More REM sleep correlates with walking energy.</li>
+<li>Eggs and whey protein enabled better REM sleep for me.</li>
+<li>Choline enables better REM sleep for me.</li>
+<li>Going to bed later is a better fit for my circadian rhythm.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org206e29d" class="outline-3">
+<h3 id="org206e29d">Predictions</h3>
+<div class="outline-text-3" id="text-org206e29d">
+<p>
+Here are my current predictions based on my above hypotheses that will inform my experiments.
+</p>
+<ul class="org-ul">
+<li>Cutting out eggs will give me more energy when walking.</li>
+<li>Cutting out eggs will decrease my REM sleep.</li>
+<li>Going to bed later will decrease insomnia and increase overall sleep satisfaction.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org13d8634" class="outline-3">
+<h3 id="org13d8634">Reports</h3>
+<div class="outline-text-3" id="text-org13d8634">
+<p>
+Whenever I feel that I&rsquo;ve collected enough data to test my predictions, I&rsquo;ll analyse the data and write a report here with a labeled date.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49e19f6" class="outline-3">
+<h3 id="org49e19f6">Insights</h3>
+<div class="outline-text-3" id="text-org49e19f6">
+<p>
+Whenever I feel I&rsquo;ve gained significant insight from my reports, I&rsquo;ll both write about them here, as well as write answers to the relevant questions above with a link to the insights written here.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5fdb111" class="outline-2">
+<h2 id="org5fdb111">Meta</h2>
+<div class="outline-text-2" id="text-org5fdb111">
+<p>
+I should uh, figure out how best to deal with changing database schemas!
+I should also have a good way in place to make casual observations and notes
+Thinking about hardware for tracking, I should definitely turn my phone into a portable self tracking device !!!!!!! And I&rsquo;ll have to think about other devices that would be good for this too&#x2026;&#x2026;.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-12-29 Tue 19:19</p>
+</div>
+</body>
+</html>

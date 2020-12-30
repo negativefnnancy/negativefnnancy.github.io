@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-12-29 Tue 19:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Organizational Concepts</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nancy" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet"
+                     href="../assets/style.css"
+                     type="text/css"/>
+                     <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
+                     rel="stylesheet"
+                     type="text/css"/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Organizational Concepts</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdd9c9b5">Layer 1: activities and goals</a>
+<ul>
+<li><a href="#org5959e3a">Activity</a></li>
+<li><a href="#org733c02e">Goal</a></li>
+</ul>
+</li>
+<li><a href="#org7f5f213">Layer 2: tasks, indefinite processes, and milestones</a>
+<ul>
+<li><a href="#org4cf9d89">Task</a></li>
+<li><a href="#org463fd65">Indefinite process</a></li>
+<li><a href="#orga31011e">Milestone</a></li>
+<li><a href="#org2bc8560"><span class="todo TODO">TODO</span> im not satisfied with this lol</a></li>
+</ul>
+</li>
+<li><a href="#orgdbab336">Layer 3: schedules, cycles, and projects</a>
+<ul>
+<li><a href="#orgc23e294">Schedule</a></li>
+<li><a href="#org4c88c4e">Cycle</a></li>
+<li><a href="#orgf00d056">Project</a></li>
+</ul>
+</li>
+<li><a href="#orgd77b9f2">Layer 4: sprints, marathons, spaced repetition, the creative cycle, and portfolios</a>
+<ul>
+<li><a href="#org0405d0e">Sprint</a></li>
+<li><a href="#orgac47f2b">Marathon</a></li>
+<li><a href="#org54d289a">Spaced repetition</a></li>
+<li><a href="#orgb59f150">The creative cycle</a></li>
+<li><a href="#org3c9fd45">Portfolio</a></li>
+</ul>
+</li>
+<li><a href="#org6209236">Layer 5: agendas</a>
+<ul>
+<li><a href="#org1bb8a13">Agenda</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Here are the concepts I will base my entire self organization around!!!
+</p>
+
+<p>
+<b>Note!!!!!!</b> im not satisfied with this at all, i need to come back and rethink everything into a better formulation&#x2026;&#x2026;
+</p>
+
+<div id="outline-container-orgdd9c9b5" class="outline-2">
+<h2 id="orgdd9c9b5">Layer 1: activities and goals</h2>
+<div class="outline-text-2" id="text-orgdd9c9b5">
+<p>
+These are the basic concepts that everything else builds on!
+</p>
+</div>
+
+<div id="outline-container-org5959e3a" class="outline-3">
+<h3 id="org5959e3a">Activity</h3>
+<div class="outline-text-3" id="text-org5959e3a">
+<p>
+An <i>activity</i> is anything that can be clocked in and out of so that I can keep track of how much time and when I spend on it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org733c02e" class="outline-3">
+<h3 id="org733c02e">Goal</h3>
+<div class="outline-text-3" id="text-org733c02e">
+<p>
+A <i>goal</i> is a concrete objective that has either been accomplished or not yet accomplished.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f5f213" class="outline-2">
+<h2 id="org7f5f213">Layer 2: tasks, indefinite processes, and milestones</h2>
+<div class="outline-text-2" id="text-org7f5f213">
+<p>
+These are entities that are particular combinations of activities and goals!
+</p>
+</div>
+
+<div id="outline-container-org4cf9d89" class="outline-3">
+<h3 id="org4cf9d89">Task</h3>
+<div class="outline-text-3" id="text-org4cf9d89">
+<p>
+A <i>task</i> is simultaneously an activity and a goal!
+</p>
+
+<p>
+Tasks may be <i>recurring</i> meaning that they may be specified once but yield multiple instances.
+</p>
+
+<p>
+A task may recur at regular intervals of time, for example, daily or weekly, or it my recur in response to certain events, for example, to lock the door when you leave the house.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org463fd65" class="outline-3">
+<h3 id="org463fd65">Indefinite process</h3>
+<div class="outline-text-3" id="text-org463fd65">
+<p>
+An <i>indefinite process</i> (or just process for short) is an activity that is not a task, i.e. it is not a goal and can&rsquo;t be accomplished.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga31011e" class="outline-3">
+<h3 id="orga31011e">Milestone</h3>
+<div class="outline-text-3" id="text-orga31011e">
+<p>
+A <i>milestone</i> is a goal that is not a task, i.e., it is not an activity and can&rsquo;t be clocked in or out of. Instead, it is simply based around a condition!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2bc8560" class="outline-3">
+<h3 id="org2bc8560"><span class="todo TODO">TODO</span> im not satisfied with this lol</h3>
+<div class="outline-text-3" id="text-org2bc8560">
+<p>
+im not satisfied with the definitions of milestone and task
+and i need a way to define such things that are &ldquo;children&rdquo; of others, in that they deppend on it somehow, like&#x2026; for aa daily task to clock into another process for a while&#x2026;. and
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdbab336" class="outline-2">
+<h2 id="orgdbab336">Layer 3: schedules, cycles, and projects</h2>
+<div class="outline-text-2" id="text-orgdbab336">
+<p>
+These are collections of layer 2 concepts!
+</p>
+</div>
+
+<div id="outline-container-orgc23e294" class="outline-3">
+<h3 id="orgc23e294">Schedule</h3>
+<div class="outline-text-3" id="text-orgc23e294">
+<p>
+A <i>schedule</i> is an algorithm for determining when a recurring task should recur.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4c88c4e" class="outline-3">
+<h3 id="org4c88c4e">Cycle</h3>
+<div class="outline-text-3" id="text-org4c88c4e">
+<p>
+A <i>cycle</i> is a recuring sequence of activities.
+figure out:
+</p>
+<ul class="org-ul">
+<li>the fallback marathon schedule should be schedule with srs or nee?</li>
+<li>incorporate the creative cycle; in anki? in schedule? creative prompts, yeah, and mml stuff.</li>
+<li>how to mesh anki with projects: skills, consumptions, and creation &#x2013; and how to mesh anki with marathon schedule?</li>
+<li>how each of the above relate to activties n stuff</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf00d056" class="outline-3">
+<h3 id="orgf00d056">Project</h3>
+<div class="outline-text-3" id="text-orgf00d056">
+<p>
+A <i>project</i> is a collection of milestones, processes, and tasks.
+</p>
+
+<p>
+A <i>consumption project</i> is a project to consume some media, e.g. a book, a show, some music, a game, etc.. It&rsquo;s primarily characterized by tasks that clock the time spend consuming and mark the completion of consumption.
+I want to find a way to formally articulate &ldquo;active consumption,&rdquo; where, in conjuction with all input, is some kind of output as well&#x2026;. so like I might want to watch a show and then write a review, or something!!!
+</p>
+
+<p>
+A <i>learning project</i> is a project to develop a skill or obtain some knowledge. It&rsquo;s primarily characterized by tasks to consume learning materials, activities to log practice/training/contemplation, and milestones indicating learning goals.
+</p>
+
+<p>
+A <i>creative project</i> is a project to produce some tangible output. It&rsquo;s primarily characterized by tasks that clock the time spent working towards realizing the desired product and possibly activities to clock the time spent revising beyond initial goals.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd77b9f2" class="outline-2">
+<h2 id="orgd77b9f2">Layer 4: sprints, marathons, spaced repetition, the creative cycle, and portfolios</h2>
+<div class="outline-text-2" id="text-orgd77b9f2">
+<p>
+And this builds on the layer 3 concepts!
+</p>
+</div>
+
+<div id="outline-container-org0405d0e" class="outline-3">
+<h3 id="org0405d0e">Sprint</h3>
+<div class="outline-text-3" id="text-org0405d0e">
+<p>
+A <i>sprint</i> is a type of schedule that involves allocating large blocks of time in the day towards a single activity possibly for many consecutive days in a row. This is a type of schedule that is useful for effectively allocating energy that arises from big mental stimulation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgac47f2b" class="outline-3">
+<h3 id="orgac47f2b">Marathon</h3>
+<div class="outline-text-3" id="text-orgac47f2b">
+<p>
+A <i>marathon</i> is a type of schedule that involves allocating smaller bocks of time consistently and recurringly over a longer period of a time. This is more suited for maintaining a steady flow of activity and forming habits.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org54d289a" class="outline-3">
+<h3 id="org54d289a">Spaced repetition</h3>
+<div class="outline-text-3" id="text-org54d289a">
+<p>
+Spaced repetition is a type of schedule built around incremental intervalic recursion. I want to extend the idea to <a href="20201217114047-learn_drive_time_dilation.html">learn-drive saturation induced time dilation</a> and <a href="20201120182611-generalization_of_spaced_repetition_and_interleaving.html">&ldquo;spatial&rdquo; intervals</a>. I want to apply it not only to discrete memory recall, but also dynamic skill practice and  motivational/learn-drive/aappreciation modeling.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb59f150" class="outline-3">
+<h3 id="orgb59f150">The creative cycle</h3>
+<div class="outline-text-3" id="text-orgb59f150">
+<p>
+<i>The creative cycle</i> is a cycle of an input activity followed by an output activity. For example, I may repeatedly listen to music and then compose. The idea is that by consuming first you gain inspiration for what you create afterwards.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c9fd45" class="outline-3">
+<h3 id="org3c9fd45">Portfolio</h3>
+<div class="outline-text-3" id="text-org3c9fd45">
+<p>
+A <i>portfolio</i> is a collection of projects that I choose to showcase! It&rsquo;s probably mostly gonna be creative projects. The goal here is to have a set of shiny artifacts of self realization that I can water and tend to and make the best I can make them!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6209236" class="outline-2">
+<h2 id="org6209236">Layer 5: agendas</h2>
+<div class="outline-text-2" id="text-org6209236">
+<p>
+You know the drill!!!! :3
+</p>
+</div>
+
+<div id="outline-container-org1bb8a13" class="outline-3">
+<h3 id="org1bb8a13">Agenda</h3>
+<div class="outline-text-3" id="text-org1bb8a13">
+<p>
+An <i>agenda</i> is a collection of tasks that recur according to a schedule. For example, I might have a few daily agendas to organize tasks for me to do every day that follow a daily schedule, and maybe a weekly agenda of things to do each week that follows a weekly schedule. I may also have agendas for marathons and agendas for sprints.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nancy</p>
+<p class="date">Created: 2020-12-29 Tue 19:19</p>
+</div>
+</body>
+</html>
