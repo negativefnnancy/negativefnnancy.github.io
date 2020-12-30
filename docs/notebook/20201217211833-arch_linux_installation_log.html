@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-29 Tue 19:19 -->
+<!-- 2020-12-29 Tue 19:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arch Linux Installation Log</title>
@@ -199,6 +199,13 @@
                      <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
                      rel="stylesheet"
                      type="text/css"/>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PTQZ4DL');</script>
+    <!-- End Google Tag Manager -->
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -223,59 +230,66 @@
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-PTQZ4DL'
+    height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</div>
 <div id="content">
 <h1 class="title">Arch Linux Installation Log</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2408569">Base installation</a>
+<li><a href="#orge3cd649">Base installation</a>
 <ul>
-<li><a href="#orga64c3c3">Prepare installation media</a></li>
-<li><a href="#org9e30d58">Boot</a></li>
-<li><a href="#orgd1aa2d4">Set keyboard layout</a></li>
-<li><a href="#orga22ee84">Verify UEFI boot</a></li>
-<li><a href="#org17e2935">Verify network connection</a></li>
-<li><a href="#org5d227af">Set system clock</a></li>
-<li><a href="#org88ca6e2">Identify target drive</a></li>
-<li><a href="#orgb908f88">Determine desired partitioning scheme</a></li>
-<li><a href="#orgbd6ff3b">Partition the disk</a></li>
-<li><a href="#orgdf69334">Format the filesystems</a></li>
-<li><a href="#orgff80a65">Mount the file systems</a></li>
-<li><a href="#org3a63362">Sort the Pacman mirrors</a></li>
-<li><a href="#orgf094069">Install the base system</a></li>
+<li><a href="#org9f3d54a">Prepare installation media</a></li>
+<li><a href="#orga66c837">Boot</a></li>
+<li><a href="#org73a6da6">Set keyboard layout</a></li>
+<li><a href="#org6b9f3b7">Verify UEFI boot</a></li>
+<li><a href="#org3f7d206">Verify network connection</a></li>
+<li><a href="#orgc68fc23">Set system clock</a></li>
+<li><a href="#orgbe22a6c">Identify target drive</a></li>
+<li><a href="#orgc5e4c28">Determine desired partitioning scheme</a></li>
+<li><a href="#orgb4837f3">Partition the disk</a></li>
+<li><a href="#orgd67ea37">Format the filesystems</a></li>
+<li><a href="#org7dd2aac">Mount the file systems</a></li>
+<li><a href="#org2c57f4e">Sort the Pacman mirrors</a></li>
+<li><a href="#org9cef1e8">Install the base system</a></li>
 </ul>
 </li>
-<li><a href="#org2b35c47">Initial configuration</a>
+<li><a href="#org9170c3b">Initial configuration</a>
 <ul>
-<li><a href="#orgfc0c265">Generate fstab</a></li>
-<li><a href="#org2e72a49">Chroot</a></li>
-<li><a href="#org5bc4117">Set timezone</a></li>
-<li><a href="#org0a590bf">Set locale</a></li>
-<li><a href="#org64709e4">Set hostname</a></li>
-<li><a href="#org7cfe3f1">Set root password</a></li>
-<li><a href="#org7979f33">Microcode</a></li>
-<li><a href="#org89072a6">Bootloader</a></li>
-<li><a href="#orgcc862d0">Reboot</a></li>
-<li><a href="#orgcd56cc2">Emergency shell</a></li>
+<li><a href="#org815fb37">Generate fstab</a></li>
+<li><a href="#org3dbaa4e">Chroot</a></li>
+<li><a href="#orgd1c706f">Set timezone</a></li>
+<li><a href="#org24e9f1b">Set locale</a></li>
+<li><a href="#orge4a8113">Set hostname</a></li>
+<li><a href="#org4d187d1">Set root password</a></li>
+<li><a href="#org37cad65">Microcode</a></li>
+<li><a href="#orge44f23e">Bootloader</a></li>
+<li><a href="#orgec62121">Reboot</a></li>
+<li><a href="#orgd6b0fea">Emergency shell</a></li>
 </ul>
 </li>
-<li><a href="#orgb6ebe85">Post installation</a>
+<li><a href="#orgcfc9703">Post installation</a>
 <ul>
-<li><a href="#org0b3911c">Verify microcode</a></li>
-<li><a href="#org98a7176">Setup network</a></li>
-<li><a href="#org10d0d4e">Create a user</a></li>
-<li><a href="#org3911591">Configure <code>sudo</code></a></li>
-<li><a href="#orgafde7c5">Configure PAM</a></li>
-<li><a href="#org2604bf7">Add <code>~/bin</code> to <code>PATH</code> globally</a></li>
-<li><a href="#orgf1c525a">Setup <code>udiskctl</code></a></li>
-<li><a href="#orgddc0789">Make numlock active on boot</a></li>
-<li><a href="#org98573ef">Configure fonts</a></li>
-<li><a href="#orgea81656">Sync my dotfiles</a></li>
-<li><a href="#org3e6e793">Sync my org files</a></li>
-<li><a href="#orgb668267">Setup Anki</a></li>
-<li><a href="#org4df24b8">Install software</a></li>
-<li><a href="#org22c2d6f">Setup Fluidsynth daemon</a></li>
+<li><a href="#org7aac88d">Verify microcode</a></li>
+<li><a href="#orge7916d4">Setup network</a></li>
+<li><a href="#orgfac7900">Create a user</a></li>
+<li><a href="#orga71d1a0">Configure <code>sudo</code></a></li>
+<li><a href="#org5574862">Configure PAM</a></li>
+<li><a href="#org2143790">Add <code>~/bin</code> to <code>PATH</code> globally</a></li>
+<li><a href="#org22565f9">Setup <code>udiskctl</code></a></li>
+<li><a href="#orge2285c2">Make numlock active on boot</a></li>
+<li><a href="#org3eefaf4">Configure fonts</a></li>
+<li><a href="#orgda8f9a1">Sync my dotfiles</a></li>
+<li><a href="#orgf764a1d">Sync my org files</a></li>
+<li><a href="#org8d3698d">Setup Anki</a></li>
+<li><a href="#orgf417ae5">Install software</a></li>
+<li><a href="#org9b22efe">Setup Fluidsynth daemon</a></li>
 </ul>
 </li>
 </ul>
@@ -309,53 +323,53 @@ Even though I have this guide to guide myself through future insallations, I sho
 I am contemplating making a fresh install image I can just copy over&#x2026;.. but I&rsquo;m not sure&#x2026;.. it&rsquo;s kinda nice doing a truly fresh installation each time I think&#x2026;.. :o
 </p>
 
-<div id="outline-container-org2408569" class="outline-2">
-<h2 id="org2408569">Base installation</h2>
-<div class="outline-text-2" id="text-org2408569">
+<div id="outline-container-orge3cd649" class="outline-2">
+<h2 id="orge3cd649">Base installation</h2>
+<div class="outline-text-2" id="text-orge3cd649">
 </div>
-<div id="outline-container-orga64c3c3" class="outline-3">
-<h3 id="orga64c3c3">Prepare installation media</h3>
-<div class="outline-text-3" id="text-orga64c3c3">
+<div id="outline-container-org9f3d54a" class="outline-3">
+<h3 id="org9f3d54a">Prepare installation media</h3>
+<div class="outline-text-3" id="text-org9f3d54a">
 <p>
 I gotta download the latest ISO and copy it using <code>dd</code> to a USB drive!
 </p>
 </div>
 </div>
-<div id="outline-container-org9e30d58" class="outline-3">
-<h3 id="org9e30d58">Boot</h3>
-<div class="outline-text-3" id="text-org9e30d58">
+<div id="outline-container-orga66c837" class="outline-3">
+<h3 id="orga66c837">Boot</h3>
+<div class="outline-text-3" id="text-orga66c837">
 <p>
 Booting from the EFI loader on the USB drive!
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1aa2d4" class="outline-3">
-<h3 id="orgd1aa2d4">Set keyboard layout</h3>
-<div class="outline-text-3" id="text-orgd1aa2d4">
+<div id="outline-container-org73a6da6" class="outline-3">
+<h3 id="org73a6da6">Set keyboard layout</h3>
+<div class="outline-text-3" id="text-org73a6da6">
 <p>
 I use Dvorak as my main layout, so <code>loadkeys dvorak</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orga22ee84" class="outline-3">
-<h3 id="orga22ee84">Verify UEFI boot</h3>
-<div class="outline-text-3" id="text-orga22ee84">
+<div id="outline-container-org6b9f3b7" class="outline-3">
+<h3 id="org6b9f3b7">Verify UEFI boot</h3>
+<div class="outline-text-3" id="text-org6b9f3b7">
 <p>
 Make sure this exists: <code>ls /sys/firmware/efi/efivars</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org17e2935" class="outline-3">
-<h3 id="org17e2935">Verify network connection</h3>
-<div class="outline-text-3" id="text-org17e2935">
+<div id="outline-container-org3f7d206" class="outline-3">
+<h3 id="org3f7d206">Verify network connection</h3>
+<div class="outline-text-3" id="text-org3f7d206">
 <p>
 I&rsquo;m using ethernet, which should work automatically. I usually just verify this by pinging Google, lol: <code>ping google.com</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org5d227af" class="outline-3">
-<h3 id="org5d227af">Set system clock</h3>
-<div class="outline-text-3" id="text-org5d227af">
+<div id="outline-container-orgc68fc23" class="outline-3">
+<h3 id="orgc68fc23">Set system clock</h3>
+<div class="outline-text-3" id="text-orgc68fc23">
 <p>
 Enable network time protocol: <code>timedatectl set-ntp true</code>
 </p>
@@ -365,9 +379,9 @@ Verify: <code>timedatectl status</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org88ca6e2" class="outline-3">
-<h3 id="org88ca6e2">Identify target drive</h3>
-<div class="outline-text-3" id="text-org88ca6e2">
+<div id="outline-container-orgbe22a6c" class="outline-3">
+<h3 id="orgbe22a6c">Identify target drive</h3>
+<div class="outline-text-3" id="text-orgbe22a6c">
 <p>
 I have several drives connected to the motherboard, so I want to make sure I&rsquo;m installing to the correct drive, and not overwriting another one! <code>0_0</code>
 </p>
@@ -381,9 +395,9 @@ And I know that my new SSD is 240GB and should be uninitialized. So I see that <
 </p>
 </div>
 </div>
-<div id="outline-container-orgb908f88" class="outline-3">
-<h3 id="orgb908f88">Determine desired partitioning scheme</h3>
-<div class="outline-text-3" id="text-orgb908f88">
+<div id="outline-container-orgc5e4c28" class="outline-3">
+<h3 id="orgc5e4c28">Determine desired partitioning scheme</h3>
+<div class="outline-text-3" id="text-orgc5e4c28">
 <p>
 There are several good arguments for splitting up the drive into several different partitions, but in my own experience, it&rsquo;s not worth the hassle of running out of space in one partition and wishing I could shrink another partition to make more room. And really, I&rsquo;ve never had problems with using one big partition, so that&rsquo;s what I&rsquo;m going to stick with lol. I&rsquo;m not worried about rogue processes running amok on a partition eating things up. I mean, even if it happened, I keep most of my stuff backed up and easily syncable.
 </p>
@@ -406,9 +420,9 @@ The reason I put a swap partition despite having 16 GB of RAM is simple because,
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd6ff3b" class="outline-3">
-<h3 id="orgbd6ff3b">Partition the disk</h3>
-<div class="outline-text-3" id="text-orgbd6ff3b">
+<div id="outline-container-orgb4837f3" class="outline-3">
+<h3 id="orgb4837f3">Partition the disk</h3>
+<div class="outline-text-3" id="text-orgb4837f3">
 <p>
 Now that I know what scheme I want, I actually partition the disk: <code>fdisk /dev/sdc</code>
 </p>
@@ -444,9 +458,9 @@ If I look at <code>lsblk</code> again, I can see that <code>sdc</code> now has t
 </div>
 </div>
 
-<div id="outline-container-orgdf69334" class="outline-3">
-<h3 id="orgdf69334">Format the filesystems</h3>
-<div class="outline-text-3" id="text-orgdf69334">
+<div id="outline-container-orgd67ea37" class="outline-3">
+<h3 id="orgd67ea37">Format the filesystems</h3>
+<div class="outline-text-3" id="text-orgd67ea37">
 <p>
 I&rsquo;ll format the UEFI partition as FAT32: <code>mkfs.fat -F32 /dev/sdc1</code>
 </p>
@@ -460,9 +474,9 @@ And the root partition as EXT4: <code>mkfs.ext4 /dev/sdc3</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgff80a65" class="outline-3">
-<h3 id="orgff80a65">Mount the file systems</h3>
-<div class="outline-text-3" id="text-orgff80a65">
+<div id="outline-container-org7dd2aac" class="outline-3">
+<h3 id="org7dd2aac">Mount the file systems</h3>
+<div class="outline-text-3" id="text-org7dd2aac">
 <p>
 Now to mount the file systems to their respective relative mount points so that we can chroot into it and install the system!
 </p>
@@ -488,46 +502,46 @@ Enable the swap (so the fstab generation detects it later): <code>swapon /dev/sd
 </p>
 </div>
 </div>
-<div id="outline-container-org3a63362" class="outline-3">
-<h3 id="org3a63362">Sort the Pacman mirrors</h3>
-<div class="outline-text-3" id="text-org3a63362">
+<div id="outline-container-org2c57f4e" class="outline-3">
+<h3 id="org2c57f4e">Sort the Pacman mirrors</h3>
+<div class="outline-text-3" id="text-org2c57f4e">
 <p>
 <code>reflector --verbose --latest 20 --sort rate --save /etc/pacman.d/mirrorlist</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf094069" class="outline-3">
-<h3 id="orgf094069">Install the base system</h3>
-<div class="outline-text-3" id="text-orgf094069">
+<div id="outline-container-org9cef1e8" class="outline-3">
+<h3 id="org9cef1e8">Install the base system</h3>
+<div class="outline-text-3" id="text-org9cef1e8">
 <p>
 <code>pacstrap /mnt base linux linux-firmware vim efibootmgr</code>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org2b35c47" class="outline-2">
-<h2 id="org2b35c47">Initial configuration</h2>
-<div class="outline-text-2" id="text-org2b35c47">
+<div id="outline-container-org9170c3b" class="outline-2">
+<h2 id="org9170c3b">Initial configuration</h2>
+<div class="outline-text-2" id="text-org9170c3b">
 </div>
-<div id="outline-container-orgfc0c265" class="outline-3">
-<h3 id="orgfc0c265">Generate fstab</h3>
-<div class="outline-text-3" id="text-orgfc0c265">
+<div id="outline-container-org815fb37" class="outline-3">
+<h3 id="org815fb37">Generate fstab</h3>
+<div class="outline-text-3" id="text-org815fb37">
 <p>
 <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org2e72a49" class="outline-3">
-<h3 id="org2e72a49">Chroot</h3>
-<div class="outline-text-3" id="text-org2e72a49">
+<div id="outline-container-org3dbaa4e" class="outline-3">
+<h3 id="org3dbaa4e">Chroot</h3>
+<div class="outline-text-3" id="text-org3dbaa4e">
 <p>
 <code>arch-chroot /mnt</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org5bc4117" class="outline-3">
-<h3 id="org5bc4117">Set timezone</h3>
-<div class="outline-text-3" id="text-org5bc4117">
+<div id="outline-container-orgd1c706f" class="outline-3">
+<h3 id="orgd1c706f">Set timezone</h3>
+<div class="outline-text-3" id="text-orgd1c706f">
 <p>
 I&rsquo;m in central time zone so!
 <code>ln -sf /usr/share/zoneinfo/US/Central /etc/localtime</code>
@@ -539,9 +553,9 @@ And <code>hwclock --systohc</code>
 </div>
 </div>
 
-<div id="outline-container-org0a590bf" class="outline-3">
-<h3 id="org0a590bf">Set locale</h3>
-<div class="outline-text-3" id="text-org0a590bf">
+<div id="outline-container-org24e9f1b" class="outline-3">
+<h3 id="org24e9f1b">Set locale</h3>
+<div class="outline-text-3" id="text-org24e9f1b">
 <p>
 As much as I love other languages, English is just the most practical language for technology stuff, so I will just set the US English locale for now lol: <code>vim /etc/locale.gen</code> and uncomment <code>en_US.UTF-8 UTF-8</code>
 </p>
@@ -560,9 +574,9 @@ And make the virtual console keyboard layout consistent: <code>echo "KEYMAP=dvor
 </div>
 </div>
 
-<div id="outline-container-org64709e4" class="outline-3">
-<h3 id="org64709e4">Set hostname</h3>
-<div class="outline-text-3" id="text-org64709e4">
+<div id="outline-container-orge4a8113" class="outline-3">
+<h3 id="orge4a8113">Set hostname</h3>
+<div class="outline-text-3" id="text-orge4a8113">
 <p>
 <code>echo "cheesy-6600k" &gt; /etc/hostname</code>
 </p>
@@ -578,18 +592,18 @@ And edit <code>/etc/hosts</code> to contain:
 </div>
 </div>
 
-<div id="outline-container-org7cfe3f1" class="outline-3">
-<h3 id="org7cfe3f1">Set root password</h3>
-<div class="outline-text-3" id="text-org7cfe3f1">
+<div id="outline-container-org4d187d1" class="outline-3">
+<h3 id="org4d187d1">Set root password</h3>
+<div class="outline-text-3" id="text-org4d187d1">
 <p>
 <code>passwd</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7979f33" class="outline-3">
-<h3 id="org7979f33">Microcode</h3>
-<div class="outline-text-3" id="text-org7979f33">
+<div id="outline-container-org37cad65" class="outline-3">
+<h3 id="org37cad65">Microcode</h3>
+<div class="outline-text-3" id="text-org37cad65">
 <p>
 I use an Intel processor so do <code>pacman -S intel-ucode</code>
 </p>
@@ -600,9 +614,9 @@ And it&rsquo;ll be added to the boot options below.
 </div>
 </div>
 
-<div id="outline-container-org89072a6" class="outline-3">
-<h3 id="org89072a6">Bootloader</h3>
-<div class="outline-text-3" id="text-org89072a6">
+<div id="outline-container-orge44f23e" class="outline-3">
+<h3 id="orge44f23e">Bootloader</h3>
+<div class="outline-text-3" id="text-orge44f23e">
 <p>
 I like to use the EFISTUB method, which boots the kernel directly as an EFI executable.
 </p>
@@ -637,9 +651,9 @@ Set the boot order: <code>efibootmgr --bootorder 0000,0001 --verbose</code> (Aga
 </div>
 </div>
 
-<div id="outline-container-orgcc862d0" class="outline-3">
-<h3 id="orgcc862d0">Reboot</h3>
-<div class="outline-text-3" id="text-orgcc862d0">
+<div id="outline-container-orgec62121" class="outline-3">
+<h3 id="orgec62121">Reboot</h3>
+<div class="outline-text-3" id="text-orgec62121">
 <p>
 Time to make sure everything works properly!
 </p>
@@ -658,9 +672,9 @@ Reboot!: <code>reboot</code>
 </div>
 </div>
 
-<div id="outline-container-orgcd56cc2" class="outline-3">
-<h3 id="orgcd56cc2">Emergency shell</h3>
-<div class="outline-text-3" id="text-orgcd56cc2">
+<div id="outline-container-orgd6b0fea" class="outline-3">
+<h3 id="orgd6b0fea">Emergency shell</h3>
+<div class="outline-text-3" id="text-orgd6b0fea">
 <p>
 Here&rsquo;s what to do if things didn&rsquo;t go as planned and you get dropped into the emergency shell:
 </p>
@@ -680,9 +694,9 @@ Now you should be booting into the system! So just troubleshoot from there!
 </div>
 </div>
 
-<div id="outline-container-orgb6ebe85" class="outline-2">
-<h2 id="orgb6ebe85">Post installation</h2>
-<div class="outline-text-2" id="text-orgb6ebe85">
+<div id="outline-container-orgcfc9703" class="outline-2">
+<h2 id="orgcfc9703">Post installation</h2>
+<div class="outline-text-2" id="text-orgcfc9703">
 <p>
 If you can now successfully boot into the new system, now time to configure stuff!!
 </p>
@@ -692,18 +706,18 @@ First login as <code>root</code> with the password you set.
 </p>
 </div>
 
-<div id="outline-container-org0b3911c" class="outline-3">
-<h3 id="org0b3911c">Verify microcode</h3>
-<div class="outline-text-3" id="text-org0b3911c">
+<div id="outline-container-org7aac88d" class="outline-3">
+<h3 id="org7aac88d">Verify microcode</h3>
+<div class="outline-text-3" id="text-org7aac88d">
 <p>
 <code>dmesg | grep microcode</code> and it should say &ldquo;microcode updated early&#x2026;&rdquo;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org98a7176" class="outline-3">
-<h3 id="org98a7176">Setup network</h3>
-<div class="outline-text-3" id="text-org98a7176">
+<div id="outline-container-orge7916d4" class="outline-3">
+<h3 id="orge7916d4">Setup network</h3>
+<div class="outline-text-3" id="text-orge7916d4">
 <p>
 Create the file <code>/etc/systemd/network/20-ethernet.network</code> containing:
 </p>
@@ -730,9 +744,9 @@ Reboot to verify that it connects on boot!
 </div>
 </div>
 
-<div id="outline-container-org10d0d4e" class="outline-3">
-<h3 id="org10d0d4e">Create a user</h3>
-<div class="outline-text-3" id="text-org10d0d4e">
+<div id="outline-container-orgfac7900" class="outline-3">
+<h3 id="orgfac7900">Create a user</h3>
+<div class="outline-text-3" id="text-orgfac7900">
 <p>
 First create the user: <code>useradd -m -G video,input,audio,wheel -s /bin/bash nancy</code>
 </p>
@@ -747,9 +761,9 @@ Then copy over my home directory stuff somehow or another. I&rsquo;m hosting a t
 </div>
 </div>
 
-<div id="outline-container-org3911591" class="outline-3">
-<h3 id="org3911591">Configure <code>sudo</code></h3>
-<div class="outline-text-3" id="text-org3911591">
+<div id="outline-container-orga71d1a0" class="outline-3">
+<h3 id="orga71d1a0">Configure <code>sudo</code></h3>
+<div class="outline-text-3" id="text-orga71d1a0">
 <p>
 Install sudo: <code>pacman -S sudo</code>
 </p>
@@ -764,9 +778,9 @@ At this point it&rsquo;s a good idea to exit root and login as the new fresh use
 </div>
 </div>
 
-<div id="outline-container-orgafde7c5" class="outline-3">
-<h3 id="orgafde7c5">Configure PAM</h3>
-<div class="outline-text-3" id="text-orgafde7c5">
+<div id="outline-container-org5574862" class="outline-3">
+<h3 id="org5574862">Configure PAM</h3>
+<div class="outline-text-3" id="text-org5574862">
 <p>
 The reason I do this is because I can&rsquo;t stand the long wait when I mistype a password lol.
 </p>
@@ -796,9 +810,9 @@ session   optional  pam_permit.so
 </div>
 </div>
 
-<div id="outline-container-org2604bf7" class="outline-3">
-<h3 id="org2604bf7">Add <code>~/bin</code> to <code>PATH</code> globally</h3>
-<div class="outline-text-3" id="text-org2604bf7">
+<div id="outline-container-org2143790" class="outline-3">
+<h3 id="org2143790">Add <code>~/bin</code> to <code>PATH</code> globally</h3>
+<div class="outline-text-3" id="text-org2143790">
 <p>
 Open (with root) <code>/etc/profile</code> and add the following:
 </p>
@@ -810,18 +824,18 @@ export PATH="$HOME/bin:$PATH"
 </div>
 </div>
 
-<div id="outline-container-orgf1c525a" class="outline-3">
-<h3 id="orgf1c525a">Setup <code>udiskctl</code></h3>
-<div class="outline-text-3" id="text-orgf1c525a">
+<div id="outline-container-org22565f9" class="outline-3">
+<h3 id="org22565f9">Setup <code>udiskctl</code></h3>
+<div class="outline-text-3" id="text-org22565f9">
 <p>
 Install <code>udisks2</code> and <code>ntfs-3g</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgddc0789" class="outline-3">
-<h3 id="orgddc0789">Make numlock active on boot</h3>
-<div class="outline-text-3" id="text-orgddc0789">
+<div id="outline-container-orge2285c2" class="outline-3">
+<h3 id="orge2285c2">Make numlock active on boot</h3>
+<div class="outline-text-3" id="text-orge2285c2">
 <p>
 Install this from the AUR: <a href="https://aur.archlinux.org/packages/systemd-numlockontty/">https://aur.archlinux.org/packages/systemd-numlockontty/</a>
 </p>
@@ -832,36 +846,36 @@ Enable it like it says when you install it: <code>systemctl enable numLockOnTty<
 </div>
 </div>
 
-<div id="outline-container-org98573ef" class="outline-3">
-<h3 id="org98573ef">Configure fonts</h3>
-<div class="outline-text-3" id="text-org98573ef">
+<div id="outline-container-org3eefaf4" class="outline-3">
+<h3 id="org3eefaf4">Configure fonts</h3>
+<div class="outline-text-3" id="text-org3eefaf4">
 <p>
 Install <code>ttf-hack</code> and <code>noto-fonts</code> and <code>noto-fonts-emoji</code>. (And some others&#x2026; like CJK fonts&#x2026;)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgea81656" class="outline-3">
-<h3 id="orgea81656">Sync my dotfiles</h3>
-<div class="outline-text-3" id="text-orgea81656">
+<div id="outline-container-orgda8f9a1" class="outline-3">
+<h3 id="orgda8f9a1">Sync my dotfiles</h3>
+<div class="outline-text-3" id="text-orgda8f9a1">
 <p>
 And remember to install them using hard linking with <code>./install.sh -l</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3e6e793" class="outline-3">
-<h3 id="org3e6e793">Sync my org files</h3>
-<div class="outline-text-3" id="text-org3e6e793">
+<div id="outline-container-orgf764a1d" class="outline-3">
+<h3 id="orgf764a1d">Sync my org files</h3>
+<div class="outline-text-3" id="text-orgf764a1d">
 <p>
 And remember to decrypt with <code>git-crypt unlock org.key</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb668267" class="outline-3">
-<h3 id="orgb668267">Setup Anki</h3>
-<div class="outline-text-3" id="text-orgb668267">
+<div id="outline-container-org8d3698d" class="outline-3">
+<h3 id="org8d3698d">Setup Anki</h3>
+<div class="outline-text-3" id="text-org8d3698d">
 <p>
 If I don&rsquo;t have an Anki configuration directory to copy from an existing installation, I can setup a new one.
 </p>
@@ -880,9 +894,9 @@ And then sync my decks from ankiweb! Simpel simpel.
 </div>
 </div>
 
-<div id="outline-container-org4df24b8" class="outline-3">
-<h3 id="org4df24b8">Install software</h3>
-<div class="outline-text-3" id="text-org4df24b8">
+<div id="outline-container-orgf417ae5" class="outline-3">
+<h3 id="orgf417ae5">Install software</h3>
+<div class="outline-text-3" id="text-orgf417ae5">
 <p>
 I should organize these lol
 </p>
@@ -934,9 +948,9 @@ I should organize these lol
 </div>
 </div>
 
-<div id="outline-container-org22c2d6f" class="outline-3">
-<h3 id="org22c2d6f">Setup Fluidsynth daemon</h3>
-<div class="outline-text-3" id="text-org22c2d6f">
+<div id="outline-container-org9b22efe" class="outline-3">
+<h3 id="org9b22efe">Setup Fluidsynth daemon</h3>
+<div class="outline-text-3" id="text-org9b22efe">
 <p>
 <a href="https://wiki.archlinux.org/index.php/FluidSynth#ALSA_daemon_mode">https://wiki.archlinux.org/index.php/FluidSynth#ALSA_daemon_mode</a>
 follow this except use <code>pulseaudio</code> as the driver instead of <code>alsa</code>.
@@ -949,7 +963,7 @@ and whenever u want to play piano just use <code>aconnect</code> (install <code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-12-29 Tue 19:19</p>
+<p class="date">Created: 2020-12-29 Tue 19:31</p>
 </div>
 </body>
 </html>

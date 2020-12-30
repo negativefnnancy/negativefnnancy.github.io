@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-29 Tue 19:19 -->
+<!-- 2020-12-29 Tue 19:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL Notes</title>
@@ -199,6 +199,13 @@
                      <link href="https://fonts.googleapis.com/css?family=Domine:wght@500&display=swap"
                      rel="stylesheet"
                      type="text/css"/>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PTQZ4DL');</script>
+    <!-- End Google Tag Manager -->
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -223,17 +230,24 @@
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-PTQZ4DL'
+    height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</div>
 <div id="content">
 <h1 class="title">SQL Notes</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2004c74">Select Semantics</a></li>
-<li><a href="#org4427987"><span class="todo TODO">TODO</span> Join Semantics</a></li>
-<li><a href="#orgdd9b39c">Schema design</a>
+<li><a href="#orgb45305d">Select Semantics</a></li>
+<li><a href="#orgb8c8f39"><span class="todo TODO">TODO</span> Join Semantics</a></li>
+<li><a href="#org7763872">Schema design</a>
 <ul>
-<li><a href="#org9ac1587"><span class="todo TODO">TODO</span> Questions</a></li>
+<li><a href="#org70540bf"><span class="todo TODO">TODO</span> Questions</a></li>
 </ul>
 </li>
 </ul>
@@ -251,9 +265,9 @@ So here are my notes!!!
 This is speculative, it might not be accurate, for now, but I want to extract a mental model for how things actually work, by reading the practical tutorials. Then I will try to dig deeper and verify things!
 </p>
 
-<div id="outline-container-org2004c74" class="outline-2">
-<h2 id="org2004c74">Select Semantics</h2>
-<div class="outline-text-2" id="text-org2004c74">
+<div id="outline-container-orgb45305d" class="outline-2">
+<h2 id="orgb45305d">Select Semantics</h2>
+<div class="outline-text-2" id="text-orgb45305d">
 <p>
 <code>select</code> evaluates a list of things! So <code>select 5</code> yields a table with column <code>5</code> and single row containing a value of <code>5</code> in that column, because 5, as a number literal, is <i>self evaluating</i>.
 </p>
@@ -355,17 +369,17 @@ A table can be read such that the name of each column labels the thing that was 
 </div>
 </div>
 
-<div id="outline-container-org4427987" class="outline-2">
-<h2 id="org4427987"><span class="todo TODO">TODO</span> Join Semantics</h2>
+<div id="outline-container-orgb8c8f39" class="outline-2">
+<h2 id="orgb8c8f39"><span class="todo TODO">TODO</span> Join Semantics</h2>
 </div>
 
-<div id="outline-container-orgdd9b39c" class="outline-2">
-<h2 id="orgdd9b39c">Schema design</h2>
-<div class="outline-text-2" id="text-orgdd9b39c">
+<div id="outline-container-org7763872" class="outline-2">
+<h2 id="org7763872">Schema design</h2>
+<div class="outline-text-2" id="text-org7763872">
 </div>
-<div id="outline-container-org9ac1587" class="outline-3">
-<h3 id="org9ac1587"><span class="todo TODO">TODO</span> Questions</h3>
-<div class="outline-text-3" id="text-org9ac1587">
+<div id="outline-container-org70540bf" class="outline-3">
+<h3 id="org70540bf"><span class="todo TODO">TODO</span> Questions</h3>
+<div class="outline-text-3" id="text-org70540bf">
 <dl class="org-dl">
 <dt>how do keys work?</dt><dd>primary keys are columns that uniquely identify the row; use guid&rsquo;s as primary keys to avoid merge conflicts!!! (in sqlite, i&rsquo;ll use 16-byte blobs&#x2026;..)</dd>
 <dt>(no term)</dt><dd>what precision and scale to use for fixed point types?</dd>
@@ -382,7 +396,7 @@ A table can be read such that the name of each column labels the thing that was 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Nancy</p>
-<p class="date">Created: 2020-12-29 Tue 19:19</p>
+<p class="date">Created: 2020-12-29 Tue 19:31</p>
 </div>
 </body>
 </html>
