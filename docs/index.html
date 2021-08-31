@@ -19,7 +19,7 @@
         --orchid-pink: #f4cae0ff;
       */
       body {
-        background-color: hsl(329, 66%, 77%);
+        background-color: hsl(329, 66%, 87%);
         color: hsl(329, 66%, 98%);
         text-align: center;
         font-family: monospace;
@@ -40,8 +40,7 @@
       }
       .icon {
         border-radius: 50%;
-        border-size: 1px;
-        border-color: hsl(329, 66%, 97%);
+        border: solid hsl(329, 66%, 97%) 1px;
       }
       .bar {
         margin-top: 24px;
@@ -52,6 +51,11 @@
         margin-right: auto;
         width: 512px;
       }
+      #box {
+        border-radius: 12px;
+        border: solid hsl(329, 66%, 97%) 1px;
+        background-color: #ada7c9ff;
+      }
     </style>
   </head>
   <body>
@@ -59,30 +63,32 @@
       <div id="header">
         <h1>🎀🧸 negative nancy's homepage 🩹🎀</h1>
       </div>
-      <div id="content">
-        <img width="196px" class="icon" src="crayon_crop.png" />
-        <p>
-          hello!! :0 i am nancy and i love stella!!! :3
-          <ul>
-            <li>i like to write ansi c code 💻</li>
-            <li>i like to play scarlatti 🎼</li>
-            <li>i like to improvise on the piano 🎹</li>
-            <li>i like to draw w/ crayons 🖍</li>
-          </ul>
-        </p>
-      </div>
-      <div id="footer">
-        <div class="bar">
-          <a class="link" href="https://twitter.com/negativefnnancy">twitter</a>
-          <a class="link" href="https://ko-fi.com/negativefnnancy">ko-fi</a>
-          <a class="link" href="https://github.com/negativefnnancy">github</a>
-          <a class="link" href="https://github.com/megaloler">github 2</a>
-          <a class="link" href="https://aardbei.bandcamp.com/">bandcamp</a>
+      <div id="box">
+        <div id="content">
+          <img width="196px" class="icon" src="crayon_crop.png" />
+          <p>
+            hello!! :0 i am nancy and i love stella!!! :3
+            <ul>
+              <li>i like to write ansi c code 💻</li>
+              <li>i like to play scarlatti 🎼</li>
+              <li>i like to improvise on the piano 🎹</li>
+              <li>i like to draw w/ crayons 🖍</li>
+            </ul>
+          </p>
         </div>
-        <div class="bar">
-          <a class="link" href="https://twitter.com/lofzangen">stella's twitter</a>
-          <a class="link" href="https://ko-fi.com/lofzangen">stella's ko-fi</a>
-          <a class="link" href="https://soundcloud.com/lofzangen">stella's soundcloud</a>
+        <div id="footer">
+          <div class="bar">
+            <a class="link" href="https://twitter.com/negativefnnancy">twitter</a>
+            <a class="link" href="https://ko-fi.com/negativefnnancy">ko-fi</a>
+            <a class="link" href="https://github.com/negativefnnancy">github</a>
+            <a class="link" href="https://github.com/megaloler">github 2</a>
+            <a class="link" href="https://aardbei.bandcamp.com/">bandcamp</a>
+          </div>
+          <div class="bar">
+            <a class="link" href="https://twitter.com/lofzangen">stella's twitter</a>
+            <a class="link" href="https://ko-fi.com/lofzangen">stella's ko-fi</a>
+            <a class="link" href="https://soundcloud.com/lofzangen">stella's soundcloud</a>
+          </div>
         </div>
       </div>
     </div>
